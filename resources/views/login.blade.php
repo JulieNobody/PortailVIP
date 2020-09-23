@@ -5,6 +5,6 @@
 @endsection
 
 @section('contenu')
-    <h1 id="titre">Bonjour les Pouloulous !</h1>
+    <h1 id="titre">Bonjour les Pouloulous ! C'est moi !</h1>
 @endsection
 
