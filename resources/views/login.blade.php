@@ -1,10 +1,18 @@
 @extends('Templates\template')
 
 @section('title')
-    BOSS MINAS
+    MODIFICATION PHIL
 @endsection
 
 @section('contenu')
-    <h1 id="titre">Formule 1</h1>
-    <h1 id="titre">Formule 2</h1>
+    <h1 id="titre">POULOULOU</h1>
+    <h1 id="titre">FETE FORAINE QUAND IL FERA BEAU</h1>
+
+
+
+
+
+
+
+
 @endsection
