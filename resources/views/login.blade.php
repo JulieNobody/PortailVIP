@@ -6,10 +6,6 @@
        <link href="{!! asset('../resources/css/app.css') !!}" rel="stylesheet" type="text/css" >
     </head>
     <body>
-        <div>
-
-            <h1>Page login</h1>
-
-        </div>
+        <h1>Page login</h1>
     </body>
 </html>
