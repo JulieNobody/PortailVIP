@@ -17,5 +17,6 @@ Route::get('/', function () {
     return view('login');
 });
 
-
-//commentaire test
+Route::get('/interventions', function () {
+    return view('Interventions\liste_interventions');
+});

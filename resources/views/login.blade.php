@@ -1,10 +1,15 @@
-@extends('Templates\template')
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title> Maintronic - Login</title>
+       <link href="{!! asset('../resources/css/app.css') !!}" rel="stylesheet" type="text/css" >
+    </head>
+    <body>
+        <div>
 
-@section('title')
-    BOSS Julie ! ! !
-@endsection
+            <h1>Page login</h1>
 
-@section('contenu')
-    <h1 id="titre">Formule 6</h1>
-    <h1 id="titre">Formule 99</h1>
-@endsection
+        </div>
+    </body>
+</html>
