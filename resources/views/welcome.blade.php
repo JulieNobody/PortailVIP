@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>NIKTARACE</title>
+        <title>CEST MOI LA BOSS !!!</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -130,6 +130,6 @@
                 </div>
             </div>
         </div>
-        <p>nikmouk nardine babek</p>
+        <p>JE CONFIRME ! C'EST MOI LA BOSS</p>
     </body>
 </html>
