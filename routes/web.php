@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\InterventionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +17,4 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/interventions', function () {
-    return view('Interventions\liste_interventions');
-});
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('interventions', [InterventionController::class,'listeInterventions']);
