@@ -1,7 +1,7 @@
 @extends('Templates\template')
 
 @section('title')
-    BOSS Julie
+    BOSS Julie ! ! !
 @endsection
 
 @section('contenu')
