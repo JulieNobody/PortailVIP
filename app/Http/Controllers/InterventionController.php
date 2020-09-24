@@ -8,7 +8,7 @@ class InterventionController extends Controller
 {
     public function listeInterventions()
 	{
-		$interventions = 'null';
+		$interventions = null;
 
 		return view('Interventions\liste_interventions',  compact('interventions'));
     }

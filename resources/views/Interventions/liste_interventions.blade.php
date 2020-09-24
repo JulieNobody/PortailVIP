@@ -8,7 +8,14 @@
 
 
         <fieldset>
-            <legend>Filtres</legend>
+            <div id="filtresContainer">
+                <label for="Recherche">Recherche</label>
+                <input type="text">
+
+                <div class="boutonOrange">
+                    <a href="#">Rechercher</a>
+                </div>
+            </div>
         </fieldset>
 
         <section id="tableauAccueil">
@@ -36,7 +43,7 @@
 
 
                     @if(empty($interventions))
-                        <p class="aucunResultat">Désolé, aucune sortie ne correspond à vôtre recherche</p>
+                        <p class="aucunResultat">Aucune sortie ne correspond à vôtre recherche</p>
                     @else
 
                         <tr>
@@ -50,10 +57,8 @@
                             <td>{{$interventions}}</td>
                             <td>{{$interventions}}</td>
                             <td>{{$interventions}}</td>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>
-                                <p>Documents</p>
-                            </td>
+                            <td>{{$interventions}}</td>
+                            <td><a href="#">Documents</a></td>
                         </tr>
 
                     @endif
@@ -64,7 +69,7 @@
             </div>
         </section>
 
-        <div class="boutonNouvelleIntervention">
+        <div class="boutonOrange">
             <a href="#">Demander une intervention</a>
         </div>
 
