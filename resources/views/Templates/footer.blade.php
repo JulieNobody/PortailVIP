@@ -1,7 +1,7 @@
-            <footer>
-            <p>Je suis le footer !</p>
-            </footer>
+        <footer>
+            <p>Maintronic - <?php echo date("Y"); ?> ©</p>
+        </footer>
 
-        </div> <!-- div pour fond blanc page -->
+
     </body>
 </html>

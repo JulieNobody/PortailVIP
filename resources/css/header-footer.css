@@ -11,25 +11,20 @@
 html
 {
     height: 100%;
+    background-image: url("../../public/images/fond-etoiles.jpg");
 }
 
 body
 {
-    height: 100%;
-    background-image: url("../../public/images/fond-etoiles.jpg");
-
-
-}
-
-#fond-blanc-page
-{
-    height: 100%;
+    min-height: 100%;
 
     width: 1500px;
     background-color: white;
-    margin: -20px auto -20px auto;
-    padding: 0px 40px 0px 40px;
+    margin: auto;
+    padding-left: 40px;
+    padding-right: 40px;
 }
+
 
 /*------------------------------------- HEADER -------------------------------------*/
 header
@@ -40,7 +35,7 @@ header
 
     color: #3D3D3D;
 
-    margin-top: 100px;
+    padding-top: 10px;
 }
 
 #logo
