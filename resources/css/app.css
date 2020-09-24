@@ -12,20 +12,11 @@
 
 /***************************  GENERAL   ***************************/
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    overflow: hidden;
-    max-width: 1400px;
-    margin: auto;
-}
-
-
 h1 {
     color: #254373;
     text-align: center;
 
 }
-
 
 
 /***************************  FILTRES   ***************************/
