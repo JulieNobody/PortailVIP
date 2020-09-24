@@ -109,9 +109,6 @@ td, th
     background-color:#F3F5FD;
     min-width: 900px;
     overflow-y:auto;
-    border-left: 1px solid #254373;
-    border-bottom: 1px solid #254373;
-    border-right: 1px solid #254373;
 }
 
 #tableauAccueil th{
@@ -130,19 +127,19 @@ td, th
     background-color: #F3F5FD;
 }
 .contenu_tab tr:nth-child(odd) {
-    background-color: #d8def5;
+    background-color: #edf0fd;
 }
 .contenu_tab tr:hover{
-    background-color: rgba(87, 87, 87, 0.2) !important;
+    background-color: #7387a733 !important;
 }
 
 #tableauAccueil td{
     padding: 15px;
     text-align: center;
     vertical-align:middle;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 14px;
-    color: rgb(255, 255, 255);
+    color: #254373;
     text-transform: uppercase;
     overflow: hidden;
 }
@@ -154,6 +151,9 @@ td, th
     font-weight: 400;
     font-size: 20px;
     color: #254373;
+    border-bottom: #E94539 solid 2px;
+    width: fit-content;
+    padding-bottom: 10px;
 }
 
 /***************************  BOUTON INTERVENTIONS   ***************************/
@@ -171,9 +171,8 @@ td, th
 }
 
 .boutonOrange:hover{
-    background-color: #ffffff;
     cursor: pointer;
-    border: solid 2px #254373;
+
 }
 
 .boutonOrange a {
@@ -184,9 +183,6 @@ td, th
 
 }
 
-.boutonOrange:hover {
-    color: #254373;
-}
 
 
 
