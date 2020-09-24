@@ -9,66 +9,61 @@
 
 
 /*------------------------------------- MAIN -------------------------------------*/
+
 /***************************  GENERAL   ***************************/
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    overflow: hidden;
-    max-width: 1400px;
-    margin: auto;
-}
-
-
 h1 {
-    color: pink;
+    color: #254373;
     text-align: center;
-}
 
+}
 
 
 /***************************  FILTRES   ***************************/
 
 
 fieldset{
-    border: solid 3px blue;
-    margin-top: 50px;
+    border: solid 2px #254373;
+
+    margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
     max-width: 900px;
+
     /*background-color: rgba(0, 0, 0, 0.2);*/
 }
 
 
 #filtresContainer label{
     font-size: 16px;
-    color: blue;
+    color: #254373;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
 #filtresContainer select{
     border: none;
-    border-bottom: solid 2px blue;
+    border-bottom: solid 2px #254373;
     background-color: transparent;
-    color: blue;
+    color: #254373;
 }
 
 #filtresContainer select option {
-    background-color: blue;
+    background-color: #254373;
     color: #000000;
 }
 
 #filtresContainer input{
     border: none;
-    border-bottom: solid 2px blue;
+    border-bottom: solid 2px #254373;
     background-color: transparent;
-    color: blue;
+    color: #254373;
     outline:none;
 }
 
 #filtresContainer input::placeholder{
-    color: blue;
+    color: #254373;
 }
 
 #filtresContainer{
@@ -96,7 +91,7 @@ table
 
 td, th
 {
-    border: 1px solid black;
+    border: 1px solid #254373;
     min-width: 100px;
     text-align: center;
 }
@@ -111,17 +106,20 @@ td, th
     max-height:400px;
     overflow-x:auto;
     margin-top: 0px;
-    background-color: rgba(69, 69, 69, 0.65);
+    background-color:#F3F5FD;
     min-width: 900px;
     overflow-y:auto;
+    border-left: 1px solid #254373;
+    border-bottom: 1px solid #254373;
+    border-right: 1px solid #254373;
 }
 
 #tableauAccueil th{
     padding: 20px 15px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
-    color: #2b2929;
+    color: #254373;
     text-transform: uppercase;
 }
 #tableauAccueil tr {
@@ -129,10 +127,10 @@ td, th
 }
 
 .contenu_tab tr:nth-child(even) {
-    background-color: rgba(147, 147, 147, 0.25);
+    background-color: #F3F5FD;
 }
 .contenu_tab tr:nth-child(odd) {
-    background-color: rgba(147, 147, 147, 0.18);
+    background-color: #d8def5;
 }
 .contenu_tab tr:hover{
     background-color: rgba(87, 87, 87, 0.2) !important;
@@ -155,13 +153,13 @@ td, th
     text-align: center;
     font-weight: 400;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: #254373;
 }
 
 /***************************  BOUTON INTERVENTIONS   ***************************/
 
 .boutonOrange{
-    background-color: orange;
+    background-color: #E94539;
     border-radius: 50px;
     padding: 8px;
     text-align: center;
@@ -172,12 +170,22 @@ td, th
     margin-bottom: 25px;
 }
 
-.boutonNouvelleIntervention a {
+.boutonOrange:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+    border: solid 2px #254373;
+}
+
+.boutonOrange a {
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-weight: 500;
     font-size: 16px;
 
+}
+
+.boutonOrange:hover {
+    color: #254373;
 }
 
 
