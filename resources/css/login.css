@@ -1,0 +1,131 @@
+/*------------------------------------- CHARTE GRAPHIQUE -------------------------------------*/
+/*
+    bleu foncé: #254373
+    orange : #E94539
+    rose : #C30356
+    gris : #3D3D3D
+    bleu clair #F3F5FD
+*/
+
+html {
+    height: 100%;
+    padding: 0px;
+    background-image: url("../../public/images/fond-etoiles.jpg");
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+#loginFullPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: solid 1px #254373;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+
+}
+
+#logoLogin {
+    width: 60%;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+#logoLogin img{
+    max-width: 100%;
+    user-select :none;
+}
+
+/*
+#loginContainer label{
+    font-size: 16px;
+    color: #254373;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+*/
+
+#loginContainer input{
+    font-weight: 300;
+    font-size: 18px;
+    border: none;
+    border-bottom: solid 1px #254373;
+    background-color: transparent;
+    color: #254373;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    outline:none;
+
+}
+#loginContainer input::placeholder{
+    color: #254373;
+    font-weight: 300;
+    font-size: 18px;
+}
+form{
+    width: auto;
+}
+
+
+
+#loginContainer a:link {
+    color: #254373;
+}
+#loginContainer a:visited {
+    color: #254373;
+}
+
+.boutonOrange{
+    background-color: #E94539;
+    border-radius: 50px;
+    border: none;
+    padding: 8px;
+    text-align: center;
+    width: 300px;
+
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 18px;
+
+    outline:none;
+    user-select :none;
+}
+
+.boutonOrange:hover{
+    cursor: pointer;
+
+}
+
+.bonjour{
+margin: 500px;
+}
