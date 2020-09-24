@@ -2,7 +2,7 @@
 
 @section('contenu')
 
-    <h1>Je suis la page LISTE INTERVENTION</h1>
+    <h1>Mes interventions</h1>
     <div>
 
 
@@ -39,8 +39,6 @@
                 <table>
 
                     {{-- @foreach ($listeInterventions as $interventions) --}}
-
-
 
                     @if(empty($interventions))
                         <p class="aucunResultat">Aucune sortie ne correspond à vôtre recherche</p>
