@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/interventions', function () {
+Route::get('interventions', function () {
     return view('Interventions\liste_interventions');
 });
 
-Route::get('/welcome', function () {
+Route::get('welcome', function () {
     return view('welcome');
+});
+
+Route::get('test', function () {
+    return view('test');
+});
+
+Route::get('1', function() {
+    return 'Je suis la première page !';
 });
