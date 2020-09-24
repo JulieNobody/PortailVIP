@@ -9,8 +9,175 @@
 
 
 /*------------------------------------- MAIN -------------------------------------*/
+/***************************  GENERAL   ***************************/
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: auto;
+}
+
+
 h1 {
-    color: hotpink;
+    color: pink;
+    text-align: center;
+}
+
+
+
+/***************************  FILTRES   ***************************/
+
+
+fieldset{
+    border: solid 3px blue;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    max-width: 900px;
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+}
+
+
+#filtresContainer label{
+    font-size: 16px;
+    color: blue;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#filtresContainer select{
+    border: none;
+    border-bottom: solid 2px blue;
+    background-color: transparent;
+    color: blue;
+}
+
+#filtresContainer select option {
+    background-color: blue;
+    color: #000000;
+}
+
+#filtresContainer input{
+    border: none;
+    border-bottom: solid 2px blue;
+    background-color: transparent;
+    color: blue;
+    outline:none;
+}
+
+#filtresContainer input::placeholder{
+    color: blue;
+}
+
+#filtresContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#filtresContainer>div{
+   margin: 15px;
+}
+
+/***************************  TABLEAU   ***************************/
+
+table
+{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    table-layout: fixed;
+}
+
+td, th
+{
+    border: 1px solid black;
+    min-width: 100px;
+    text-align: center;
+}
+
+
+.header_tab{
+    background-color: rgb(255, 255, 255);
+    min-width: 900px;
+}
+
+.contenu_tab{
+    max-height:400px;
+    overflow-x:auto;
+    margin-top: 0px;
+    background-color: rgba(69, 69, 69, 0.65);
+    min-width: 900px;
+    overflow-y:auto;
+}
+
+#tableauAccueil th{
+    padding: 20px 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    color: #2b2929;
+    text-transform: uppercase;
+}
+#tableauAccueil tr {
+    text-align: center;
+}
+
+.contenu_tab tr:nth-child(even) {
+    background-color: rgba(147, 147, 147, 0.25);
+}
+.contenu_tab tr:nth-child(odd) {
+    background-color: rgba(147, 147, 147, 0.18);
+}
+.contenu_tab tr:hover{
+    background-color: rgba(87, 87, 87, 0.2) !important;
+}
+
+#tableauAccueil td{
+    padding: 15px;
+    text-align: center;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.aucunResultat {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+/***************************  BOUTON INTERVENTIONS   ***************************/
+
+.boutonOrange{
+    background-color: orange;
+    border-radius: 50px;
+    padding: 8px;
+    text-align: center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.boutonNouvelleIntervention a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 16px;
+
 }
 
 

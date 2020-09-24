@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\InterventionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +32,4 @@ Route::get('test', function () {
 Route::get('1', function() {
     return 'Je suis la première page !';
 });
+Route::get('interventions', [InterventionController::class,'listeInterventions']);
