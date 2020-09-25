@@ -9,25 +9,59 @@
     <body>
 
         <header>
-
-
-
             <img id="logo" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic">
 
             <nav>
-                <a href="#">
-                    <img class="icon-menu" src="{!! asset('/images/icon-cle-bleu.png') !!}" alt="icone interventions"><br>
-                    Interventions
-                </a>
-                <a href="#">
-                    <img class="icon-menu" src="{!! asset('/images/icon-caddie-bleu.png') !!}" alt="icone pièces détachées"><br>
-                    Pièces détachées
-                </a>
-                <a href="#">
-                    <img class="icon-menu" src="{!! asset('/images/icon-casque-bleu.png') !!}" alt="icone support"><br>
-                    Support
-                </a>
+
+               @if (Request::path() == "interventions")
+                    <a href="{{route('interventions')}}" class='nav-lien-cle-curent'>
+                        <br>
+                        <p>Interventions</p>
+                    </a>
+                @else
+                    <a href="{{route('interventions')}}" class='nav-lien-cle'>
+                        <br>
+                        <p>Interventions</p>
+                    </a>
+                @endif
+
+                @if (Request::path() == "pieces-detachees")  <!-- //TODO modifier nom page -->
+                    <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie-curent'>
+                        <br>
+                        <p>Pièces détachées</p>
+                    </a>
+                @else
+                    <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie'>
+                        <br>
+                        <p>Pièces détachées</p>
+                    </a>
+                @endif
+
+                @if (Request::path() == "support") <!-- //TODO modifier nom page -->
+                    <a href="{{route('support')}}" class='nav-lien-casque-curent'>
+                        <br>
+                        <p>Support</p>
+                    </a>
+                @else
+                    <a href="{{route('support')}}" class='nav-lien-casque'>
+                        <br>
+                        <p>Support</p>
+                    </a>
+                @endif
+
+
+
+
+
+
             </nav>
+
+
+
+
+
+
+
 
             <div id="zone-connexion">
                 <div id="logo-client-div" >
@@ -35,9 +69,9 @@
                 </div>
 
                 <div>
-                    <p>Nom Client</p>
+                    <p id="nomClient">Nom Client</p>
                     <p>
-                        <a href="#">Mon compte</a>
+                        <a href="{{route('mon-compte')}}">Mon compte</a>
                         -
                         <a href="#">Se déconnecter</a>
                     </p>

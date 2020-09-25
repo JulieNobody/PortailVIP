@@ -30,6 +30,8 @@ body
 /*------------------------------------- HEADER -------------------------------------*/
 header
 {
+    height: 100px;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -50,25 +52,109 @@ header
 
 nav
 {
+    height: 100px;
+
     display: flex;
     justify-content : space-between;
+    align-items: center;
 
     min-width: 500px;
     padding-left: 20px;
     padding-right: 20px;
+
+
+
 }
 
 nav a
 {
+    height: 80px;
+
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
     color: #3D3D3D;
 }
 
-.icon-menu
+nav p
 {
-    width: 70px;
+    padding-top: 27px;
+}
+
+/* --- CLE --- */
+
+.nav-lien-cle
+{
+    background-image: url("../../public/images/icon-cle-bleu.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 70px;
+}
+
+.nav-lien-cle:hover
+{
+    background-image: url("../../public/images/icon-cle-orange.png");
+}
+
+.nav-lien-cle-curent
+{
+    background-image: url("../../public/images/icon-cle-orange.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 70px;
+
+    border-bottom: 3px solid #E94539;
+}
+
+
+/* --- CADDIE --- */
+
+.nav-lien-caddie
+{
+    background-image: url("../../public/images/icon-caddie-bleu.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 70px;
+}
+
+.nav-lien-caddie:hover
+{
+    background-image: url("../../public/images/icon-caddie-orange.png");
+}
+
+.nav-lien-caddie-curent
+{
+    background-image: url("../../public/images/icon-caddie-orange.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 70px;
+
+    border-bottom: 3px solid #E94539;
+}
+
+/* --- CASQUE --- */
+
+.nav-lien-casque
+{
+    background-image: url("../../public/images/icon-casque-bleu.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 70px;
+}
+
+.nav-lien-casque:hover
+{
+    background-image: url("../../public/images/icon-casque-orange.png");
+}
+
+.nav-lien-casque-curent
+{
+    background-image: url("../../public/images/icon-casque-orange.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 70px;
+
+    border-bottom: 3px solid #E94539;
 }
 
 #zone-connexion
@@ -78,7 +164,6 @@ nav a
     display: flex;
     align-items: center;
 
-    text-transform: uppercase;
     line-height: 5px;
 }
 
@@ -100,11 +185,18 @@ nav a
     height: 60px;
 }
 
+#nomClient
+{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 17px;
+}
+
 #zone-connexion a
 {
     text-align: center;
     color: #E94539;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
 hr
@@ -124,6 +216,40 @@ footer
     color: #3D3D3D;
 
     padding : 50px
+}
+
+/*------------------------------------- RESPONSIVE -------------------------------------*/
+
+@media screen and (max-width: 1370px)
+{
+    body
+    {
+        max-width: 100%;
+    }
+
+    #logo
+    {
+        width: auto;
+        height: 50px;
+    }
+
+    .icon-menu
+    {
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 1050px)
+{
+    body
+    {
+        max-width: 100%;
+        background-color: red;
+
+    }
+
+
+
 }
 
 

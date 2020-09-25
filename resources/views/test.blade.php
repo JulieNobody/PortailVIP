@@ -2,7 +2,7 @@
 
 @section('contenu')
     <h1>Je suis la page TEST</h1>
-    <p>Lorem</p>
+    <p> Path: {{ Request::path() }} </p>
     <p>Lorem</p>
     <p>Lorem</p>
     <p>Lorem</p>
