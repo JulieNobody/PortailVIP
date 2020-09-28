@@ -61,9 +61,6 @@ nav
     min-width: 500px;
     padding-left: 20px;
     padding-right: 20px;
-
-
-
 }
 
 nav a
@@ -74,6 +71,7 @@ nav a
     text-align: center;
     text-transform: uppercase;
     color: #3D3D3D;
+    padding-bottom: 5px;
 }
 
 nav p
