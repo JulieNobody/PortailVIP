@@ -7,17 +7,13 @@
        <link href="{!! asset('../resources/css/login.css') !!}" rel="stylesheet" type="text/css" >
 
 
-       <script>
-                        $(document).ready(function(){
-
-                           alert("The paragraph was clicked.");
-
-                       });
-
-                    $("div").click(function(){
-                        alert("The paragraph was clicked.");
-                    });
-
+       <script type="text/javascript">
+            $(document).ready(function(){
+                //Script pour empêcher de déplacer les éléments de la page
+                $(document).on('dragstart', function(event) { event.preventDefault(); });
+                //Script pour empêcher le clic droit sur l'image
+                $('#monImage').bind("contextmenu",function(){return false;});
+            });
         </script>
 
     </head>
@@ -29,7 +25,7 @@
                 <div id="loginContainer">
 
                     <div id="logoLogin" >
-                        <img id="logo-maintronic" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic" >
+                        <img id="monImage" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic" >
                     </div>
 
                     <!--<label for="inputEmail">Pseudo ou Email</label>-->
@@ -38,7 +34,7 @@
                     <!--<label for="inputPassword">Password</label>-->
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-                    <button type="submit" class="boutonOrange">Se connecter</button>
+                    <button type="submit" class="boutonOrange" >Se connecter</button>
 
                 </div>
 
