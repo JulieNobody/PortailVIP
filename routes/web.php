@@ -19,7 +19,17 @@ use App\Http\Controllers\MonCompteController;
 /*Route::get('/', function () {
     return view('auth/login');
 });*/
-Route::get('/', [InterventionController::class,'listeInterventions'])->name('accueil');
+//Route::get('/', [InterventionController::class,'listeInterventions'])->name('accueil');
+
+Route::get('/', function () {
+    return redirect()->route('interventions');
+});
+
+
+
+
+
+
 Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
 
 Route::get('pieces-detachees', [PiecesDetacheesController::class,'get'])->name('pieces-detachees');
