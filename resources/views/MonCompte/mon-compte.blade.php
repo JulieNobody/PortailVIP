@@ -8,9 +8,10 @@
         <li>Id client : {{ Auth::user()->id }}</li>
         <li>Contrat : {{ Auth::user()->AgContrat }}</li>
         <li>Fichier logo : {{ Auth::user()->LogoClient }}</li>
+        <li>Logo : <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client"></li>
     </ul>
 
-    <img  id="logo-client-img" src="/images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">
+
 
 
 
