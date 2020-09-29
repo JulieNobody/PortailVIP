@@ -16,26 +16,10 @@ use App\Http\Controllers\MonCompteController;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-
-//Route::get('interventions', function () {
-//    return view('Interventions\liste_interventions');
-//});
-
-Route::get('welcome', function () {
-    return view('welcome');
-});
-
-Route::get('test', function () {
-    return view('test');
-});
-
-Route::get('1', function() {
-    return 'Je suis la première page !';
-});
-
+/*Route::get('/', function () {
+    return view('auth/login');
+});*/
+Route::get('/', [InterventionController::class,'listeInterventions'])->name('accueil');
 Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
 
 Route::get('pieces-detachees', [PiecesDetacheesController::class,'get'])->name('pieces-detachees');
