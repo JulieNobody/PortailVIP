@@ -47,190 +47,24 @@
                         </tr>
                     @else
 
+                        @foreach ($interventions as $i)
 
                         <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
+                            <td><a href="#">{{$i->NumInt}}</a></td>
+                            <td>{{$i->RefDossierCli}}</td>
+                            <td>{{$i->StatutInterv}}</td>
                             <td>
                                 <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
                                 <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
                             </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">{{$interventions}}</a></td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
-                            </td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
-                            <td>{{$interventions}}</td>
+                            <td>{{$i->TypeApp}}</td>
+                            <td>TO DO probleme</td>
+                            <td>{{$i->DateEnr}}</td>
+                            <td>{{$i->VilleLivCli}}</td>
                             <td><a href="#">Documents</a></td>
                         </tr>
 
+                        @endforeach
 
                     @endif
 

@@ -44,3 +44,7 @@ Route::get('support', [SupportController::class,'get'])->name('support');
 
 Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
