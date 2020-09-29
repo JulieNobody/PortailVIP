@@ -65,11 +65,18 @@
 
             <div id="zone-connexion">
                 <div id="logo-client-div" >
-                    <img  id="logo-client-img" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo client">
+                    <img  id="logo-client-img" src="{!! asset('/images/logoClient/logo-nasa.jpg') !!}" alt="logo client">
+
+                    <img src="{{ asset('img/pp/')~user.photo }}" alt="Photo" />
+
+
+                    Auth::user()->LogoClient
+
+
                 </div>
 
                 <div>
-                    <p id="nomClient">Nom Client</p>
+                    <p id="nomClient">{{ Auth::user()->NomUtil }}</p>
                     <p>
                         <a href="{{route('mon-compte')}}">Mon compte</a>
                         -
