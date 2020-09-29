@@ -19,49 +19,6 @@
     </head>
     <body>
 
-        <div id="loginFullPage">
-            <form method="post" action="{{ route('login') }}">
-                @csrf
-
-                <div id="loginContainer">
-
-                    <div id="logoLogin" >
-                        <img id="monImage" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic" >
-                    </div>
-
-                    <!--<label for="inputEmail">Pseudo ou Email</label>-->
-                    <input id="CodeUtil" type="text" class="form-control @error('CodeUtil') is-invalid @enderror" name="CodeUtil" value="{{ old('CodeUtil') }}" required autocomplete="CodeUtil" autofocus placeholder="Nom d'utilisateur">
-
-
-
-                    <!--<label for="inputPassword">Password</label>-->
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Mot de passe">
-
-                                    @error('CodeUtil')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-
-                    <button type="submit" class="boutonOrange" >Se connecter</button>
-
-                    <!--
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif-->
-
-                </div>
-
-            </form>
-        </div>
-
+    <h1 style='color:white'>Ancienne page login </h1>
     </body>
 </html>
