@@ -65,14 +65,7 @@
 
             <div id="zone-connexion">
                 <div id="logo-client-div" >
-                    <img  id="logo-client-img" src="{!! asset('/images/logoClient/logo-nasa.jpg') !!}" alt="logo client">
-
-                    <img src="{{ asset('img/pp/')~user.photo }}" alt="Photo" />
-
-
-                    Auth::user()->LogoClient
-
-
+                    <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">
                 </div>
 
                 <div>
