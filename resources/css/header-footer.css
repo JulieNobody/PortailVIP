@@ -175,10 +175,16 @@ nav p
     border-radius:50px;
     width:50px;
     height:50px;
+
+    box-shadow: 5px 5px 4px #254373;
+
+    border: 2px solid green;
 }
 
 #logo-client-img
 {
+    margin: auto;
+    border: 2px solid red;
     width: auto;
     height: 60px;
 
