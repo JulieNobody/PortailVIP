@@ -1,0 +1,123 @@
+/*------------------------------------- CHARTE GRAPHIQUE -------------------------------------*/
+/*
+    bleu foncé: #254373
+    orange : #E94539
+    rose : #C30356
+    gris : #3D3D3D
+    bleu clair #F3F5FD
+*/
+
+.wrapper {
+  margin: 0 auto;
+  padding: 40px;
+  max-width: 1300px;
+}
+
+.table {
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+@media screen and (max-width: 580px) {
+  .table {
+    display: block;
+  }
+}
+
+.row {
+  display: table-row;
+  background: #f6f6f6;
+}
+
+
+
+.row:nth-of-type(odd) {
+  background: #e9e9e9;
+}
+
+.row:hover {
+    background: #d3def0;
+}
+
+
+.row.header {
+  font-weight: 600;
+  color: #ffffff;
+  background: #254373;
+  text-transform: uppercase;
+}
+.row.green {
+  background: #27ae60;
+}
+.row.blue {
+  background: #2980b9;
+}
+
+
+
+
+@media screen and (min-width: 580px) and (max-width: 1050px){
+    div[data-title="Ref client"] {
+        display: none;
+    }
+    div[data-title="Prêt matériel"] {
+        display: none;
+    }
+    div[data-title="Problème"] {
+        display: none;
+    }
+    div[data-title="Lieu"] {
+        display: none;
+    }
+    div[data-title="Documents"] {
+        display: none;
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 580px) {
+  .row {
+    padding: 14px 0 7px;
+    display: block;
+  }
+  .row.header {
+    padding: 0;
+    height: 6px;
+  }
+  .row.header .cell {
+    display: none;
+  }
+  .row .cell {
+    margin-bottom: 10px;
+  }
+  .row .cell:before {
+    margin-bottom: 3px;
+    content: attr(data-title);
+    min-width: 98px;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #969696;
+    display: block;
+  }
+}
+
+.cell {
+  padding: 6px 12px;
+  display: table-cell;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 580px) {
+  .cell {
+    padding: 2px 16px;
+    display: block;
+  }
+
+}
+
