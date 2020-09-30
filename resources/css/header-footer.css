@@ -163,30 +163,20 @@ nav p
     align-items: center;
 
     line-height: 5px;
-}
 
-#logo-client-div
-{
-    margin: 10px;
-
-    overflow:hidden;
-    -webkit-border-radius:50px;
-    -moz-border-radius:50px;
-    border-radius:50px;
-    width:50px;
-    height:50px;
-
-    box-shadow: 5px 5px 4px #254373;
-
-    border: 2px solid green;
 }
 
 #logo-client-img
 {
-    margin: auto;
-    border: 2px solid red;
+    margin-right: 20px;
+
     width: auto;
     height: 60px;
+
+    /*
+    border: 2px solid #E94539;
+    box-shadow: 5px 5px 4px #254373;
+    */
 
 }
 
