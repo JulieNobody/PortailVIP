@@ -4,6 +4,7 @@
         <title> @yield('title')</title>
         <link href="{!! asset('../resources/css/app.css') !!}" rel="stylesheet" type="text/css" >
         <link href="{!! asset('../resources/css/header-footer.css') !!}" rel="stylesheet" type="text/css" >
+        <link href="{!! asset('../resources/sass/dist/tableau.css') !!}" rel="stylesheet" type="text/css" >
     </head>
 
     <body>

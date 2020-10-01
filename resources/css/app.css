@@ -25,7 +25,7 @@ h1 {
 fieldset{
     border: solid 2px #254373;
 
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
@@ -79,47 +79,66 @@ fieldset{
 }
 
 /***************************  TABLEAU   ***************************/
+/*
+
+.header_tab{
+    background-color: rgb(255, 255, 255);
+    width: 1350px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenu_tab{
+    width: 1350px;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-height:400px;
+    overflow-x:auto;
+    overflow-y:auto;
+    margin-top: 0px;
+    background-color:#F3F5FD;
+    border-left: 1px solid #254373;
+    border-right: 1px solid #254373;
+    border-bottom: 1px solid #254373;
+}
 
 table
 {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    width:90%;
     table-layout: fixed;
-
 }
 
-td, th
-{
-    border: 1px solid #254373;
-    min-width: 100px;
-    text-align: center;
-}
-
-
-.header_tab{
-    background-color: rgb(255, 255, 255);
-    min-width: 900px;
-}
-
-.contenu_tab{
-    max-height:400px;
-    overflow-x:auto;
-    margin-top: 0px;
-    background-color:#F3F5FD;
-    min-width: 900px;
-    overflow-y:auto;
-}
 
 #tableauAccueil th{
-    padding: 20px 15px;
     text-align: center;
     font-weight: 700;
     font-size: 16px;
     color: #254373;
     text-transform: uppercase;
+    width: 150px;
+    height: 35px;
+    border-left: 1px solid #254373;
+    border-right: 1px solid #254373;
+    border-top: 1px solid #254373;
 }
+
+#tableauAccueil td{
+    text-align: center;
+    vertical-align:middle;
+    font-weight: 400;
+    font-size: auto;
+    color: #254373;
+    text-transform: uppercase;
+    overflow: hidden;
+    width: 150px;
+    border: 1px solid #254373;
+
+}
+
 
 #tableauAccueil tr {
     text-align: center;
@@ -137,16 +156,7 @@ td, th
     background-color: #7387a733 !important;
 }
 
-#tableauAccueil td{
-    padding: 15px;
-    text-align: center;
-    vertical-align:middle;
-    font-weight: 400;
-    font-size: 14px;
-    color: #254373;
-    text-transform: uppercase;
-    overflow: hidden;
-}
+*/
 
 .aucunResultat {
     margin-left: auto;
@@ -170,7 +180,7 @@ td, th
     width: 300px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 25px;
+    margin-top: 0px;
     margin-bottom: 25px;
 }
 

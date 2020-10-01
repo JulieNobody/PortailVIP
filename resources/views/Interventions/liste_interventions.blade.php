@@ -18,6 +18,7 @@
             </div>
         </fieldset>
 
+        <!--
         <section id="tableauAccueil">
             <div class="header_tab">
                 <table>
@@ -55,7 +56,7 @@
                             <td>{{$i->StatutInterv}}</td>
                             <td>
                                 <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-                                <!-- if materiel non preté : <input type="checkbox" id="tab_inscrit" name="tab_inscrit" disabled="disabled"> -->
+
                             </td>
                             <td>{{$i->TypeApp}}</td>
                             <td>TO DO probleme</td>
@@ -73,12 +74,117 @@
                 </table>
             </div>
         </section>
+    -->
+
+    <!--------------------------------------------- Tableau interventions ----------------------------------->
+
+
+    <div class="wrapper">
+
+        <div class="table">
+
+          <div class="row header">
+
+            <div class="cell" data-title="Numéro">
+                Numéro
+            </div>
+            <div class="cell" data-title="Ref client">
+                Ref client
+            </div>
+            <div class="cell" data-title="Statut">
+                Statut
+            </div>
+            <div class="cell" data-title="Prêt matériel">
+                Prêt matériel
+            </div>
+            <div class="cell" data-title="Matériel">
+                Matériel
+            </div>
+            <div class="cell" data-title="Problème">
+                Problème
+            </div>
+            <div class="cell" data-title="Date demande">
+                Date demande
+            </div>
+            <div class="cell" data-title="Lieu">
+                Lieu
+            </div>
+            <div class="cell" data-title="Documents">
+                Documents
+            </div>
+
+          </div>
+
+
+
+            {{-- @foreach ($listeInterventions as $interventions) --}}
+
+            @if(empty($interventions))
+
+            <div class="row">
+                <div class="cell">
+                    Aucune intervention ne correspond à vôtre recherche
+                </div>
+            </div>
+
+            @else
+
+            @foreach ($interventions as $i)
+
+            <div class="row">
+                <div class="cell" data-title="Numéro">
+                    <a href="#">{{$i->NumInt}}</a>
+                </div>
+                <div class="cell" data-title="Ref client">
+                    {{$i->RefDossierCli}}
+                </div>
+                <div class="cell" data-title="Statut">
+                    {{$i->StatutInterv}}
+                </div>
+                <div class="cell" data-title="Prêt matériel">
+                    <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
+                </div>
+                <div class="cell" data-title="Matériel">
+                    {{$i->TypeApp}}
+                </div>
+                <div class="cell" data-title="Problème">
+                    TO DO probleme
+                </div>
+                <div class="cell" data-title="Date demande">
+                    {{$i->DateEnr}}
+                </div>
+                <div class="cell" data-title="Lieu">
+                    {{$i->VilleLivCli}}
+                </div>
+                <div class="cell" data-title="Documents">
+                    <a href="#">Documents</a>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+
+
+        </div>
+        @if($interventions)
+            {{ $interventions->links("pagination::default") }}
+        @endif
+      </div>
+
+
+    <!--------------------------------------------- Bouton nouvelle intervention ----------------------------------->
 
         <div class="boutonOrange">
             <a href="#">Demander une intervention</a>
         </div>
 
     </div>
+
+
+
+
 
 
 @endsection

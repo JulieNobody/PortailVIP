@@ -25,7 +25,7 @@ class InterventionController extends Controller
     public function listeInterventions()
 	{
 
-        $interventions = Intervention::all();
+        $interventions = Intervention::paginate(5);
         $utilisateurs = Utilisateur::all();
 
 		return view('Interventions\liste_interventions',  compact('interventions','utilisateurs'));
