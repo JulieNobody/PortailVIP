@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Utilisateur;
 use App\Models\Intervention;
 use Illuminate\Http\Request;
+use App\Gestion\GestionTableMotCleInterface;
 
 class InterventionController extends Controller
 {
@@ -22,8 +23,11 @@ class InterventionController extends Controller
 
 
 
-    public function listeInterventions()
+    public function listeInterventions(GestionTableMotCleInterface $GestionTableMotCleInterface)
 	{
+
+        //mise à jour de la table de mot clé intervention
+        $GestionTableMotCleInterface->miseAJourTable();
 
         $interventions = Intervention::paginate(5);
         $utilisateurs = Utilisateur::all();
