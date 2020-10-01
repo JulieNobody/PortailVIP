@@ -15,7 +15,7 @@ class Utilisateur extends Model
     protected $table = 't_utilisateur';
 
     //désactivation des colonnes created_at et updated_at
-    public $timestamp = false;
+    public $timestamps = false;
 
     protected $primaryKey = 'id';
 

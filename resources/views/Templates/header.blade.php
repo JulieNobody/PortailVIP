@@ -49,23 +49,9 @@
                         <p>Support</p>
                     </a>
                 @endif
-
-
-
-
-
-
             </nav>
 
-
-
-
-
-
-
-
             <div id="zone-connexion">
-
                 @guest
                     <p>Vous n'etes pas connecté</p>
                 @endguest
@@ -74,29 +60,24 @@
 
                 <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">
 
-
-                <div>
-                    <p id="nomClient">{{ Auth::user()->NomUtil }}</p>
-                    <p>
-                        <a href="{{route('mon-compte')}}">Mon compte</a>
-                        -
-                        <a
-                            href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"
-                        >
-                        {{ __('Se déconnecter') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </p>
-                </div>
-
+                    <div>
+                        <p id="nomClient">{{ Auth::user()->NomUtil }}</p>
+                        <p>
+                            <a href="{{route('mon-compte')}}">Mon compte</a>
+                            -
+                            <a
+                                href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"
+                            >
+                            {{ __('Se déconnecter') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </p>
+                    </div>
                 @endauth
             </div>
-
-
         </header>
-
         <hr>
