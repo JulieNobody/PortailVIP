@@ -21,6 +21,7 @@ body
     max-width: 80%;
     background-color: white;
     margin: auto;
+    margin-bottom: 0px !important;
 
 
     font-family: 'Open Sans', sans-serif;
@@ -207,10 +208,8 @@ hr
 footer
 {
    text-align: center;
-
+    padding-top: 20px;
     color: #3D3D3D;
-
-    padding : 50px
 }
 
 /*------------------------------------- RESPONSIVE -------------------------------------*/

@@ -25,10 +25,10 @@ class InterventionController extends Controller
     public function listeInterventions()
 	{
 
-        $interventions = Intervention::paginate(5);
-        $utilisateurs = Utilisateur::all();
+        $interventions = Intervention::paginate(8);
 
-		return view('Interventions\liste_interventions',  compact('interventions','utilisateurs'));
+
+		return view('Interventions\liste_interventions',  compact('interventions'));
     }
 
 
