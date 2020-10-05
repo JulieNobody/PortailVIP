@@ -28,8 +28,10 @@ fieldset{
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
-    padding: 15px;
-    max-width: 900px;
+    padding: 0px;
+    /*max-width: 900px;*/
+    max-width: 1000px;
+
 
     /*background-color: rgba(0, 0, 0, 0.2);*/
 }
@@ -54,12 +56,19 @@ fieldset{
     color: #000000;
 }
 
+
+
 #filtresContainer input{
     border: none;
     border-bottom: solid 2px #254373;
     background-color: transparent;
     color: #254373;
     outline:none;
+
+    margin-left: 7px;
+    margin-right: 7px;
+
+    /*border: 2px solid red;*/
 }
 
 #filtresContainer input::placeholder{
@@ -72,11 +81,78 @@ fieldset{
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+
+    /*border: solid 2px purple;*/
 }
 
 #filtresContainer>div{
    margin: 15px;
+
 }
+
+
+.block-filtre
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    margin-bottom: 0px !important;
+
+    /*border: solid 2px pink;*/
+}
+
+
+.filtre-date-input
+{
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+
+.icon-filtre-lien
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-decoration: none;
+    font-size: 14px;
+    color: #254373;
+    font-weight: 600;
+
+    margin: 5px;
+
+    /*border: solid 2px green;*/
+}
+
+.icon-filtre-statut
+{
+    width: auto;
+    height: 30px;
+
+    margin: auto;
+
+    /*border: solid 2px red;*/
+}
+
+
+.label-filtre-statut
+{
+    margin: 0px;
+}
+
+.label-filtre-statut-L2
+{
+    font-size: 12px;
+    color: #254373;
+    font-weight: 200;
+
+    margin: 0px;
+}
+
+
+
 
 /***************************  TABLEAU   ***************************/
 /*
