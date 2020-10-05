@@ -21,17 +21,17 @@
 
 
                     <div class="check-en-cours">
-                        <input type="checkbox" id="en-cours" name="en-cours"><br>
-                        <label for="en-cours" class="label-statut">En cours</label>
+                        <input type="checkbox" id="en-cours" name="en-cours" onchange="checkbox()"><br>
+                        <label id="label-en-cours" for="en-cours" class="label-statut">En cours</label>
                     </div>
                     <div class="check-devis">
-                        <input type="checkbox" id="devis" name="devis"><br>
-                        <label for="devis" class="label-statut">En attente</label><br>
-                        <label for="devis" class="label-statut-L2">(réponse au devis)</label>
+                        <input type="checkbox" id="devis" name="devis" onchange="checkbox()"><br>
+                        <label id="label-devis" for="devis" class="label-statut">En attente</label><br>
+                        <label id="label-devis2" for="devis" class="label-statut-L2">(réponse au devis)</label>
                     </div>
                     <div class="check-termine">
-                        <input type="checkbox" id="termine" name="termine"><br>
-                        <label for="termine" class="label-statut">Terminé</label>
+                        <input type="checkbox" id="termine" name="termine" onchange="checkbox()"><br>
+                        <label id="label-termine" for="termine" class="label-statut">Terminé</label>
                     </div>
 
 <!--

@@ -32,5 +32,38 @@ const app = new Vue({
 });
 
 
+function checkbox(){
+    var cbCours = document.getElementById("en-cours");
+    var cbDevis = document.getElementById("devis");
+    var cbTermine = document.getElementById("termine");
 
+        if (cbCours.checked)
+        {
+            document.getElementById("label-en-cours").style.opacity="1";
+        }
+        else
+        {
+            document.getElementById("label-en-cours").style.opacity="0.2";
+        }
+
+        if (cbDevis.checked)
+        {
+            document.getElementById("label-devis").style.opacity="1";
+            document.getElementById("label-devis2").style.opacity="1";
+        }
+        else
+        {
+            document.getElementById("label-devis").style.opacity="0.2";
+            document.getElementById("label-devis2").style.opacity="0.2";
+        }
+
+        if (cbTermine.checked)
+        {
+            document.getElementById("label-termine").style.opacity="1";
+        }
+        else
+        {
+            document.getElementById("label-termine").style.opacity="0.2";
+        }
+};
 
