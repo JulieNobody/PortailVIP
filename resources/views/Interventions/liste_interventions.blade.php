@@ -9,9 +9,40 @@
 
         <fieldset>
             <div id="filtresContainer">
-                <label for="Recherche">Recherche</label>
-                <input type="text">
+                <!-- ------------ DATES ------------  -->
+                <div class="block-filtre">
+                    <label for="date_debut">Du</label>
+                    <input class="filtre-date-input" type="date">
 
+                    <label for="date_debut">Au</label>
+                    <input class="filtre-date-input" type="date">
+                </div>
+
+                <!-- ------------ STATUT ------------  -->
+                <div class="block-filtre">
+                    <a href="#" class="icon-filtre-lien">
+                        <img  class="icon-filtre-statut" src="images/icon-encours2.png" alt="icone en cours">
+                        <p class="label-filtre-statut">En cours</p>
+                    </a>
+
+                    <a href="#" class="icon-filtre-lien">
+                        <img  class="icon-filtre-statut" src="images/icon-devis2.png" alt="icone en attente retour devis">
+                        <p class="label-filtre-statut">En attente</p>
+                        <p class="label-filtre-statut-L2">de réponse au devis</p>
+                    </a>
+
+                    <a href="#" class="icon-filtre-lien">
+                        <img  class="icon-filtre-statut" src="images/icon-check2.png" alt="icone terminé">
+                        <p class="label-filtre-statut">Terminé</p>
+                    </a>
+                </div>
+                <!-- ------------ MOT CLE ------------  -->
+                <div class="block-filtre">
+                    <label for="Recherche">Recherche</label>
+                    <input type="text">
+                </div>
+
+                <!-- ------------ BOUTON ------------  -->
                 <div class="boutonOrange">
                     <a href="#">Rechercher</a>
                 </div>
