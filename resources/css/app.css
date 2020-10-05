@@ -21,7 +21,7 @@ h1 {
 
 /***************************  FILTRES   ***************************/
 
-
+/* ---------------- CADRE ---------------- */
 fieldset{
     border: solid 2px #254373;
 
@@ -36,6 +36,27 @@ fieldset{
     /*background-color: rgba(0, 0, 0, 0.2);*/
 }
 
+/* ---------------- GENERAL ---------------- */
+#filtresContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    /*border: solid 2px purple;*/
+}
+
+.block-filtre
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    margin: 15px 15px 5px 15px;
+
+    /*border: solid 2px pink;*/
+}
 
 #filtresContainer label{
     font-size: 16px;
@@ -43,20 +64,6 @@ fieldset{
     font-weight: 600;
     margin-bottom: 10px;
 }
-
-#filtresContainer select{
-    border: none;
-    border-bottom: solid 2px #254373;
-    background-color: transparent;
-    color: #254373;
-}
-
-#filtresContainer select option {
-    background-color: #254373;
-    color: #000000;
-}
-
-
 
 #filtresContainer input{
     border: none;
@@ -75,84 +82,129 @@ fieldset{
     color: #254373;
 }
 
-#filtresContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-
-    /*border: solid 2px purple;*/
-}
-
-#filtresContainer>div{
-   margin: 15px;
-
-}
-
-
-.block-filtre
-{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-
-    margin-bottom: 0px !important;
-
-    /*border: solid 2px pink;*/
-}
-
-
+/* ---------------- DATES ---------------- */
 .filtre-date-input
 {
     margin-left: 7px;
     margin-right: 7px;
 }
 
+/* logo de base -> passé en blanc avec invert, logo beige passé en background inversé -> bleu */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 
-.icon-filtre-lien
+    background-image: url("../../public/images/icon-calendar.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+}
+
+
+
+/* ---------------- STATUTS ---------------- */
+.block-checkbox
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 
+    margin-bottom: 10px;
+}
+
+.block-checkbox input
+{
+    border-bottom: none !important;
+}
+
+.label-statut
+{
     text-decoration: none;
-    font-size: 14px;
+    font-size: 14px !important;
     color: #254373;
     font-weight: 600;
-
-    margin: 5px;
-
-    /*border: solid 2px green;*/
 }
 
-.icon-filtre-statut
+.label-statut-L2
 {
-    width: auto;
-    height: 30px;
-
-    margin: auto;
-
-    /*border: solid 2px red;*/
+    font-size: 12px !important;
+    color: #254373 !important;
+    font-weight: 450 !important;
 }
 
-
-.label-filtre-statut
+input[type=checkbox]
 {
-    margin: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
 }
 
-.label-filtre-statut-L2
+.check-en-cours input[type=checkbox]
 {
-    font-size: 12px;
+    height: 50px;
+    width: 50px;
+
+    background-image: url("../../public/images/icon-encours2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
+
+    opacity: 0.2;
+}
+
+.check-en-cours input[type="checkbox"]:checked
+{
+    opacity: 1;
+}
+
+.check-devis input[type=checkbox]
+{
+    height: 50px;
+    width: 50px;
+
+    background-image: url("../../public/images/icon-devis2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+
+    opacity: 0.2;
+}
+
+.check-devis input[type="checkbox"]:checked
+{
+    opacity: 1;
+}
+
+.check-termine input[type=checkbox]
+{
+    height: 50px;
+    width: 50px;
+
+    background-image: url("../../public/images/icon-check2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+
+    opacity: 0.2;
+}
+
+.check-termine input[type="checkbox"]:checked
+{
+    opacity: 1;
+}
+/* ---------------- MOT CLE ---------------- */
+
+/* ---------------- SELECT - NON UTILISE ---------------- */
+/*
+#filtresContainer select{
+    border: none;
+    border-bottom: solid 2px #254373;
+    background-color: transparent;
     color: #254373;
-    font-weight: 200;
-
-    margin: 0px;
 }
 
-
-
+#filtresContainer select option {
+    background-color: #254373;
+    color: #000000;
+}
+*/
 
 /***************************  TABLEAU   ***************************/
 /*
