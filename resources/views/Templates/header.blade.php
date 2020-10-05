@@ -59,7 +59,10 @@
 
                 @auth  <!-- test si user conecté -->
 
-                <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">
+
+                    @if (Auth::user()->LogoClient != NULL)
+                        <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">
+                    @endif
 
                     <div>
                         <p id="nomClient">{{ Auth::user()->NomUtil }}</p>
