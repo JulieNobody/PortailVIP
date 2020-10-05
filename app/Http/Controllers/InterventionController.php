@@ -29,6 +29,7 @@ class InterventionController extends Controller
         //mise à jour de la table de mot clé intervention
         $GestionTableMotCleInterface->miseAJourTable();
 
+        //$interventions = Intervention::where('Marque', '=', 'HP')->paginate(8);
         $interventions = Intervention::paginate(8);
 
 		return view('Interventions\liste_interventions',  compact('interventions'));
