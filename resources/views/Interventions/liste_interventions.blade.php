@@ -17,23 +17,49 @@
                 </div>
 
                 <!-- ------------ STATUT ------------  -->
-                <div class="block-filtre">
+                <div class="block-filtre block-checkbox">
+
+
+                    <div class="check-en-cours">
+                        <input type="checkbox" id="en-cours" name="en-cours"><br>
+                        <label for="en-cours" class="label-statut">En cours</label>
+                    </div>
+                    <div class="check-devis">
+                        <input type="checkbox" id="devis" name="devis"><br>
+                        <label for="devis" class="label-statut">En attente</label><br>
+                        <label for="devis" class="label-statut-L2">(réponse au devis)</label>
+                    </div>
+                    <div class="check-termine">
+                        <input type="checkbox" id="termine" name="termine"><br>
+                        <label for="termine" class="label-statut">Terminé</label>
+                    </div>
+
+<!--
+
+                    <div>
+                        <input type="checkbox" id="en-cours" name="en-cours">
+                        <label for="en-cours" class="label-filtre-statut">
+                            <img  class="icon-filtre-statut" src="images/icon-encours2.png" alt="icone en cours">
+                            <br>En cours
+                        </label>
+                      </div>
+
                     <a href="#" class="icon-filtre-lien">
                         <img  class="icon-filtre-statut" src="images/icon-encours2.png" alt="icone en cours">
                         <p class="label-filtre-statut">En cours</p>
                     </a>
-
                     <a href="#" class="icon-filtre-lien">
                         <img  class="icon-filtre-statut" src="images/icon-devis2.png" alt="icone en attente retour devis">
                         <p class="label-filtre-statut">En attente</p>
-                        <p class="label-filtre-statut-L2">de réponse au devis</p>
+                        <p class="label-filtre-statut-L2">réponse au devis</p>
                     </a>
 
                     <a href="#" class="icon-filtre-lien">
                         <img  class="icon-filtre-statut" src="images/icon-check2.png" alt="icone terminé">
                         <p class="label-filtre-statut">Terminé</p>
-                    </a>
+                    </a>-->
                 </div>
+
                 <!-- ------------ MOT CLE ------------  -->
                 <div class="block-filtre">
                     <label for="Recherche">Recherche</label>
