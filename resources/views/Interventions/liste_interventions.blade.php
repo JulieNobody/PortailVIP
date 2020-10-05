@@ -5,8 +5,6 @@
     <h1>Mes interventions</h1>
     <div>
 
-
-
         <fieldset>
             <div id="filtresContainer">
                 <label for="Recherche">Recherche</label>
@@ -115,8 +113,6 @@
 
           </div>
 
-
-
             {{-- @foreach ($listeInterventions as $interventions) --}}
 
             @if(empty($interventions))
@@ -133,7 +129,7 @@
 
             <div class="row">
                 <div class="cell" data-title="Numéro">
-                    <a href="#">{{$i->NumInt}}</a>
+                    <a href="">{{$i->NumInt}}</a>
                 </div>
                 <div class="cell" data-title="Ref client">
                     {{$i->RefDossierCli}}
@@ -164,15 +160,12 @@
             @endforeach
 
             @endif
-
-
-
         </div>
+
         @if($interventions)
             {{ $interventions->links("pagination::default") }}
         @endif
       </div>
-
 
     <!--------------------------------------------- Bouton nouvelle intervention ----------------------------------->
 
@@ -180,11 +173,8 @@
             <a href="#">Demander une intervention</a>
         </div>
 
+
     </div>
-
-
-
-
 
 
 @endsection
