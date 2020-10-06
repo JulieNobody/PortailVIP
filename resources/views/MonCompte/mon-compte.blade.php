@@ -1,5 +1,9 @@
 @extends('Templates\template')
 
+@section('title')
+Mon compte
+@endsection
+
 @section('contenu')
     <h1>Mon compte</h1>
 

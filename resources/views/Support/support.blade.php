@@ -1,5 +1,11 @@
 @extends('Templates\template')
 
+
+@section('title')
+Support
+@endsection
+
+
 @section('contenu')
     <h1>Support</h1>
 

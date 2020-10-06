@@ -1,5 +1,10 @@
 @extends('Templates\template')
 
+@section('title')
+Pièces détachées
+@endsection
+
+
 @section('contenu')
     <h1>Pièces Detachées</h1>
 

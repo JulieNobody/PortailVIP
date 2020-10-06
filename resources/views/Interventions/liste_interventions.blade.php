@@ -1,5 +1,12 @@
 @extends('Templates\template')
 
+
+@section('title')
+Mes interventions
+@endsection
+
+
+
 @section('contenu')
 
     <h1>Mes interventions</h1>
