@@ -42,7 +42,7 @@ fieldset{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
+    align-items: baseline;
 
     /*border: solid 2px purple;*/
 }
@@ -87,6 +87,7 @@ fieldset{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    align-self: center;
 }
 
 #bloc-dates>div {
@@ -202,6 +203,29 @@ input[type=checkbox]
     opacity: 1;
 }
 /* ---------------- MOT CLE ---------------- */
+
+
+/* ---------------- BOUTON RECHERCHER ---------------- */
+.boutonFiltre {
+    background-color: #E94539;
+    border-radius: 50px;
+    padding: 8px;
+    text-align: center;
+    width: 150px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+
+.boutonFiltre a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 16px;
+
+}
+
 
 /* ---------------- SELECT - NON UTILISE ---------------- */
 /*

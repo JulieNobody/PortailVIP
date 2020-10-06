@@ -52,7 +52,7 @@ Mes interventions
                 </div>
 
                 <!-- ------------ BOUTON ------------  -->
-                <div class="boutonOrange">
+                <div class="boutonFiltre">
                     <a href="#">Rechercher</a>
                 </div>
             </div>
