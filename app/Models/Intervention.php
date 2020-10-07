@@ -27,5 +27,9 @@ class Intervention extends Model
         }
 
 
+    public function ligneDet()
+        {
+            return $this->hasMany('App\Models\LigneDet', 'NumInt');
+        }
 
 }

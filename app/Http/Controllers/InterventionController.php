@@ -33,13 +33,12 @@ class InterventionController extends Controller
         $username = auth()->user()->NomUtil;
 
         //Récupération des interventions concernants l'utilisateur connecté qui sont en cours
-        //$interventions = Intervention::where('NomCmdCli', '=', $username)->paginate(8);
-
-
-
         $interventions = Intervention::where('NomCmdCli', '=', $username)
         ->whereHas('statut', function ($query) {
-            $query->where('DesignStatut', 'Encours');
+            $query->where('DesignStatutCli', 'En cours');
+        })
+        ->whereHas('ligneDet', function ($query) {
+            $query->orderBy('NumInt', 'ASC');
         })
         ->paginate(8);
 

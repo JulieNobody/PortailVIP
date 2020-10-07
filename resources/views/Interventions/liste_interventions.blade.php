@@ -71,7 +71,7 @@ Mes interventions
                 Numéro
             </div>
             <div class="cell" data-title="Ref client">
-                Ref client
+                Num Client
             </div>
             <div class="cell" data-title="Statut">
                 Statut
@@ -120,22 +120,27 @@ Mes interventions
                 </div>
                 <div class="cell" data-title="Statut">
 
-                    {{$i->statut->DesignStatut}}
+                    {{$i->statut->DesignStatutCli}}
 
                 </div>
                 <div class="cell" data-title="Prêt matériel">
                     <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
                 </div>
                 <div class="cell" data-title="Matériel">
-                    {{$i->TypeApp}}
+                    {{$i->Marque}} / {{$i->TypeApp}}
                 </div>
                 <div class="cell" data-title="Problème">
-                    {{$i->NomCmdCli}}
+                    @foreach ($i->ligneDet as $l)
+                        {{$l->DesignArt}}
+                    @endforeach
+
                 </div>
                 <div class="cell" data-title="Date demande">
                     {{$i->DateEnr}}
                 </div>
                 <div class="cell" data-title="Lieu">
+                    {{$i->AdLivCli}}
+                    {{$i->CPLivCli}}
                     {{$i->VilleLivCli}}
                 </div>
                 <div class="cell" data-title="Documents">
