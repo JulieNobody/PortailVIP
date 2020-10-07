@@ -31,7 +31,7 @@ Mes interventions
 
 
                     <div class="check-en-cours">
-                        <input type="checkbox" id="en-cours" name="en-cours" onchange="checkbox()"><br>
+                        <input type="checkbox" id="en-cours" name="en-cours" onchange="checkbox()" checked><br>
                         <label id="label-en-cours" for="en-cours" class="label-statut">En cours</label>
                     </div>
                     <div class="check-devis">
@@ -41,7 +41,7 @@ Mes interventions
                     </div>
                     <div class="check-termine">
                         <input type="checkbox" id="termine" name="termine" onchange="checkbox()"><br>
-                        <label id="label-termine" for="termine" class="label-statut">Terminé</label>
+                        <label id="label-termine" for="termine" class="label-statut">Terminée</label>
                     </div>
 
                 </div>
@@ -57,64 +57,6 @@ Mes interventions
                 </div>
             </div>
         </fieldset>
-
-        <!--
-        <section id="tableauAccueil">
-            <div class="header_tab">
-                <table>
-                    <tr>
-                        <th>Numéro</th>
-                        <th>Ref client</th>
-                        <th>Statut</th>
-                        <th>Prêt matériel</th>
-                        <th>Matériel</th>
-                        <th>Problème</th>
-                        <th>Date demande</th>
-                        <th>Lieu</th>
-                        <th>Documents</th>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="contenu_tab">
-                <table>
-
-                    {{-- @foreach ($listeInterventions as $interventions) --}}
-
-                    @if(empty($interventions))
-                    <tr>
-                        <td><p class="aucunResultat">Aucune intervention ne correspond à vôtre recherche</p></td>
-
-                        </tr>
-                    @else
-
-                        @foreach ($interventions as $i)
-
-                        <tr>
-                            <td><a href="#">{{$i->NumInt}}</a></td>
-                            <td>{{$i->RefDossierCli}}</td>
-                            <td>{{$i->StatutInterv}}</td>
-                            <td>
-                                <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
-
-                            </td>
-                            <td>{{$i->TypeApp}}</td>
-                            <td>TO DO probleme</td>
-                            <td>{{$i->DateEnr}}</td>
-                            <td>{{$i->VilleLivCli}}</td>
-                            <td><a href="#">Documents</a></td>
-                        </tr>
-
-                        @endforeach
-
-                    @endif
-
-
-                    {{--@endforeach--}}
-                </table>
-            </div>
-        </section>
-    -->
 
     <!--------------------------------------------- Tableau interventions ----------------------------------->
 
@@ -157,13 +99,13 @@ Mes interventions
 
             {{-- @foreach ($listeInterventions as $interventions) --}}
 
-            @if(empty($interventions))
+            @if(count($interventions) == 0)
 
-            <div class="row">
-                <div class="cell">
+        </div>
+                <p class="aucunResultat" >
                     Aucune intervention ne correspond à vôtre recherche
-                </div>
-            </div>
+                </p>
+
 
             @else
 
@@ -177,7 +119,9 @@ Mes interventions
                     {{$i->RefDossierCli}}
                 </div>
                 <div class="cell" data-title="Statut">
-                    {{$i->StatutInterv}}
+
+                    {{$i->statut->DesignStatut}}
+
                 </div>
                 <div class="cell" data-title="Prêt matériel">
                     <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
@@ -186,7 +130,7 @@ Mes interventions
                     {{$i->TypeApp}}
                 </div>
                 <div class="cell" data-title="Problème">
-                    TO DO probleme
+                    {{$i->NomCmdCli}}
                 </div>
                 <div class="cell" data-title="Date demande">
                     {{$i->DateEnr}}
