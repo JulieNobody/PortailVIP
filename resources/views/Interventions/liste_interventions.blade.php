@@ -131,14 +131,16 @@ Mes interventions
                     @endif
                 </div>
                 <div class="cell" data-title="Matériel">
-                    {{$i->Marque}} / {{$i->TypeApp}}
+                    <p class="marque">{{$i->Marque}}</p>
+                    <p class="typeapp">{{$i->TypeApp}}</p>
                 </div>
                 <div class="cell" data-title="Problème">
 
                     @if(empty($i->ligneDetail))
-                        Détail du problème non renseigné
+                        - Détail du problème non renseigné -
                     @else
-                        {{$i->ligneDetail->DesignArt}}
+                    <p class="probleme">{{$i->ligneDetail->DesignArt}}</p>
+
                     @endif
 
                 </div>
@@ -146,9 +148,9 @@ Mes interventions
                     {{$i->DateEnr}}
                 </div>
                 <div class="cell" data-title="Lieu">
-                    {{$i->AdLivCli}}
-                    {{$i->CPLivCli}}
-                    {{$i->VilleLivCli}}
+                    <p class="adresse">{{$i->AdLivCli}}</p>
+                    <p class="ville">{{$i->CPLivCli}}
+                    {{$i->VilleLivCli}}</p>
                 </div>
                 <div class="cell" data-title="Documents">
                     <a href="#">Documents</a>
