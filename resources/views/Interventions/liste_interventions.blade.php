@@ -124,15 +124,22 @@ Mes interventions
 
                 </div>
                 <div class="cell" data-title="Prêt matériel">
-                    <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
+                    @if($i->statut->Statut == 'NPRET')
+                        <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
+                    @else
+                        <input type="checkbox" id="tab_inscrit" name="tab_inscrit"  disabled="disabled">
+                    @endif
                 </div>
                 <div class="cell" data-title="Matériel">
                     {{$i->Marque}} / {{$i->TypeApp}}
                 </div>
                 <div class="cell" data-title="Problème">
-                    @foreach ($i->ligneDet as $l)
-                        {{$l->DesignArt}}
-                    @endforeach
+
+                    @if(empty($i->ligneDetail))
+                        Détail du problème non renseigné
+                    @else
+                        {{$i->ligneDetail->DesignArt}}
+                    @endif
 
                 </div>
                 <div class="cell" data-title="Date demande">
@@ -151,11 +158,116 @@ Mes interventions
             @endforeach
 
             @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{--
+
+
+
+            @if(count($lignedet) == 0)
+
+        </div>
+                <p class="aucunResultat" >
+                    Aucune ligne de détail ne correspond à vôtre recherche
+                </p>
+
+
+            @else
+
+            @foreach ($lignedet as $i)
+
+            <div class="row">
+                <div class="cell" data-title="Numéro">
+                    <a href="">{{$i->id}}</a>
+                </div>
+                <div class="cell" data-title="Ref client">
+                    {{$i->Numligne}}
+                </div>
+                <div class="cell" data-title="Statut">
+
+                    {{$i->NumInt}}
+
+                </div>
+                <div class="cell" data-title="Prêt matériel">
+                    <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
+                </div>
+                <div class="cell" data-title="Matériel">
+                    {{$i->TypeCode }}
+                </div>
+                <div class="cell" data-title="Problème">
+                   {{$i->DesignArt}}
+                </div>
+                <div class="cell" data-title="Date demande">
+                    {{$i->Qte}}
+                </div>
+                <div class="cell" data-title="Lieu">
+                    {{$i->PVArt}}
+                </div>
+                <div class="cell" data-title="Documents">
+                    <a href="#">Documents</a>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ --}}
+
+
+
+
+
+
+
         </div>
 
         @if($interventions)
             {{ $interventions->links("pagination::default") }}
         @endif
+
+
+
+{{--
+
+        @if($lignedet)
+            {{ $lignedet->links("pagination::default") }}
+        @endif --}}
+
+
+
+
+
+
+
       </div>
 
     <!--------------------------------------------- Bouton nouvelle intervention ----------------------------------->

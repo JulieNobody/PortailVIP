@@ -9,8 +9,8 @@
 
 .wrapper {
   margin: 0 auto;
-  padding: 40px;
-  max-width: 1300px;
+  padding: 20px;
+  max-width: 1400px;
 }
 
 .table {
@@ -112,6 +112,8 @@
   padding: 6px 12px;
   display: table-cell;
   text-align: center;
+  vertical-align: middle;
+
 }
 
 

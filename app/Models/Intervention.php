@@ -26,10 +26,14 @@ class Intervention extends Model
             return $this->belongsTo('App\Models\Statut', 'StatutInterv', 'Statut');
         }
 
-
-    public function ligneDet()
+    public function ligneDetail()
         {
-            return $this->hasMany('App\Models\LigneDet', 'NumInt');
+            return $this->belongsTo('App\Models\LigneDet', 'NumInt', 'NumInt');
         }
+
+    // public function ligneDet()
+    //     {
+    //         return $this->hasMany('App\Models\LigneDet', 'NumInt');
+    //     }
 
 }

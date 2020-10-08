@@ -6,6 +6,7 @@ use App\Models\Utilisateur;
 use App\Models\Intervention;
 use Illuminate\Http\Request;
 use App\Gestion\GestionTableMotCleInterface;
+use App\Models\LigneDet;
 
 class InterventionController extends Controller
 {
@@ -32,15 +33,16 @@ class InterventionController extends Controller
         //Récupération du nom de l'utilisateur connecté
         $username = auth()->user()->NomUtil;
 
-        //Récupération des interventions concernants l'utilisateur connecté qui sont en cours
+
+        //Récupération des interventions concernants l'utilisateur connecté
         $interventions = Intervention::where('NomCmdCli', '=', $username)
+        //Dont les interventions sont en cours
         ->whereHas('statut', function ($query) {
             $query->where('DesignStatutCli', 'En cours');
         })
-        ->whereHas('ligneDet', function ($query) {
-            $query->orderBy('NumInt', 'ASC');
-        })
+        //Avec un résultat en pagination
         ->paginate(8);
+
 
 		return view('Interventions\liste_interventions',  compact('interventions'));
     }
