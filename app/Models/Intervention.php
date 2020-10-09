@@ -19,4 +19,21 @@ class Intervention extends Model
     public $incrementing = true;
 
     protected $primaryKey = 'id';
+
+
+    public function statut()
+        {
+            return $this->belongsTo('App\Models\Statut', 'StatutInterv', 'Statut');
+        }
+
+    public function ligneDetail()
+        {
+            return $this->belongsTo('App\Models\LigneDet', 'NumInt', 'NumInt');
+        }
+
+    // public function ligneDet()
+    //     {
+    //         return $this->hasMany('App\Models\LigneDet', 'NumInt');
+    //     }
+
 }

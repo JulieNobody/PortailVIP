@@ -9,8 +9,8 @@
 
 .wrapper {
   margin: 0 auto;
-  padding: 40px;
-  max-width: 1300px;
+  padding: 20px;
+  max-width: 1400px;
 }
 
 .table {
@@ -27,6 +27,7 @@
 .row {
   display: table-row;
   background: #f6f6f6;
+  font-size: 14px;
 }
 
 .row a {
@@ -47,6 +48,7 @@
   color: #ffffff;
   background: #254373;
   text-transform: uppercase;
+  font-size: 15px;
 }
 .row.green {
   background: #27ae60;
@@ -109,9 +111,11 @@
 }
 
 .cell {
-  padding: 6px 12px;
+  padding: 4px 8px;
   display: table-cell;
   text-align: center;
+  vertical-align: middle;
+
 }
 
 
@@ -124,6 +128,34 @@
 }
 
 
+
+
+.marque {
+    margin: 0px;
+    text-transform: uppercase;
+}
+.typeapp {
+    margin: 0px;
+    text-transform: uppercase;
+}
+.probleme{
+    margin: 0px;
+    text-transform: lowercase;
+}
+.adresse{
+    margin: 0px;
+    text-transform: lowercase;
+}
+.ville{
+    margin: 0px;
+    text-transform: uppercase;
+}
+
+
+
+
+
+/*  --------------------------- PAGINATION ------------------------------*/
 .pagination {
     display: flex;
     flex-direction: row;
