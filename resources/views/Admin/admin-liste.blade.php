@@ -1,19 +1,17 @@
-@extends('Admin\admin-template')
+@extends('Templates\template')
 
 
-@section('admin-title')
+@section('title')
 Admin - Liste des utilisateurs
 @endsection
 
 
 
-@section('admin-contenu')
+@section('contenu')
 
     <h1>Liste des utilisateurs</h1>
 
     <div class="admin-crea-form">
-
-
 
         <div class="wrapper">
 
@@ -80,8 +78,10 @@ Admin - Liste des utilisateurs
                 {{ $utilisateurs->links("pagination::default") }}
             @endif
           </div>
+    </div>
 
-
+    <div class="boutonOrange">
+        <a href="{{route('admin-creation-get')}}">Ajouter un utilisateur</a>
     </div>
 
 @endsection

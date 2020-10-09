@@ -81,6 +81,12 @@
                             >
                             {{ __('Se déconnecter') }}
                             </a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <a href="{{route('admin-liste')}}">Admin</a>
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

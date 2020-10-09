@@ -12,7 +12,7 @@ Mes interventions
     <h1>Mes interventions</h1>
     <div>
 
-        <fieldset>
+        <fieldset class="fieldset-liste-inter">
             <div id="filtresContainer">
                 <!-- ------------ DATES ------------  -->
                 <div class="block-filtre" id="bloc-dates">
