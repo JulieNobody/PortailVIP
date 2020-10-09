@@ -21,11 +21,11 @@ Mes interventions
 
                     <div>
                         <label for="date_debut">Du</label>
-                        <input class="filtre-date-input" type="date" name="date-min" value="dateMin">
+                        <input class="filtre-date-input" type="date" name="date-min" value="{{$dateMin}}">
                     </div>
                     <div>
                         <label for="date_debut">Au</label>
-                        <input class="filtre-date-input" type="date" name="date-max" value="dateMax">
+                        <input class="filtre-date-input" type="date" name="date-max" value="{{$dateMax}}">
                     </div>
 
                 </div>
@@ -153,7 +153,7 @@ Mes interventions
 
                 </div>
                 <div class="cell" data-title="Date demande">
-                    {{$i->DateEnr}}
+                    {{$i->DateEnr->format('d-m-Y')}}
                 </div>
                 <div class="cell" data-title="Lieu">
                     <p class="adresse">{{$i->AdLivCli}}</p>

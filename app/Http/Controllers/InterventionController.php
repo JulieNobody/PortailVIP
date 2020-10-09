@@ -23,62 +23,13 @@ class InterventionController extends Controller
     }
 
 
-
-    public function listeInterventionsDefaut(GestionTableMotCleInterface $GestionTableMotCleInterface)
-	{
-
-        //mise à jour de la table de mot clé intervention
-        $GestionTableMotCleInterface->miseAJourTable();
-
-
-        $motcle = null;
-        $encours = 'checked';
-
-
-        //Récupération du nom de l'utilisateur connecté
-        $username = auth()->user()->NomUtil;
-
-
-        //Récupération des interventions concernants l'utilisateur connecté
-        $interventions = Intervention::where('NomCmdCli', '=', $username)
-        //Dont les interventions sont en cours
-        ->whereHas('statut', function ($query) {
-            $query->where('DesignStatutCli', 'En cours');
-        })
-        //Avec un résultat en pagination
-        ->paginate(8);
-
-
-		return view('Interventions\liste_interventions',  compact('interventions','encours', 'motcle'));
-    }
-
-
-
     public function listeInterventions(GestionTableMotCleInterface $GestionTableMotCleInterface)
 	{
 
         //mise à jour de la table de mot clé intervention
         $GestionTableMotCleInterface->miseAJourTable();
 
-
-        // date-min
-        // date-max
-
-        // cb-en-cours
-        // cb-en-attente
-        // cb-terminee
-
-        // mot-cle
-
-
-
-        //Récupération du nom de l'utilisateur connecté
-        $username = auth()->user()->NomUtil;
-
-        $interventions = new Intervention;
-        $interventions = $interventions->where('NomCmdCli', '=', $username);
-
-        //FILTRES
+        // LES FILTRES
         $dateMin = null;
         $dateMax = null;
         $enCours = null;
@@ -86,44 +37,76 @@ class InterventionController extends Controller
         $terminee = null;
         $motcle = null;
 
+        //Récupération du nom de l'utilisateur connecté
+        $username = auth()->user()->NomUtil;
 
+
+        /*-------------- DÉBUT DE LA REQUÊTE -------------- */
+        $interventions = new Intervention;
+        $interventions = $interventions->where('NomCmdCli', '=', $username);
+
+
+        /**
+         * Si on arrive dans cette méthode en POST (depuis les filtres),
+         * je rentre dans le if afin de rajouter des clauses*/
         if(request()->isMethod('post')){
 
+            /*-------------- LES DATES -------------- */
             //Si une date minimum est réclamée
             if(request()->has('date-min') && request('date-min') != null && request('date-min') != ''){
-                $interventions = $interventions->where('DateEnr', '>', request('date-min'));
+                $interventions = $interventions->where('DateEnr', '>=', request('date-min'));
                 $dateMin = request('date-min');
             }
             //Si une date maximum est réclamée
             if(request()->has('date-max') && request('date-max') != null && request('date-max') != ''){
-                $interventions = $interventions->where('DateEnr', '<', request('date-max'));
+                $interventions = $interventions->where('DateEnr', '<=', request('date-max'));
                 $dateMax = request('date-max');
             }
 
 
-            //Si le statut réclamé est en cours
-            if(request()->has('cb-en-cours')){
+            /*-------------- LES CHECKBOX -------------- */
+
+            if(request()->has('cb-en-cours')||request()->has('cb-en-attente')||request()->has('cb-terminee')){
+
                 $interventions = $interventions->whereHas('statut', function ($query) {
-                                    $query->where('DesignStatutCli', 'En cours');
-                                });
-                $enCours = 'checked';
-            }
-            //Si le statut réclamé est en attente
-            if(request()->has('cb-en-attente')){
-                $interventions = $interventions->whereHas('statut', function ($query) {
-                                    $query->where('DesignStatutCli', 'Attente de réponse au devis');
-                                });
-                $enAttente = 'checked';
-            }
-            //Si le statut réclamé est terminé
-            if(request()->has('cb-terminee')){
-                $interventions = $interventions->whereHas('statut', function ($query) {
-                                    $query->where('DesignStatutCli', 'Terminée');
-                                });
-                $terminee = 'checked';
+
+                    /**
+                     * Je pars d'une sélection où il n'y a aucun résultat.
+                     * Puis, je rajoute les query en fonction de la checkbox cochée.
+                     * */
+                    $query->where('DesignStatutCli', '');
+
+                    //Si le statut réclamé est en cours
+                    if(request()->has('cb-en-cours')){
+                        $query->orWhere('DesignStatutCli', 'En cours');
+                    }
+                    //Si le statut réclamé est en attente
+                    if(request()->has('cb-en-attente')){
+                        $query->orWhere('DesignStatutCli', 'Attente de réponse au devis');
+                    }
+                    //Si le statut réclamé est terminé
+                    if(request()->has('cb-terminee')){
+                        $query->orWhere('DesignStatutCli', 'Terminée');
+                    }
+                });
+
+                /**
+                 * Je renvoie à ma vue quelles cases doivent rester cochées après l'actualisation de la page
+                 * */
+                if(request()->has('cb-en-cours')){
+                    $enCours = 'checked';
+                }
+                if(request()->has('cb-en-attente')){
+                    $enAttente = 'checked';
+                }
+                if(request()->has('cb-terminee')){
+                    $terminee = 'checked';
+                }
+
             }
 
 
+            /*-------------- LE MOT CLÉ -------------- */
             //Si un mot clé est réclamé
             if(request()->has('valeurMotCle') && request('valeurMotCle') != null){
                 $interventions = $interventions->whereHas('motCle', function ($query) {
@@ -132,7 +115,12 @@ class InterventionController extends Controller
                 $motcle = request('valeurMotCle');
             }
 
-        } else {
+        }
+
+        /**
+         * Si on arrive dans cette méthode en GET
+         * Je renvoie une séléction d'interventions filtrées par défaut avec le statut 'En cours'*/
+        else {
 
             $interventions = $interventions->whereHas('statut', function ($query) {
                                 $query->where('DesignStatutCli', 'En cours');
