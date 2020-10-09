@@ -13,7 +13,10 @@
     <body onload="checkbox()">
 
         <header>
-            <img id="logo" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic">
+            <a href="{{route('interventions')}}">
+                <img id="logo" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic">
+            </a>
+
 
             <nav>
 
