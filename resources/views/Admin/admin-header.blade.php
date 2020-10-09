@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> @yield('title')</title>
+        <title> @yield('admin-title')</title>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link href="{!! asset('../resources/css/app.css') !!}" rel="stylesheet" type="text/css" >
         <link href="{!! asset('../resources/css/header-footer.css') !!}" rel="stylesheet" type="text/css" >
         <link href="{!! asset('../resources/sass/dist/tableau.css') !!}" rel="stylesheet" type="text/css" >
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ URL::asset('../resources/js/app.js') }}"></script>
+        {{-- FIXME vérifier si link ou script inutile --}}
+
+        <link href="{!! asset('../resources/css/admin.css') !!}" rel="stylesheet" type="text/css" >
     </head>
 
     <body onload="checkbox()">
 
         <header>
-            <a href="{{route('interventions')}}">
-                <img id="logo" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic">
-            </a>
+            <img id="logo" src="{!! asset('/images/logo-maintronic.png') !!}" alt="logo Maintronic">
 
+            <nav class="admin-nav">
 
-            <nav>
-
-               @if (Request::path() == "interventions")
-                    <a href="{{route('interventions')}}" class='nav-lien-cle-curent'>
-                        <br>
-                        <p>Interventions</p>
-                    </a>
+                @if (Request::path() == "admin")
+                <a href="{{route('admin')}}">
+                    <br>
+                    <p class="admin-nav-actif">Menu admin</p>
+                </a>
                 @else
-                    <a href="{{route('interventions')}}" class='nav-lien-cle'>
+                    <a href="{{route('admin')}}">
                         <br>
-                        <p>Interventions</p>
+                        <p>Menu admin</p>
                     </a>
                 @endif
 
-                @if (Request::path() == "pieces-detachees")  <!-- //TODO modifier nom page -->
-                    <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie-curent'>
+                @if (Request::path() == "admin-creation")
+                    <a href="{{route('admin-creation-get')}}">
                         <br>
-                        <p>Pièces détachées</p>
+                        <p class="admin-nav-actif">Création utilisateur</p>
                     </a>
                 @else
-                    <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie'>
+                    <a href="{{route('admin-creation-get')}}">
                         <br>
-                        <p>Pièces détachées</p>
+                        <p>Création utilisateur</p>
                     </a>
                 @endif
 
-                @if (Request::path() == "support") <!-- //TODO modifier nom page -->
-                    <a href="{{route('support')}}" class='nav-lien-casque-curent'>
+                @if (Request::path() == "admin-modification")
+                    <a href="{{route('admin-liste')}}">
                         <br>
-                        <p>Support</p>
+                        <p class="admin-nav-actif">Modification utilisateur</p>
                     </a>
                 @else
-                    <a href="{{route('support')}}" class='nav-lien-casque'>
+                    <a href="{{route('admin-liste')}}">
                         <br>
-                        <p>Support</p>
+                        <p>Modification utilisateur</p>
                     </a>
                 @endif
             </nav>
@@ -63,7 +63,6 @@
                 @endguest
 
                 @auth  <!-- test si user conecté -->
-
 
                     @if (Auth::user()->LogoClient != NULL)
                         <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">

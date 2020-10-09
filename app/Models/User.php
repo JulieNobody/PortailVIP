@@ -41,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    //désactivation des colonnes created_at et updated_at
+    public $timestamps = false;
+
+
      // nom de la table
      protected $table = 't_utilisateur';
 

@@ -20,9 +20,15 @@ class GestionTableMotCle implements GestionTableMotCleInterface
             {
                 //construction de la chaine
                 $chaine = null;
-                $chaine = $i->RefDossierCli;
-                $chaine = $chaine." - ".$i->StatutInterv;
-                $chaine = $chaine." - ".$i->VilleLivCli;
+                $chaine =
+                    $i->NumInt." - ".
+                    $i->AdLivCli." - ".
+                    $i->CPLivCli." - ".
+                    $i->VilleLivCli." - ".
+                    $i->TypeApp." - ".
+                    $i->Marque." - ".
+                    $i->RefDossierCli
+                ;
 
                 //insersion de la chaine
 
