@@ -19,6 +19,11 @@ Admin - Modification utilisateur
         <fieldset>
             <legend>Général</legend>
             <div>
+                {!! Form::label('id', 'ID : ', ['class' => '#']) !!}
+                {!! Form::text('id', $userId, ['class' => '#','readonly']) !!}
+                {!! $errors->first('id', '<small >:message</small>') !!}
+            </div>
+            <div>
                 {!! Form::label('SocSiteVIP', 'Société : ', ['class' => '#']) !!}
                 {!! Form::text('SocSiteVIP', $defautSocSiteVIP, ['class' => '#']) !!}
                 {!! $errors->first('SocSiteVIP', '<small >:message</small>') !!}

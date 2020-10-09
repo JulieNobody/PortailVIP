@@ -158,17 +158,17 @@ class AdminController extends Controller
 
     public function liste()
 	{
-        return view('Admin\admin-liste');
+        $utilisateurs = User::paginate(10);
+
+        return view('Admin\admin-liste',  compact('utilisateurs'));
     }
 
 
-
-
-
-    public function modificationGet()
+    public function modificationGet($id)
 	{
-        $user = user::where('CodeUtil', '=', 'Test')->first();
+        $user = user::where('id', '=', $id)->first();
 
+        $userId = $user->id;
         // ------------- VALEURS PAR DEFAUT -------------
         $defautSocSiteVIP = $user->SocSiteVIP;
         $defautCodeUtil = $user->CodeUtil;
@@ -209,6 +209,7 @@ class AdminController extends Controller
         $defautAgPourEnvoiPieces = $user->AgPourEnvoiPieces;
 
         return view('Admin\admin-modification', compact(
+            'userId',
             'defautSocSiteVIP',
             'defautCodeUtil',
             'defautNomUtil',
@@ -253,7 +254,10 @@ class AdminController extends Controller
 	{
         // ------------- CREATION USER -------------
 
-        $user = user::where('CodeUtil', '=', 'Test')->first();
+        //récupération de l'id
+        $id = $request->input('id');
+
+        $user = user::where('id', '=', $id)->first();
 
         $user->SocSiteVIP = $request->input('SocSiteVIP');
         $user->CodeUtil = $request->input('CodeUtil');

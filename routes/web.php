@@ -48,7 +48,7 @@ Route::post('admin-creation', [AdminController::class,'creationPost'])->name('ad
 
 Route::get('admin-liste', [AdminController::class,'liste'])->name('admin-liste');
 
-Route::get('admin-modification', [AdminController::class,'modificationGet'])->name('admin-modification-get');
+Route::get('admin-modification/{id}', [AdminController::class,'modificationGet'])->name('admin-modification-get');
 Route::post('admin-modification', [AdminController::class,'modificationPost'])->name('admin-modification-post');
 
 //route si user = admin

@@ -45,12 +45,12 @@
                 @endif
 
                 @if (Request::path() == "admin-modification")
-                    <a href="{{route('admin-modification-get')}}">
+                    <a href="{{route('admin-liste')}}">
                         <br>
                         <p class="admin-nav-actif">Modification utilisateur</p>
                     </a>
                 @else
-                    <a href="{{route('admin-modification-get')}}">
+                    <a href="{{route('admin-liste')}}">
                         <br>
                         <p>Modification utilisateur</p>
                     </a>

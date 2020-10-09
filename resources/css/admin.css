@@ -47,6 +47,8 @@
 {
     color: #254373;
     font-weight: 600;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }
 
 .admin-crea-form label
