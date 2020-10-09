@@ -130,17 +130,19 @@ class InterventionController extends Controller
 
 
 
-        $interventions = $interventions->paginate(8)->appends([
+        $mesFiltres = [
             'date-min' => request('date-min'),
             'date-max' => request('date-max'),
             'cb-en-cours' => request('cb-en-cours'),
             'cb-en-attente' => request('cb-en-attente'),
             'cb-terminee' => request('cb-terminee'),
             'valeurMotCle' => request('valeurMotCle'),
-        ]);
+        ];
+        $interventions = $interventions->paginate(8)->appends($mesFiltres);
 
 
-		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle'));
+
+		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','mesFiltres'));
     }
 
 

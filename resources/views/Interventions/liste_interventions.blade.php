@@ -260,7 +260,7 @@ Mes interventions
         </div>
 
         @if($interventions)
-            {{ $interventions->links("pagination::default") }}
+            {{ $interventions->appends($mesFiltres)->links("pagination::default") }}
         @endif
 
 
