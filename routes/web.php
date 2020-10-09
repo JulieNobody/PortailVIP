@@ -17,24 +17,32 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('auth/login');
-});*/
-//Route::get('/', [InterventionController::class,'listeInterventions'])->name('accueil');
+// ---------------------- INTERVENTIONS // ACCUEIL ----------------------
 
 Route::get('/', function () {
     return redirect()->route('interventions');
 });
 
 Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
+Route::post('interventions', [InterventionController::class,'listeInterventions'])->name('interventionsFiltree');
 
+
+// ---------------------- PIECES DETACHEES ----------------------
 Route::get('pieces-detachees', [PiecesDetacheesController::class,'get'])->name('pieces-detachees');
 
+
+
+// ---------------------- SUPPORT ----------------------
 Route::get('support', [SupportController::class,'get'])->name('support');
 
+
+
+// ---------------------- MON COMPTE ----------------------
 Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte');
 
 
+
+// ---------------------- AUTH ----------------------
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -14,47 +14,55 @@ Mes interventions
 
         <fieldset class="fieldset-liste-inter">
             <div id="filtresContainer">
+                <form action="" method="post" class="form-example">
+                   {{Form::token()}}
                 <!-- ------------ DATES ------------  -->
                 <div class="block-filtre" id="bloc-dates">
+
                     <div>
                         <label for="date_debut">Du</label>
-                        <input class="filtre-date-input" type="date">
+                        <input class="filtre-date-input" type="date" name="date-min" value="dateMin">
                     </div>
                     <div>
                         <label for="date_debut">Au</label>
-                        <input class="filtre-date-input" type="date">
+                        <input class="filtre-date-input" type="date" name="date-max" value="dateMax">
                     </div>
+
                 </div>
+
 
                 <!-- ------------ STATUT ------------  -->
                 <div class="block-filtre block-checkbox">
 
-
                     <div class="check-en-cours">
-                        <input type="checkbox" id="en-cours" name="en-cours" onchange="checkbox()" checked><br>
+                        <input type="checkbox" id="en-cours" name="cb-en-cours" onchange="checkbox()" {{$enCours}}><br>
                         <label id="label-en-cours" for="en-cours" class="label-statut">En cours</label>
                     </div>
                     <div class="check-devis">
-                        <input type="checkbox" id="devis" name="devis" onchange="checkbox()"><br>
+                        <input type="checkbox" id="devis" name="cb-en-attente" onchange="checkbox()" {{$enAttente}}><br>
                         <label id="label-devis" for="devis" class="label-statut">En attente</label><br>
                         <label id="label-devis2" for="devis" class="label-statut-L2">(réponse au devis)</label>
                     </div>
                     <div class="check-termine">
-                        <input type="checkbox" id="termine" name="termine" onchange="checkbox()"><br>
+                        <input type="checkbox" id="termine" name="cb-terminee" onchange="checkbox()" {{$terminee}}><br>
                         <label id="label-termine" for="termine" class="label-statut">Terminée</label>
                     </div>
 
                 </div>
 
+
                 <!-- ------------ MOT CLE ------------  -->
                 <div class="block-filtre">
-                    <input type="text" placeholder="MOT CLÉ">
+                    <input type="text" placeholder="MOT CLÉ" name="valeurMotCle" value="{{$motcle}}">
                 </div>
 
                 <!-- ------------ BOUTON ------------  -->
-                <div class="boutonFiltre">
-                    <a href="#">Rechercher</a>
+                <div >
+                    <button id="boutonFiltre" type="submit">Rechercher</button>
                 </div>
+
+            </form>
+
             </div>
         </fieldset>
 
@@ -149,8 +157,7 @@ Mes interventions
                 </div>
                 <div class="cell" data-title="Lieu">
                     <p class="adresse">{{$i->AdLivCli}}</p>
-                    <p class="ville">{{$i->CPLivCli}}
-                    {{$i->VilleLivCli}}</p>
+                    <p class="ville">{{$i->CPLivCli}} {{$i->VilleLivCli}}</p>
                 </div>
                 <div class="cell" data-title="Documents">
                     <a href="#">Documents</a>
