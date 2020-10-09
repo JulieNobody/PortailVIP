@@ -1,13 +1,13 @@
-@extends('Admin\admin-template')
+@extends('Templates\template')
 
 
-@section('admin-title')
+@section('title')
 Admin - Création utilisateur
 @endsection
 
 
 
-@section('admin-contenu')
+@section('contenu')
 
     <h1>Création utilisateur</h1>
 

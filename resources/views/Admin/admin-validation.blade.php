@@ -1,13 +1,13 @@
-@extends('Admin\admin-template')
+@extends('Templates\template')
 
 
-@section('admin-title')
+@section('title')
 Admin - Validation
 @endsection
 
 
 
-@section('admin-contenu')
+@section('contenu')
 
     <h1>Validation</h1>
 

@@ -31,9 +31,9 @@ h1 {
 }
 
 /* ---------------- CADRE ---------------- */
-fieldset{
+.fieldset-liste-inter
+{
     border: solid 2px #254373;
-
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
@@ -293,5 +293,53 @@ fieldset{
 }
 
 
+/*------------------------------------- ADMIN -------------------------------------*/
+
+.admin-crea-form fieldset
+{
+    border: 3px solid #E94539;
+    padding: 15px;
+    margin: 15px 20% 15px 20%;
+}
+
+.admin-crea-form legend
+{
+    color: #254373;
+    font-weight: 600;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.admin-crea-form label
+{
+    margin: 5px;
+    color: #254373;
+    font-weight: 400;
+}
+
+.admin-crea-form input
+{
+    border: none;
+    border-bottom: 1px solid #254373;
+    margin: 5px;
+}
+
+.admin-bouton-valider
+{
+    background-color: #E94539;
+    border: none !important;
+    border-radius: 50px;
+    padding: 8px;
+
+    width: 300px;
+
+    margin: 20px 40% 20px 40% !important;      /*FIXME à corriger, pas centré*/
+/*
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 16px;
+
+    box-shadow: none;
+}
 
 
