@@ -47,27 +47,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// ---------------- ADMIN  ----------------
+// ---------------- ADMIN ----------------
 
-Route::get('admin', [AdminController::class,'menu'])->name('admin');
+Route::get('admin-liste', [AdminController::class,'liste'])
+    ->name('admin-liste')
+    ->middleware('App\Http\Middleware\Admin');
 
-Route::get('admin-creation', [AdminController::class,'creationGet'])->name('admin-creation-get');
-Route::post('admin-creation', [AdminController::class,'creationPost'])->name('admin-creation-post');
+Route::get('admin-creation', [AdminController::class,'creationGet'])
+    ->name('admin-creation-get')
+    ->middleware('App\Http\Middleware\Admin');
+Route::post('admin-creation', [AdminController::class,'creationPost'])
+    ->name('admin-creation-post')
+    ->middleware('App\Http\Middleware\Admin');
 
-Route::get('admin-liste', [AdminController::class,'liste'])->name('admin-liste');
+Route::get('admin-modification/{id}', [AdminController::class,'modificationGet'])
+    ->name('admin-modification-get')
+    ->middleware('App\Http\Middleware\Admin');
+Route::post('admin-modification', [AdminController::class,'modificationPost'])
+    ->name('admin-modification-post')
+    ->middleware('App\Http\Middleware\Admin');
 
-Route::get('admin-modification/{id}', [AdminController::class,'modificationGet'])->name('admin-modification-get');
-Route::post('admin-modification', [AdminController::class,'modificationPost'])->name('admin-modification-post');
-
-//route si user = admin
-/*Route::middleware('admin')->group(function () {
-    return redirect()->route('admin');
-});
-
-Route::middleware ('auth', 'verified')->group (function () {
-    Route::resource ('image', 'ImageController', [
-        'only' => ['create', 'store', 'destroy', 'update']
-    ]);
-});*/
 
 
