@@ -13,28 +13,25 @@ Admin - Détail utilisateur
 
     <div class="admin-crea-form">
 
-
-        {!! Form::open(['url' => 'admin-modification','files' => 'true','enctype'=>'multipart/form-data']) !!}
-
         <fieldset>
             <legend>Général</legend>
             <ul>
-                <li>ID : {{$userId}}</li>
-                <li>Société : {{$socSiteVIP}}</li>
-                <li>Code client : {{$codeUtil}}</li>
-                <li>Nom client : {{$nomUtil}}</li>
-                <li>mot de passe (en clair) :{{$passUtil}}</li>
-                <li>Admin (1 pour oui, 0 pour non) : {{$admin}}</li>
+                <li>ID : {{$user->id}}</li>
+                <li>Société : {{$user->SocSiteVIP}}</li>
+                <li>Code client : {{$user->CodeUtil}}</li>
+                <li>Nom client : {{$user->NomUtil}}</li>
+                <li>mot de passe (en crypté) :{{$user->PassUtil}}</li>
+                <li>Admin (1 pour oui, 0 pour non) : {{$user->Admin}}</li>
             </ul>
         </fieldset>
 
         <fieldset>
             <legend>Contrat</legend>
             <ul>
-                <li>Ag Contrat (non null) : {{$agContrat}}</li>
-                <li>Auto menu 1 : {{$automenu1}}</li>
-                <li>Fonction : {{$fonction}}</li>
-                <li>DateModifPass : {{$dateModifPass}}</li>
+                <li>Ag Contrat (non null) : {{$user->AgContrat}}</li>
+                <li>Auto menu 1 : {{$user->automenu1}}</li>
+                <li>Fonction : {{$user->fonction}}</li>
+                <li>DateModifPass : {{$user->DateModifPass}}</li>
                 <li>Nouveau LogoClient : </li>
             </ul>
         </fieldset>
@@ -42,10 +39,10 @@ Admin - Détail utilisateur
         <fieldset>
             <legend>E-mails</legend>
             <ul>
-                <li>AdMailContact (non null) : {{$adMailContact}}</li>
-                <li>AdMailExped (non null) : {{$adMailExped}}</li>
-                <li>AdMailCopie (non null) : {{$adMailCopie}}</li>
-                <li>EnvMailCloture (non null) : {{$envMailCloture}}</li>
+                <li>AdMailContact (non null) : {{$user->AdMailContact}}</li>
+                <li>AdMailExped (non null) : {{$user->AdMailExped}}</li>
+                <li>AdMailCopie (non null) : {{$user->AdMailCopie}}</li>
+                <li>EnvMailCloture (non null) : {{$user->EnvMailCloture}}</li>
             </ul>
         </fieldset>
 
@@ -53,29 +50,29 @@ Admin - Détail utilisateur
             <legend>Détails</legend>
 
             <ul>
-                <li>DateDebEnvMail (non null) : {{$dateDebEnvMail}}</li>
-                <li>AuthDemInterv : {{$authDemInterv}}</li>
-                <li>CodeCliFact (non null) : {{$codeCliFact}}</li>
-                <li>AffListeProjet (non null) : {{$affListeProjet}}</li>
-                <li>DemIntervAffProjet (non null) : {{$demIntervAffProjet}}</li>
-                <li>DemIntervAgMain (non null) : {{$demIntervAgMain}}</li>
-                <li>DemIntervAgTrf (non null) : {{$demIntervAgTrf}}</li>
-                <li>ActivChargeSiteCli : {{$activChargeSiteCli}}</li>
-                <li>DateDebChargeSite (non null) : {{$dateDebChargeSite}}</li>
-                <li>AuthPlanningAssist : {{$authPlanningAssist}}</li>
-                <li>AccesDirectPlanningAssist : {{$accesDirectPlanningAssist}}</li>
-                <li>VuePortailGlobal : {{$vuePortailGlobal}}</li>
-                <li>ExpressCenter : {{$expressCenter}}</li>
-                <li>CliDemSGEpson : {{$cliDemSGEpson}}</li>
-                <li>AffLstClassification : {{$affLstClassification}}</li>
-                <li>AffDelais : {{$affDelais}}</li>
-                <li>AuthCloture : {{$authCloture}}</li>
-                <li>AuthDepotDocs : {{$authDepotDocs}}</li>
-                <li>AuthVisuAttCmd : {{$authVisuAttCmd}}</li>
-                <li>AuthSwapNonEligible : {{$authSwapNonEligible}}</li>
-                <li>AuthTransporteur : {{$authTransporteur}}</li>
-                <li>AuthAffSousStatut : {{$authAffSousStatut}}</li>
-                <li>AgPourEnvoiPieces (non null) : {{$agPourEnvoiPieces}}</li>
+                <li>DateDebEnvMail (non null) : {{$user->DateDebEnvMail}}</li>
+                <li>AuthDemInterv : {{$user->AuthDemInterv}}</li>
+                <li>CodeCliFact (non null) : {{$user->CodeCliFact}}</li>
+                <li>AffListeProjet (non null) : {{$user->AffListeProjet}}</li>
+                <li>DemIntervAffProjet (non null) : {{$user->DemIntervAffProjet}}</li>
+                <li>DemIntervAgMain (non null) : {{$user->DemIntervAgMain}}</li>
+                <li>DemIntervAgTrf (non null) : {{$user->DemIntervAgTrf}}</li>
+                <li>ActivChargeSiteCli : {{$user->ActivChargeSiteCli}}</li>
+                <li>DateDebChargeSite (non null) : {{$user->DateDebChargeSite}}</li>
+                <li>AuthPlanningAssist : {{$user->AuthPlanningAssist}}</li>
+                <li>AccesDirectPlanningAssist : {{$user->AccesDirectPlanningAssist}}</li>
+                <li>VuePortailGlobal : {{$user->VuePortailGlobal}}</li>
+                <li>ExpressCenter : {{$user->ExpressCenter}}</li>
+                <li>CliDemSGEpson : {{$user->CliDemSGEpson}}</li>
+                <li>AffLstClassification : {{$user->AffLstClassification}}</li>
+                <li>AffDelais : {{$user->AffDelais}}</li>
+                <li>AuthCloture : {{$user->AuthCloture}}</li>
+                <li>AuthDepotDocs : {{$user->AuthDepotDocs}}</li>
+                <li>AuthVisuAttCmd : {{$user->AuthVisuAttCmd}}</li>
+                <li>AuthSwapNonEligible : {{$user->AuthSwapNonEligible}}</li>
+                <li>AuthTransporteur : {{$user->AuthTransporteur}}</li>
+                <li>AuthAffSousStatut : {{$user->AuthAffSousStatut}}</li>
+                <li>AgPourEnvoiPieces (non null) : {{$user->AgPourEnvoiPieces}}</li>
             </ul>
 
         </fieldset>
