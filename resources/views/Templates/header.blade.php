@@ -82,10 +82,14 @@
                             {{ __('Se déconnecter') }}
                             </a>
                             <br>
+                            <br>    {{-- FIXME gèrer espace en CSS --}}
                             <br>
                             <br>
-                            <br>
-                            <a href="{{route('admin-liste')}}">Admin</a>
+
+                            @if (Auth::user()->Admin == 1)
+                                <a href="{{route('admin-liste')}}">Admin</a>
+                            @endif
+
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

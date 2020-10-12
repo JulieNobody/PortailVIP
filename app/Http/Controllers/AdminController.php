@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
-    public function menu()
-	{
-        return view('Admin\admin-menu');
-    }
 
     public function creationGet()
 	{
