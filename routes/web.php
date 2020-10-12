@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
 Route::get('interventions/filtres', [InterventionController::class,'listeInterventionsFiltrees'])->name('interventionsFiltrees');
+Route::get('detail-intervention/{id}',[InterventionController::class,'detailIntervention'])->name('detailIntervention');
 
 
 // ---------------------- PIECES DETACHEES ----------------------
