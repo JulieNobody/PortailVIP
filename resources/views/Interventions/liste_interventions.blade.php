@@ -9,6 +9,25 @@ Mes interventions
 
 @section('contenu')
 
+
+    <SCRIPT LANGUAGE="JavaScript">
+        function PopupCentrer(page) {
+            let largeur = screen.width*0.6;
+            let hauteur = screen.height*0.7;
+            let top=(screen.height-hauteur)/2;
+            let left=(screen.width-largeur)/2;
+
+            window.open(
+                        page,
+                        "Détail Intervention",
+                        "top="+top+",left="+left+",width="+largeur+",height="+hauteur+",menubar=no,scrollbars=no,statusbar=no"
+                    );
+
+        }
+    </SCRIPT>
+         {{-- {{route('detailIntervention',[$i->id])}} --}}
+
+
     <h1>Mes interventions</h1>
     <div>
 
@@ -118,7 +137,8 @@ Mes interventions
 
             <div class="row">
                 <div class="cell" data-title="Numéro">
-                    <a href="{{route('detailIntervention',[$i->id])}}">{{$i->NumInt}}</a>
+                    <a href="#" onclick=PopupCentrer('detail-intervention/{{$i->id}}')>{{$i->NumInt}}</a>
+
                 </div>
                 <div class="cell" data-title="Ref client">
                     {{$i->RefDossierCli}}
