@@ -20,6 +20,8 @@ class Intervention extends Model
 
     protected $primaryKey = 'id';
 
+    protected $dates = ['DateEnr'];
+
 
     public function statut()
         {
