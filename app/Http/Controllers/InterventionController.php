@@ -156,6 +156,11 @@ class InterventionController extends Controller
 		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle'));
     }
 
+    public function detailIntervention ($id)
+    {
+        $intervention = Intervention::where('id', '=', $id)->first();
 
+        return view('Interventions\detail_intervention', compact('intervention'));
+    }
 
 }

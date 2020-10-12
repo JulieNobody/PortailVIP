@@ -79,7 +79,7 @@ Mes interventions
                 Numéro
             </div>
             <div class="cell" data-title="Ref client">
-                Num Client
+                Ref Client
             </div>
             <div class="cell" data-title="Statut">
                 Statut
@@ -118,7 +118,7 @@ Mes interventions
 
             <div class="row">
                 <div class="cell" data-title="Numéro">
-                    <a href="">{{$i->NumInt}}</a>
+                    <a href="{{route('detailIntervention',[$i->id])}}">{{$i->NumInt}}</a>
                 </div>
                 <div class="cell" data-title="Ref client">
                     {{$i->RefDossierCli}}
