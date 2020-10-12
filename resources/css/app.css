@@ -324,8 +324,10 @@ h1 {
     margin: 5px;
 }
 
-.admin-bouton-valider
+.admin-crea-form input[type="submit"]
 {
+    cursor:pointer;
+
     background-color: #E94539;
     border: none !important;
     border-radius: 50px;
@@ -340,6 +342,7 @@ h1 {
     font-size: 16px;
 
     box-shadow: none;
+
 }
 
 

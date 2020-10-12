@@ -217,7 +217,7 @@ Admin - Création utilisateur
         </div>
     </fieldset>
 
-        {!! Form::submit('Valider',['class' => 'admin-bouton-valider']) !!}
+        {!! Form::submit('Valider') !!}
 
     {!! Form::close() !!}
 

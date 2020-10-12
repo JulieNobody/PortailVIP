@@ -66,7 +66,7 @@
 
 
                     @if (Auth::user()->LogoClient != NULL)
-                        <img  id="logo-client-img" src="images/logoClient/{{Auth::user()->LogoClient}}" alt="logo client">
+                        <img  id="logo-client-img" src="{{ asset('images/logoClient/'. Auth::user()->LogoClient) }}" alt="logo client">
                     @endif
 
                     <div>
