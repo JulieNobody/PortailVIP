@@ -62,7 +62,7 @@ Admin - Liste des utilisateurs
                         {{$u->Admin}}
                     </div>
                     <div class="cell" data-title="Détail Utilisateur">
-                        <a href="">X</a>
+                        <a href="{{route('admin-detail', [$u->id])}}">X</a>
                     </div>
                     <div class="cell" data-title="Modifier Utilisateur">
                         <a href="{{route('admin-modification-get', [$u->id])}}">X</a>

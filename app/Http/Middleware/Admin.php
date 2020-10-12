@@ -16,10 +16,10 @@ class Admin
     public function handle($request, Closure $next)
     {
         //user pas connecté
-        if(auth()->user() == null)
+       /* if(auth()->user() == null)
         {
             return redirect('/interventions');
-        }
+        }*/
 
         //user connecté mais pas admin
         if(auth()->user()->Admin != 1)

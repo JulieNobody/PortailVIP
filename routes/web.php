@@ -33,7 +33,7 @@ Route::get('pieces-detachees', [PiecesDetacheesController::class,'get'])->name('
 
 
 // ---------------------- SUPPORT ----------------------
-Route::get('support', [SupportController::class,'get'])->name('support');
+Route::get('support', [SupportController::class,'get'])->name('support')->middleware('auth');
 
 
 
@@ -49,9 +49,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ---------------- ADMIN ----------------
 
-Route::get('admin-liste', [AdminController::class,'liste'])
+/*Route::get('admin-liste', [AdminController::class,'liste'])
     ->name('admin-liste')
     ->middleware('App\Http\Middleware\Admin');
+
+Route::get('admin-detail/{id}', [AdminController::class,'detailUser'])
+    ->name('admin-detail')
+    ->middleware('App\Http\Middleware\Admin');*/
 
 Route::get('admin-creation', [AdminController::class,'creationGet'])
     ->name('admin-creation-get')
@@ -66,6 +70,19 @@ Route::get('admin-modification/{id}', [AdminController::class,'modificationGet']
 Route::post('admin-modification', [AdminController::class,'modificationPost'])
     ->name('admin-modification-post')
     ->middleware('App\Http\Middleware\Admin');
+
+
+    Route::group(['middleware' => 'auth'], function () {
+
+            Route::get('admin-liste', [AdminController::class,'liste'])
+                ->name('admin-liste')
+                ->middleware('App\Http\Middleware\Admin');
+
+            Route::get('admin-detail/{id}', [AdminController::class,'detailUser'])
+                ->name('admin-detail')
+                ->middleware('App\Http\Middleware\Admin');
+
+        });
 
 
 

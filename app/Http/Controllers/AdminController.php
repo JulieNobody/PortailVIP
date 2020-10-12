@@ -315,6 +315,96 @@ class AdminController extends Controller
         return view('Admin\admin-validation');
     }
 
+
+    public function detailUser($id)
+	{
+        $user = user::where('id', '=', $id)->first();
+
+        $userId = $user->id;
+        // ------------- VALEURS PAR DEFAUT -------------
+
+        $socSiteVIP = $user->SocSiteVIP;
+        $codeUtil = $user->CodeUtil;
+        $nomUtil = $user->NomUtil;
+        $passUtil = "";
+        $admin = $user->Admin;
+        $agContrat = $user->AgContrat;
+        $automenu1 = $user->automenu1;
+        $fonction = $user->fonction;
+        $dateModifPass = $user->DateModifPass;
+        $logoClient = "";
+        $adMailContact = $user->AdMailContact;
+        $adMailExped = $user->AdMailExped;
+        $adMailCopie = $user->AdMailCopie;
+        $envMailCloture = $user->EnvMailCloture;
+        $dateDebEnvMail = $user->DateDebEnvMail;
+        $authDemInterv = $user->AuthDemInterv;
+        $codeCliFact = $user->CodeCliFact;
+        $affListeProjet = $user->AffListeProjet;
+        $demIntervAffProjet = $user->DemIntervAffProjet;
+        $demIntervAgMain = $user->DemIntervAgMain;
+        $demIntervAgTrf = $user->DemIntervAgTrf;
+        $activChargeSiteCli = $user->ActivChargeSiteCli;
+        $dateDebChargeSite = $user->DateDebChargeSite;
+        $authPlanningAssist = $user->AuthPlanningAssist;
+        $accesDirectPlanningAssist = $user->AccesDirectPlanningAssist;
+        $vuePortailGlobal = $user->VuePortailGlobal;
+        $expressCenter = $user->ExpressCenter;
+        $cliDemSGEpson = $user->CliDemSGEpson;
+        $affLstClassification = $user->AffLstClassification;
+        $affDelais = $user->AffDelais;
+        $authCloture = $user->AuthCloture;
+        $authDepotDocs = $user->AuthDepotDocs;
+        $authVisuAttCmd = $user->AuthVisuAttCmd;
+        $authSwapNonEligible = $user->AuthSwapNonEligible;
+        $authTransporteur = $user->AuthTransporteur;
+        $authAffSousStatut = $user->AuthAffSousStatut;
+        $agPourEnvoiPieces = $user->AgPourEnvoiPieces;
+
+        return view('Admin\admin-detail-user', compact(
+            'userId',
+            'socSiteVIP',
+            'codeUtil',
+            'nomUtil',
+            'passUtil',
+            'admin',
+            'agContrat',
+            'automenu1',
+            'fonction',
+            'dateModifPass',
+            'logoClient',
+            'adMailContact',
+            'adMailExped',
+            'adMailCopie',
+            'envMailCloture',
+            'dateDebEnvMail',
+            'authDemInterv',
+            'codeCliFact',
+            'affListeProjet',
+            'demIntervAffProjet',
+            'demIntervAgMain',
+            'demIntervAgTrf',
+            'activChargeSiteCli',
+            'dateDebChargeSite',
+            'authPlanningAssist',
+            'accesDirectPlanningAssist',
+            'vuePortailGlobal',
+            'expressCenter',
+            'cliDemSGEpson',
+            'affLstClassification',
+            'affDelais',
+            'authCloture',
+            'authDepotDocs',
+            'authVisuAttCmd',
+            'authSwapNonEligible',
+            'authTransporteur',
+            'authAffSousStatut',
+            'agPourEnvoiPieces'
+        ));
+    }
+
+
+
 }
 
 

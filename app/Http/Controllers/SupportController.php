@@ -12,11 +12,11 @@ class SupportController extends Controller
      *
      * @return void
      */
-    public function __construct()
+   /* public function __construct()
     {
         $this->middleware('auth');
         //TODO mettre les restrictions dans les routes dans le web.php
-    }
+    }*/
 
     public function get()
 	{
