@@ -17,6 +17,13 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+
+// ---------------------- AUTH ----------------------
+Auth::routes(['verify' => true]);
+
+
+Route::group(['middleware' => 'auth'], function () {
+
 // ---------------------- INTERVENTIONS // ACCUEIL ----------------------
 
 Route::get('/', function () {
@@ -41,48 +48,36 @@ Route::get('support', [SupportController::class,'get'])->name('support')->middle
 Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte');
 
 
-
-// ---------------------- AUTH ----------------------
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // ---------------- ADMIN ----------------
 
-/*Route::get('admin-liste', [AdminController::class,'liste'])
-    ->name('admin-liste')
-    ->middleware('App\Http\Middleware\Admin');
+Route::get('admin-liste', [AdminController::class,'liste'])
+->name('admin-liste')
+->middleware('App\Http\Middleware\Admin');
 
 Route::get('admin-detail/{id}', [AdminController::class,'detailUser'])
-    ->name('admin-detail')
-    ->middleware('App\Http\Middleware\Admin');*/
+->name('admin-detail')
+->middleware('App\Http\Middleware\Admin');
 
 Route::get('admin-creation', [AdminController::class,'creationGet'])
-    ->name('admin-creation-get')
-    ->middleware('App\Http\Middleware\Admin');
+->name('admin-creation-get')
+->middleware('App\Http\Middleware\Admin');
+
 Route::post('admin-creation', [AdminController::class,'creationPost'])
-    ->name('admin-creation-post')
-    ->middleware('App\Http\Middleware\Admin');
+->name('admin-creation-post')
+->middleware('App\Http\Middleware\Admin');
 
 Route::get('admin-modification/{id}', [AdminController::class,'modificationGet'])
-    ->name('admin-modification-get')
-    ->middleware('App\Http\Middleware\Admin');
+->name('admin-modification-get')
+->middleware('App\Http\Middleware\Admin')
+;
 Route::post('admin-modification', [AdminController::class,'modificationPost'])
-    ->name('admin-modification-post')
-    ->middleware('App\Http\Middleware\Admin');
+->name('admin-modification-post')
+->middleware('App\Http\Middleware\Admin');
 
 
-    Route::group(['middleware' => 'auth'], function () {
 
-            Route::get('admin-liste', [AdminController::class,'liste'])
-                ->name('admin-liste')
-                ->middleware('App\Http\Middleware\Admin');
+});
 
-            Route::get('admin-detail/{id}', [AdminController::class,'detailUser'])
-                ->name('admin-detail')
-                ->middleware('App\Http\Middleware\Admin');
-
-        });
 
 
 
