@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
-Route::post('interventions', [InterventionController::class,'listeInterventions'])->name('interventionsFiltree');
+Route::get('interventions/filtres', [InterventionController::class,'listeInterventionsFiltrees'])->name('interventionsFiltrees');
 
 
 // ---------------------- PIECES DETACHEES ----------------------
