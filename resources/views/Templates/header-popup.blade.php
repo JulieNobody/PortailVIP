@@ -1,0 +1,2 @@
+    <body onload="checkbox()">
+

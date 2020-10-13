@@ -8,7 +8,11 @@ class MonCompteController extends Controller
 {
     public function get()
 	{
+        $user = auth()->user();
 
-		return view('MonCompte\mon-compte');
+        return view('MonCompte\mon-compte', compact('user'));
     }
+
+
+
 }
