@@ -362,9 +362,51 @@ h1 {
     justify-content: space-evenly;
     align-items: flex-start;
 }
+
+
 #coordonnees_client div {
     max-width: 400px;
 }
 
 
+/*------------------------------------- DETAIL -------------------------------------*/
 
+.detail
+{
+     margin: 15px 15% 15px 15%;
+}
+
+.detail-titre
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    /*border: 3px solid green;*/
+    color: #254373;
+    font-weight: 600;
+    border-bottom: 3px solid #E94539;
+}
+
+.detail-titre h2
+{
+    margin: 0px;
+}
+
+.detail-titre p
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.detail li
+{
+    list-style: none;
+    line-height: 25px;
+}
+
+.detail strong
+{
+    font-weight: bold;
+    color: #254373;
+}
