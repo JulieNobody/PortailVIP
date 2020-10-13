@@ -11,22 +11,26 @@ Mon compte
 
     <h1>Mon compte</h1>
 
-    <div class="admin-crea-form">
+    <div class="detail">
 
-        <fieldset>
-            <legend>Général</legend>
+
+            <div class="detail-titre">
+                <h2>Général</h2>
+                <p>A</p>
+            </div>
             <ul>
-                <li>ID : {{$user->id}}</li>
-                <li>Société : {{$user->SocSiteVIP}}</li>
-                <li>Code client : {{$user->CodeUtil}}</li>
-                <li>Nom client : {{$user->NomUtil}}</li>
-                <li>mot de passe (en crypté) :{{$user->PassUtil}}</li>
-                <li>Admin (1 pour oui, 0 pour non) : {{$user->Admin}}</li>
+                <li><strong>ID :</strong> {{$user->id}}</li>
+                <li><strong>Société :</strong> {{$user->SocSiteVIP}}</li>
+                <li><strong>Code client :</strong> {{$user->CodeUtil}}</li>
+                <li><strong>Nom client :</strong> {{$user->NomUtil}}</li>
+                <li><strong>mot de passe (en crypté) :</strong> {{$user->PassUtil}}</li>
+                <li><strong>Admin (1 pour oui, 0 pour non) :</strong> {{$user->Admin}}</li>
             </ul>
-        </fieldset>
 
-        <fieldset>
-            <legend>Contrat</legend>
+            <div class="detail-titre">
+                <h2>Contrat</h2>
+                <p>V</p>
+            </div>
             <ul>
                 <li>Ag Contrat (non null) : {{$user->AgContrat}}</li>
                 <li>Auto menu 1 : {{$user->automenu1}}</li>
@@ -34,21 +38,24 @@ Mon compte
                 <li>DateModifPass : {{$user->DateModifPass}}</li>
                 <li>Nouveau LogoClient : </li>
             </ul>
-        </fieldset>
 
-        <fieldset>
-            <legend>E-mails</legend>
+
+
+            <div class="detail-titre">
+                <h2>E-mails</h2>
+                <p>V</p>
+            </div>
             <ul>
                 <li>AdMailContact (non null) : {{$user->AdMailContact}}</li>
                 <li>AdMailExped (non null) : {{$user->AdMailExped}}</li>
                 <li>AdMailCopie (non null) : {{$user->AdMailCopie}}</li>
                 <li>EnvMailCloture (non null) : {{$user->EnvMailCloture}}</li>
             </ul>
-        </fieldset>
 
-        <fieldset>
-            <legend>Détails</legend>
-
+            <div class="detail-titre">
+                <h2>Détails</h2>
+                <p>V</p>
+            </div>
             <ul>
                 <li>DateDebEnvMail (non null) : {{$user->DateDebEnvMail}}</li>
                 <li>AuthDemInterv : {{$user->AuthDemInterv}}</li>
@@ -75,10 +82,10 @@ Mon compte
                 <li>AgPourEnvoiPieces (non null) : {{$user->AgPourEnvoiPieces}}</li>
             </ul>
 
-        </fieldset>
-
-        <fieldset>
-            <legend>Parc</legend>
+            <div class="detail-titre">
+                <h2>Parc</h2>
+                <p>V</p>
+            </div>
             <div class="wrapper">
                 <div class="table">
                     <div class="row header">
@@ -137,10 +144,10 @@ Mon compte
                 </div>
             </div>
 
-        </fieldset>
-
-        <fieldset>
-            <legend>Factures</legend>
+            <div class="detail-titre">
+                <h2>Factures</h2>
+                <p>V</p>
+            </div>
             <div class="wrapper">
                 <div class="table">
                     <div class="row header">
@@ -199,7 +206,6 @@ Mon compte
                 </div>
             </div>
 
-        </fieldset>
 
     </div>
 
