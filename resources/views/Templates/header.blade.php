@@ -20,7 +20,7 @@
 
             <nav>
 
-               @if (Request::path() == "interventions")
+               @if (Request::path() == "interventions" || Request::path() == "interventions/filtres")
                     <a href="{{route('interventions')}}" class='nav-lien-cle-curent'>
                         <br>
                         <p>Interventions</p>
