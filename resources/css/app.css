@@ -386,13 +386,23 @@ h1 {
     color: #254373;
     font-weight: 600;
     border-bottom: 3px solid #E94539;
+    margin-top: 25px;
+}
+.detail-titre:hover{
+    cursor: pointer;
 }
 
 .detail-titre h2
 {
     margin: 0px;
 }
+.detail h3 {
+    color: #254373;
+    border-left: 2px solid #E94539;
+    width: fit-content;
+    padding-left: 5px;;
 
+}
 .detail-titre p
 {
     margin: 0px;
@@ -405,8 +415,12 @@ h1 {
     line-height: 25px;
 }
 
-.detail strong
+.detail span
 {
     font-weight: bold;
     color: #254373;
+}
+
+.aCacher{
+    display: none;
 }
