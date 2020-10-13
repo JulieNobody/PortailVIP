@@ -12,6 +12,7 @@ html
 {
     height: 100%;
     background-image: url("../../public/images/fond-etoiles.jpg");
+    padding-top: 0px;
 }
 
 body
@@ -204,6 +205,11 @@ hr
 
 }
 
+/*------------------------------------- POPUP -------------------------------------*/
+.titrePopup {
+    margin-top: 0px;
+}
+
 /*------------------------------------- FOOTER -------------------------------------*/
 footer
 {
@@ -238,7 +244,7 @@ footer
     body
     {
         max-width: 100%;
-        background-color: red;
+
 
     }
 

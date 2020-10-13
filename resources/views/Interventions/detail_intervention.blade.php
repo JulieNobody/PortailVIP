@@ -9,35 +9,52 @@ Intervention n°{{$intervention->NumInt}}
 
 @section('contenu')
 
-    <h1>Détail intervention {{$intervention->NumInt}}</h1>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#monBouton').click(function(){
+
+            $('#coordonnees_client').toggle(200);
+        });
+
+
+
+    });
+</script>
+    <h1 class="titrePopup">Détail intervention {{$intervention->NumInt}}</h1>
 
     <div class="admin-crea-form">
 
-
-        {!! Form::open(['url' => 'admin-modification','files' => 'true','enctype'=>'multipart/form-data']) !!}
-
         <fieldset>
             <legend>Coordonnées client</legend>
-            <h2>Client Facturation</h2>
-            <ul>
-                <li>Nom client : {{$intervention->NomFactCli}}</li>
-                <li>Adresse : {{$intervention->AdFactCli}}</li>
-                <li>Code Postal : {{$intervention->CPFactCli}}</li>
-                <li>Ville : {{$intervention->VilleFactCli}}</li>
-                <li>Interlocuteur :{{$intervention->InterlocFactCli}}</li>
-                <li>Tel: {{$intervention->TelFactCli}}</li>
-                <li>Fax: {{$intervention->FaxFactCli}}</li>
-            </ul>
-            <h2>Client Livraison</h2>
-            <ul>
-                <li>Nom client : {{$intervention->NomLivCli}}</li>
-                <li>Adresse : {{$intervention->AdLivCli}}</li>
-                <li>Code Postal : {{$intervention->CPLivCli}}</li>
-                <li>Ville : {{$intervention->VilleLivCli}}</li>
-                <li>Interlocuteur :{{$intervention->InterlocLivCli}}</li>
-                <li>Tel: {{$intervention->TelLivCli}}</li>
-                <li>Fax: {{$intervention->FaxLivCli}}</li>
-            </ul>
+            <button id="monBouton" type='button' >Click me</button>
+            <div id="coordonnees_client" style='display: none'>
+                <div>
+                    <h2>Client Facturation</h2>
+                    <ul>
+                        <li>Nom client : {{$intervention->NomFactCli}}</li>
+                        <li>Adresse : {{$intervention->AdFactCli}}</li>
+                        <li>Code Postal : {{$intervention->CPFactCli}}</li>
+                        <li>Ville : {{$intervention->VilleFactCli}}</li>
+                        <li>Interlocuteur :{{$intervention->InterlocFactCli}}</li>
+                        <li>Tel: {{$intervention->TelFactCli}}</li>
+                        <li>Fax: {{$intervention->FaxFactCli}}</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Client Livraison</h2>
+                    <ul>
+                        <li>Nom client : {{$intervention->NomLivCli}}</li>
+                        <li>Adresse : {{$intervention->AdLivCli}}</li>
+                        <li>Code Postal : {{$intervention->CPLivCli}}</li>
+                        <li>Ville : {{$intervention->VilleLivCli}}</li>
+                        <li>Interlocuteur :{{$intervention->InterlocLivCli}}</li>
+                        <li>Tel: {{$intervention->TelLivCli}}</li>
+                        <li>Fax: {{$intervention->FaxLivCli}}</li>
+                    </ul>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset>
