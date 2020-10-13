@@ -25,7 +25,7 @@ Mes interventions
 
         }
     </SCRIPT>
-         {{-- {{route('detailIntervention',[$i->id])}} --}}
+
 
 
     <h1>Mes interventions</h1>
@@ -137,7 +137,7 @@ Mes interventions
 
             <div class="row">
                 <div class="cell" data-title="Numéro">
-                    <a href="#" onclick=PopupCentrer('detail-intervention/{{$i->id}}')>{{$i->NumInt}}</a>
+                    <a href="#" onclick=PopupCentrer('{{route('detailIntervention',[$i->id])}}')>{{$i->NumInt}}</a>
 
                 </div>
                 <div class="cell" data-title="Ref client">
