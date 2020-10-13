@@ -14,7 +14,7 @@ Intervention n°{{$intervention->NumInt}}
     $(document).ready(function(){
 
         $('.detail-titre').click(function(){
-            $(this).nextAll('.aCacher').eq(0).toggle(200);
+            $(this).nextAll('.aCacher').eq(0).slideToggle(200);
         });
 
     });
