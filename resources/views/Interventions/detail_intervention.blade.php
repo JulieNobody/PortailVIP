@@ -14,7 +14,8 @@ Intervention n°{{$intervention->NumInt}}
     $(document).ready(function(){
 
         $('.detail-titre').click(function(){
-            $(this).nextAll('.aCacher').eq(0).slideToggle(200);
+            $(this).nextAll('.aCacher').eq(0).slideToggle(250);
+            $(this).find('img').toggleClass("close open");
         });
 
     });
@@ -28,6 +29,9 @@ Intervention n°{{$intervention->NumInt}}
 
             <div class="detail-titre">
                 <h2>Coordonnées client</h2>
+                <div class="flecheContainer">
+                    <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
+                </div>
             </div>
 
             <div class="aCacher" id="coordonnees_client" style="display: none">
@@ -61,6 +65,9 @@ Intervention n°{{$intervention->NumInt}}
 
             <div class="detail-titre">
                 <h2>Détail demande client</h2>
+                <div class="flecheContainer">
+                    <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
+                </div>
             </div>
             <div class="aCacher" id="detail_demande_client">
                 <ul>
@@ -78,6 +85,9 @@ Intervention n°{{$intervention->NumInt}}
 
             <div class="detail-titre">
                 <h2>Détail visites</h2>
+                <div class="flecheContainer">
+                    <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
+                </div>
             </div>
             <div class="aCacher" id="detail_visites">
                 <ul>
@@ -89,6 +99,9 @@ Intervention n°{{$intervention->NumInt}}
 
             <div class="detail-titre">
                 <h2>Documents associés</h2>
+                <div class="flecheContainer">
+                    <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
+                </div>
             </div>
             <div class="aCacher" id="documents_associes">
                 <div class="wrapper">
