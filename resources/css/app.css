@@ -303,7 +303,7 @@ h1 {
 {
     border: 3px solid #E94539;
     padding: 15px;
-    margin: 15px 20% 15px 20%;
+    margin: 15px 100px 15px 100px;
 }
 
 .admin-crea-form legend
@@ -312,6 +312,10 @@ h1 {
     font-weight: 600;
     padding-left: 15px !important;
     padding-right: 15px !important;
+}
+
+.admin-crea-form ul {
+    list-style-type: none;
 }
 
 .admin-crea-form label
@@ -349,6 +353,22 @@ h1 {
 
 }
 
+/*------------------------------------- DETAIL INTERVENTION -------------------------------------*/
+
+#coordonnees_client {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+
+#coordonnees_client div {
+    max-width: 400px;
+}
+
+
 /*------------------------------------- DETAIL -------------------------------------*/
 
 .detail
@@ -361,11 +381,16 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
 
     /*border: 3px solid green;*/
     color: #254373;
     font-weight: 600;
     border-bottom: 3px solid #E94539;
+    margin-top: 25px;
+}
+.detail-titre:hover{
+    cursor: pointer;
 }
 
 .detail-titre h2
@@ -373,6 +398,36 @@ h1 {
     margin: 0px;
 }
 
+.flecheContainer img {
+    max-width: 25px;
+    max-height: 20px;
+    margin-right: 5px;
+    align-items: flex-end;
+}
+
+.close {
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    transform:rotate(90deg);
+    -webkit-transition: -webkit-transform 0.1s linear;
+    -moz-transition: -moz-transform 0.1s linear;
+    -o-transition: -o-transform 0.1s linear;
+    transition: transform 0.1s linear;
+}
+
+.open {
+    -webkit-transition: -webkit-transform 0.1s linear;
+    -moz-transition: -moz-transform 0.1s linear;
+    -o-transition: -o-transform 0.1s linear;
+    transition: transform 0.1s linear;
+}
+.detail h3 {
+    color: #254373;
+    border-left: 2px solid #E94539;
+    width: fit-content;
+    padding-left: 5px;;
+
+}
 .detail-titre p
 {
     margin: 0px;
@@ -385,8 +440,12 @@ h1 {
     line-height: 25px;
 }
 
-.detail strong
+.detail span
 {
     font-weight: bold;
     color: #254373;
+}
+
+.aCacher{
+    display: none;
 }

@@ -3,7 +3,7 @@
 <html>
 
     @include('Templates\head')
-    @include('Templates\header')
+    @include('Templates\header-popup')
 
     @yield('contenu')
 
