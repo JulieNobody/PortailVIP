@@ -88,3 +88,13 @@
             </div>
         </header>
         <hr>
+
+        @if(session()->has('message'))
+            <div class="message-flash">
+                <p>
+                    <span>Info : </span>
+                    <br>
+                    {{ session()->get('message') }}
+                </p>
+            </div>
+        @endif

@@ -6,6 +6,8 @@ Pièces détachées
 
 
 @section('contenu')
+
+
     <h1>Pièces Detachées</h1>
 
 
