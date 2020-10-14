@@ -204,6 +204,33 @@ hr
 
 }
 
+/*------------------------------------- MESSAGE FLASH -------------------------------------*/
+
+.message-flash
+{
+    background-color: #E94539;
+    color: white;
+    max-width: 700px;
+    min-height: 60px;
+    margin: auto;
+    padding: 20px;
+}
+
+.message-flash p
+{
+    line-height: 32px;
+}
+
+.message-flash span
+{
+    font-weight: bold;
+    border-bottom: 1px solid white;
+
+
+}
+
+
+
 /*------------------------------------- FOOTER -------------------------------------*/
 footer
 {
