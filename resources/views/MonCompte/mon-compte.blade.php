@@ -119,12 +119,13 @@ Mon compte
                 <div class="wrapper">
                     <div class="table">
                         <div class="row header">
-                            <div class="cell" data-title="NoAppareil">No Appareil</div>
-                            <div class="cell" data-title="Type">Type</div>
+                            <div class="cell" data-title="NomProjet">Nom projet</div>
+                            <div class="cell" data-title="TypeAppareil">Type appareil</div>
                             <div class="cell" data-title="Marque">Marque</div>
-                            <div class="cell" data-title="Modele">Modèle</div>
-                            <div class="cell" data-title="DateMiseService">Date mise en service</div>
-                            <div class="cell" data-title="Garantie">Garantie</div>
+                            <div class="cell" data-title="Classification">Classification</div>
+                            <div class="cell" data-title="DateDebutContrat">Date début contrat</div>
+                            <div class="cell" data-title="DateFinContrat">Date fin contrat</div>
+                            <div class="cell" data-title="DateFinGarantie">Date fin garantie</div>
                         </div>
 
                         {{-- @if(count($documents) == 0)
@@ -137,36 +138,49 @@ Mon compte
                         {{-- @foreach ($docuements as $d) --}}
 
                         <div class="row">
-                            <div class="cell" data-title="NoAppareil"><a href="">AP98000665</a></div>
-                            <div class="cell" data-title="Type">Laptop</div>
+                            <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
+                            <div class="cell" data-title="TypeAppareil">Laptop</div>
                             <div class="cell" data-title="Marque">Lenovo</div>
-                            <div class="cell" data-title="Modele">LN 5008</div>
-                            <div class="cell" data-title="DateMiseService">01/09/2018</div>
-                            <div class="cell" data-title="Garantie"></div>
+                            <div class="cell" data-title="Classification">LN 5008</div>
+                            <div class="cell" data-title="DateDebutContrat">01/09/2018</div>
+                            <div class="cell" data-title="DateFinContrat">01/09/2021</div>
+                            <div class="cell" data-title="DateFinGarantie">01/09/2019</div>
                         </div>
                         <div class="row">
-                            <div class="cell" data-title="NoAppareil"><a href="">AP98000678</a></div>
-                            <div class="cell" data-title="Type">Imprimante</div>
-                            <div class="cell" data-title="Marque">Epson</div>
-                            <div class="cell" data-title="Modele">EP 6789</div>
-                            <div class="cell" data-title="DateMiseService">17/01/2015</div>
-                            <div class="cell" data-title="Garantie">X</div>
-                        </div>
-                        <div class="row">
-                            <div class="cell" data-title="NoAppareil"><a href="">AP98000645</a></div>
-                            <div class="cell" data-title="Type">Smartphone</div>
+                            <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
+                            <div class="cell" data-title="TypeAppareil">Smartphone</div>
                             <div class="cell" data-title="Marque">Samsung</div>
-                            <div class="cell" data-title="Modele">SG 4567</div>
-                            <div class="cell" data-title="DateMiseService">18/06/2020</div>
-                            <div class="cell" data-title="Garantie">X</div>
+                            <div class="cell" data-title="Classification">S6</div>
+                            <div class="cell" data-title="DateDebutContrat">06/10/2020</div>
+                            <div class="cell" data-title="DateFinContrat">01/09/2021</div>
+                            <div class="cell" data-title="DateFinGarantie">06/10/2022</div>
                         </div>
                         <div class="row">
-                            <div class="cell" data-title="NoAppareil"><a href="">AP98000645</a></div>
-                            <div class="cell" data-title="Type">Laptop</div>
+                            <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
+                            <div class="cell" data-title="TypeAppareil">Laptop</div>
                             <div class="cell" data-title="Marque">Lenovo</div>
-                            <div class="cell" data-title="Modele">LN 5009</div>
-                            <div class="cell" data-title="DateMiseService">25/01/2018</div>
-                            <div class="cell" data-title="Garantie"></div>
+                            <div class="cell" data-title="Classification">LN 7009</div>
+                            <div class="cell" data-title="DateDebutContrat">12/09/2020</div>
+                            <div class="cell" data-title="DateFinContrat">01/09/2021</div>
+                            <div class="cell" data-title="DateFinGarantie">12/09/2021</div>
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
+                            <div class="cell" data-title="TypeAppareil">Imprimante</div>
+                            <div class="cell" data-title="Marque">Epson</div>
+                            <div class="cell" data-title="Classification">EP 6785</div>
+                            <div class="cell" data-title="DateDebutContrat">30/03/2017</div>
+                            <div class="cell" data-title="DateFinContrat">01/09/2021</div>
+                            <div class="cell" data-title="DateFinGarantie">30/03/2018</div>
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
+                            <div class="cell" data-title="TypeAppareil">Tablette</div>
+                            <div class="cell" data-title="Marque">Mac</div>
+                            <div class="cell" data-title="Classification">I Pad 6</div>
+                            <div class="cell" data-title="DateDebutContrat">15/11/2019</div>
+                            <div class="cell" data-title="DateFinContrat">01/09/2021</div>
+                            <div class="cell" data-title="DateFinGarantie">15/11/2020</div>
                         </div>
                         {{-- @endforeach
 
