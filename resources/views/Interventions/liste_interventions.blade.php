@@ -29,6 +29,7 @@ Mes interventions
 
 
     <h1>Mes interventions</h1>
+    {{$today->toDateString()}}
     <div>
 
         <fieldset class="fieldset-liste-inter">
@@ -151,7 +152,7 @@ Mes interventions
 
                 </div>
                 <div class="cell" data-title="Prêt matériel">
-                    @if($i->statut->Statut == 'NPRET')
+                @if($i->statut->Statut == 'NPRET' || ($i->statut->DesignStatutCli == 'Terminée' && $i->DateRetourPret > $today->toDateString() ) )
                         <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
                     @else
                         <input type="checkbox" id="tab_inscrit" name="tab_inscrit"  disabled="disabled">

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 
 use App\Models\Utilisateur;
 use App\Models\Intervention;
@@ -35,6 +36,9 @@ class InterventionController extends Controller
         $terminee = null;
         $motcle = null;
 
+        //Récupération de la date du jour
+        $today = Carbon::now();
+
         //Récupération du nom de l'utilisateur connecté
         $username = auth()->user()->NomUtil;
 
@@ -58,7 +62,7 @@ class InterventionController extends Controller
 
         $interventions = $interventions->paginate(8);
 
-		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle'));
+		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
 
 
@@ -71,6 +75,9 @@ class InterventionController extends Controller
         $enAttente = null;
         $terminee = null;
         $motcle = null;
+
+        //Récupération de la date du jour
+        $today = Carbon::now();
 
         //Récupération du nom de l'utilisateur connecté
         $username = auth()->user()->NomUtil;
@@ -161,7 +168,7 @@ class InterventionController extends Controller
 
         $interventions = $interventions->paginate(8)->appends($mesFiltres);
 
-		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle'));
+		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
 
     public function detailIntervention ($id)
