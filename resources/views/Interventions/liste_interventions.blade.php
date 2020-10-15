@@ -29,7 +29,6 @@ Mes interventions
 
 
     <h1>Mes interventions</h1>
-    {{$today->toDateString()}}
     <div>
 
         <fieldset class="fieldset-liste-inter">
