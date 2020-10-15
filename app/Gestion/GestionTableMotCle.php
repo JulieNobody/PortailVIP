@@ -21,6 +21,7 @@ class GestionTableMotCle implements GestionTableMotCleInterface
                 //construction de la chaine
                 $chaine = null;
                 $chaine =
+                    $i->NomCmdCli." - ".
                     $i->NumInt." - ".
                     $i->AdLivCli." - ".
                     $i->CPLivCli." - ".
