@@ -32,7 +32,7 @@ Mes interventions
     <div>
 
         <fieldset class="fieldset-liste-inter">
-            <div id="filtresContainer">
+            <div class="filtresContainer">
                 <form action="{{route('interventionsFiltrees')}}" method="get" class="form-example">
 
                     @csrf
@@ -79,7 +79,7 @@ Mes interventions
 
                 <!-- ------------ BOUTON ------------  -->
                 <div >
-                    <button id="boutonFiltre" type="submit">Rechercher</button>
+                    <button class="boutonFiltre" type="submit">Rechercher</button>
                 </div>
 
             </form>

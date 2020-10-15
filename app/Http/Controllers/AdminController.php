@@ -154,9 +154,25 @@ class AdminController extends Controller
 
     public function liste()
 	{
-        $utilisateurs = User::paginate(10);
+        $utilisateurs = new User;
 
-        return view('Admin\admin-liste',  compact('utilisateurs'));
+        $motcle = null;
+
+        /*-------------- LE MOT CLÉ -------------- */
+            //Si un mot clé est réclamé
+            if(request()->has('valeurMotCle') && request('valeurMotCle') != null){
+                $utilisateurs = $utilisateurs->where('CodeUtil', 'like', '%' . request('valeurMotCle') . '%');
+                                $utilisateurs->orWhere('NomUtil', 'like', '%' . request('valeurMotCle') . '%');
+                $motcle = request('valeurMotCle');
+            }
+
+            $mesFiltres = [
+                'valeurMotCle' => request('valeurMotCle'),
+            ];
+
+            $utilisateurs = $utilisateurs->paginate(8)->appends($mesFiltres);
+
+        return view('Admin\admin-liste',  compact('utilisateurs', 'motcle'));
     }
 
 
