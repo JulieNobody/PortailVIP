@@ -35,6 +35,8 @@ Mes interventions
             <div id="filtresContainer">
                 <form action="{{route('interventionsFiltrees')}}" method="get" class="form-example">
 
+                    @csrf
+
                 <!-- ------------ DATES ------------  -->
                 <div class="block-filtre" id="bloc-dates">
 

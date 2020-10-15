@@ -40,9 +40,14 @@ class InterventionController extends Controller
 
         /*-------------- DÉBUT DE LA REQUÊTE -------------- */
 
+
         //Récupération de toutes les interventions concernants l'utilisateur connecté
         $interventions = new Intervention;
-        $interventions = $interventions->where('NomCmdCli', '=', $username);
+
+        if(auth()->user()->Admin != 1){
+            $interventions = $interventions->where('NomCmdCli', '=', $username);
+        }
+
 
         // je renvoie une séléction d'interventions filtrées par défaut avec le statut 'En cours'
         $interventions = $interventions->whereHas('statut', function ($query) {
@@ -75,7 +80,10 @@ class InterventionController extends Controller
 
         //Récupération de toutes les interventions concernants l'utilisateur connecté
         $interventions = new Intervention;
-        $interventions = $interventions->where('NomCmdCli', '=', $username);
+
+        if(auth()->user()->Admin != 1){
+            $interventions = $interventions->where('NomCmdCli', '=', $username);
+        }
 
 
             /*-------------- LES DATES -------------- */
