@@ -75,7 +75,6 @@ Intervention n°{{$intervention->NumInt}}
                     <li><span>Marque :</span> {{$intervention->Marque}}</li>
                     <li><span>Type Appareil :</span> {{$intervention->TypeApp}}</li>
                     <li><span>Numéro de série :</span> {{$intervention->NumSerie}}</li>
-                    <li><span>Date début garantie :</span> </li>
                     <li><span>Date fin garantie :</span> {{$intervention->DateFinSG}}</li>
                     <li><span>Date enregistrement :</span> {{$intervention->DateEnr->format('d-m-Y')}}</li>
                     <li><span>Problème rencontré :</span> {{$intervention->ligneDetail->DesignArt}}</li>

@@ -21,7 +21,7 @@ h1 {
 
 /***************************  FILTRES   ***************************/
 
-#filtresContainer form {
+.filtresContainer form {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -37,16 +37,17 @@ h1 {
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px;
+    padding: 20px;
     /*max-width: 900px;*/
     max-width: 1000px;
+
 
 
     /*background-color: rgba(0, 0, 0, 0.2);*/
 }
 
 /* ---------------- GENERAL ---------------- */
-#filtresContainer{
+.filtresContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -62,19 +63,19 @@ h1 {
     flex-direction: row;
     align-items: flex-start;
 
-    margin: 15px 15px 5px 15px;
+
 
     /*border: solid 2px pink;*/
 }
 
-#filtresContainer label{
+.filtresContainer label{
     font-size: 16px;
     color: #254373;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-#filtresContainer input{
+.filtresContainer input{
     border: none;
     border-bottom: solid 2px #254373;
     background-color: transparent;
@@ -87,7 +88,7 @@ h1 {
     /*border: 2px solid red;*/
 }
 
-#filtresContainer input::placeholder{
+.filtresContainer input::placeholder{
     color: #254373;
 }
 
@@ -126,8 +127,6 @@ h1 {
 .block-checkbox
 {
     text-align: center;
-
-    margin-bottom: 10px;
 }
 
 .block-checkbox input
@@ -152,7 +151,7 @@ h1 {
     opacity: 0.2;
 }
 
-#filtresContainer input[type=checkbox]
+.filtresContainer input[type=checkbox]
 {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -216,7 +215,7 @@ h1 {
 
 
 /* ---------------- BOUTON RECHERCHER ---------------- */
-#boutonFiltre {
+.boutonFiltre {
     background-color: #E94539;
     border-radius: 50px;
     padding: 8px;
@@ -231,7 +230,7 @@ h1 {
     outline:none;
 }
 
-#boutonFiltre:hover{
+.boutonFiltre:hover{
     cursor: pointer;
 }
 

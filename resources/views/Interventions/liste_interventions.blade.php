@@ -32,8 +32,10 @@ Mes interventions
     <div>
 
         <fieldset class="fieldset-liste-inter">
-            <div id="filtresContainer">
+            <div class="filtresContainer">
                 <form action="{{route('interventionsFiltrees')}}" method="get" class="form-example">
+
+                    @csrf
 
                 <!-- ------------ DATES ------------  -->
                 <div class="block-filtre" id="bloc-dates">
@@ -77,7 +79,7 @@ Mes interventions
 
                 <!-- ------------ BOUTON ------------  -->
                 <div >
-                    <button id="boutonFiltre" type="submit">Rechercher</button>
+                    <button class="boutonFiltre" type="submit">Rechercher</button>
                 </div>
 
             </form>
@@ -149,7 +151,7 @@ Mes interventions
 
                 </div>
                 <div class="cell" data-title="Prêt matériel">
-                    @if($i->statut->Statut == 'NPRET')
+                @if($i->statut->Statut == 'NPRET' || ($i->statut->DesignStatutCli == 'Terminée' && $i->DateRetourPret > $today->toDateString() ) )
                         <input type="checkbox" id="tab_inscrit" name="tab_inscrit" checked disabled="disabled">
                     @else
                         <input type="checkbox" id="tab_inscrit" name="tab_inscrit"  disabled="disabled">

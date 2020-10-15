@@ -11,7 +11,29 @@ Admin - Liste des utilisateurs
 
     <h1>Liste des utilisateurs</h1>
 
-    <div class="admin-crea-form">
+    <div class="admin-liste">
+
+
+        <fieldset class="fieldset-liste-inter">
+            <div class="filtresContainer">
+                <form action="{{route('admin-liste')}}" method="get" class="form-example">
+                    @csrf
+                <!-- ------------ MOT CLE ------------  -->
+                <div class="block-filtre">
+                    <input type="text" placeholder="Nom utilisateur" name="valeurMotCle" value="{{$motcle}}">
+                </div>
+
+                <!-- ------------ BOUTON ------------  -->
+                <div >
+                    <button class="boutonFiltre" type="submit">Rechercher</button>
+                </div>
+
+            </form>
+
+            </div>
+        </fieldset>
+
+
 
         <div class="wrapper">
 
@@ -37,16 +59,14 @@ Admin - Liste des utilisateurs
 
               </div>
 
+
                 {{-- @foreach ($listeInterventions as $interventions) --}}
 
-                @if(empty($utilisateurs))
-
-                <div class="row">
-                    <div class="cell">
-                        Aucun utilisateur dans la base
-                    </div>
+                @if(count($utilisateurs) == 0)
                 </div>
-
+                    <p class="aucunResultat" >
+                        Aucun utilisateur ne correspond à vôtre recherche
+                    </p>
                 @else
 
                 @foreach ($utilisateurs as $u)
