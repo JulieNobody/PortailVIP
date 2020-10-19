@@ -163,10 +163,10 @@ Mes interventions
                 </div>
                 <div class="cell" data-title="Problème">
 
-                    @if(empty($i->ligneDetail))
-                        - Détail du problème non renseigné -
+                    @if($i->Observ == null)
+                        <p>- Détail du problème non renseigné -</p>
                     @else
-                    <p class="probleme">{{$i->ligneDetail->DesignArt}}</p>
+                    <p class="probleme">{{utf8_encode($i->Observ)}}</p>
 
                     @endif
 
