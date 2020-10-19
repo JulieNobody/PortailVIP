@@ -198,7 +198,7 @@ Mes interventions
     <!--------------------------------------------- Bouton nouvelle intervention ----------------------------------->
 
         <div class="boutonOrange">
-            <a href="#">Demander une intervention</a>
+            <a href="#" onclick=PopupCentrer('{{route('demandeInterventionGet')}}')>Demander une intervention</a>
         </div>
 
 

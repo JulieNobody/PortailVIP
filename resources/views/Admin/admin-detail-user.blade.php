@@ -78,7 +78,7 @@ Admin - Détail utilisateur
         </fieldset>
 
         <div class="boutonOrange">
-            <a href="{{route('admin-modification-get', [$userId])}}">Modifier l'utilisateur</a>
+            <a href="{{route('admin-modification-get', [$user->id])}}">Modifier l'utilisateur</a>
         </div>
 
 

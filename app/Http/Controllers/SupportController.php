@@ -21,6 +21,9 @@ class SupportController extends Controller
     public function get()
 	{
 
+
+
+
 		return view('Support\support');
     }
 }

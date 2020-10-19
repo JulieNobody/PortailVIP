@@ -33,6 +33,11 @@ Route::get('/', function () {
 Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
 Route::get('interventions/filtres', [InterventionController::class,'listeInterventionsFiltrees'])->name('interventionsFiltrees');
 Route::get('detail-intervention/{id}',[InterventionController::class,'detailIntervention'])->name('detailIntervention');
+Route::get('demande-intervention',[InterventionController::class,'demandeInterventionGet'])->name('demandeInterventionGet');
+Route::Post('demande-intervention',[InterventionController::class,'demandeInterventionPost'])->name('demandeInterventionPost');
+
+
+Route::post('admin-creation', [AdminController::class,'creationPost'])->name('admin-creation-post');
 
 
 // ---------------------- PIECES DETACHEES ----------------------
