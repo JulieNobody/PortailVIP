@@ -352,6 +352,18 @@ h1 {
 
 }
 
+.tableau-auth
+{
+    max-width: 600px;
+}
+
+.champ-obligatoire
+{
+    text-align: center;
+    margin-top: 15px;
+}
+
+
 /*------------------------------------- DETAIL INTERVENTION -------------------------------------*/
 
 #coordonnees_client {
