@@ -62,4 +62,10 @@ class User extends Authenticatable
     }
 
 
+
+    public function param()
+    {
+        return $this->belongsTo('App\Models\UserParam','CodeUtil', 'CodeUtil');
+    }
+
 }

@@ -77,7 +77,7 @@ Intervention n°{{$intervention->NumInt}}
                     <li><span>Numéro de série :</span> {{$intervention->NumSerie}}</li>
                     <li><span>Date fin garantie :</span> {{$intervention->DateFinSG}}</li>
                     <li><span>Date enregistrement :</span> {{$intervention->DateEnr->format('d-m-Y')}}</li>
-                    <li><span>Problème rencontré :</span> {{$intervention->ligneDetail->DesignArt}}</li>
+                    <li><span>Problème rencontré :</span> {{utf8_encode($intervention->Observ)}}</li>
                 </ul>
             </div>
 
@@ -92,6 +92,18 @@ Intervention n°{{$intervention->NumInt}}
                 <ul>
                     <li><span>Date début intervention :</span> {{$intervention->DateDebInterv}}</li>
                     <li><span>Date fin intervention :</span> {{$intervention->DateFinInterv}}</li>
+
+                    <li><span> Travaux effectués :</span></li>
+                    @if(count($intervention->ligneDet) > 0)
+                        <ul>
+                            @foreach ($intervention->ligneDet->sortBy('Numligne') as $d)
+                                <li class="trv"> {{$d->DesignArt}}</li>
+                            @endforeach
+                        </ul>
+                        @else
+                        <p>Aucun travail notifié pour le moment</p>
+                    @endif
+
                 </ul>
             </div>
 

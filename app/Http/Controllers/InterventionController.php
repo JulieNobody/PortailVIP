@@ -8,6 +8,10 @@ use App\Models\Intervention;
 use Illuminate\Http\Request;
 use App\Gestion\GestionTableMotCleInterface;
 use App\Models\LigneDet;
+use App\Models\UserParam;
+use App\Models\User;
+use Exception;
+use PhpParser\Node\Stmt\TryCatch;
 
 class InterventionController extends Controller
 {
@@ -49,7 +53,21 @@ class InterventionController extends Controller
         $interventions = new Intervention;
 
         if(auth()->user()->Admin != 1){
+
             $interventions = $interventions->where('NomCmdCli', '=', $username);
+
+            //Je check si l'utilisateur connecté est associé à un nom de projet défini.
+            try {
+                $nomProjet = auth()->user()->param->NomProjet;
+
+                if ($nomProjet != null){
+                    $interventions = $interventions->where('NomProjet','=',$nomProjet);
+                };
+
+              } catch (\Exception $e) {
+              }
+
+
         }
 
 
@@ -60,7 +78,7 @@ class InterventionController extends Controller
 
         $enCours = 'checked';
 
-        $interventions = $interventions->paginate(8);
+        $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15);
 
 		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
@@ -82,7 +100,6 @@ class InterventionController extends Controller
         //Récupération du nom de l'utilisateur connecté
         $username = auth()->user()->NomUtil;
 
-
         /*-------------- DÉBUT DE LA REQUÊTE -------------- */
 
         //Récupération de toutes les interventions concernants l'utilisateur connecté
@@ -90,6 +107,20 @@ class InterventionController extends Controller
 
         if(auth()->user()->Admin != 1){
             $interventions = $interventions->where('NomCmdCli', '=', $username);
+
+
+             //Je check si l'utilisateur connecté est associé à un nom de projet défini.
+             try {
+                $nomProjet = auth()->user()->param->NomProjet;
+
+                if ($nomProjet != null){
+                    $interventions = $interventions->where('NomProjet','=',auth()->user()->param->NomProjet);
+                };
+
+              } catch (\Exception $e) {
+              }
+
+
         }
 
 
@@ -166,7 +197,7 @@ class InterventionController extends Controller
             'valeurMotCle' => request('valeurMotCle'),
         ];
 
-        $interventions = $interventions->paginate(8)->appends($mesFiltres);
+        $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15)->appends($mesFiltres);
 
 		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
