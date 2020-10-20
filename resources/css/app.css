@@ -438,6 +438,9 @@ h1 {
     list-style: none;
     line-height: 25px;
 }
+.trv {
+    text-transform: lowercase;
+}
 
 .detail span
 {

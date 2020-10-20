@@ -78,7 +78,7 @@ class InterventionController extends Controller
 
         $enCours = 'checked';
 
-        $interventions = $interventions->paginate(15);
+        $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15);
 
 		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
@@ -197,7 +197,7 @@ class InterventionController extends Controller
             'valeurMotCle' => request('valeurMotCle'),
         ];
 
-        $interventions = $interventions->paginate(15)->appends($mesFiltres);
+        $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15)->appends($mesFiltres);
 
 		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }

@@ -22,10 +22,10 @@ class LigneDet extends Model
 
 
 
-    // public function interventions()
-    //     {
-    //         return $this->belongsTo('App\Models\Intervention', 'NumInt', 'NumInt');
-    //     }
+    public function interventions()
+        {
+            return $this->belongsTo('App\Models\Intervention', 'NumInt', 'NumInt');
+        }
 
         public function intervention()
         {

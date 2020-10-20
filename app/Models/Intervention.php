@@ -38,9 +38,9 @@ class Intervention extends Model
             return $this->belongsTo('App\Models\MotCle', 'id', 'id');
         }
 
-    // public function ligneDet()
-    //     {
-    //         return $this->hasMany('App\Models\LigneDet', 'NumInt');
-    //     }
+    public function ligneDet()
+        {
+            return $this->hasMany('App\Models\LigneDet', 'NumInt', 'NumInt');
+        }
 
 }
