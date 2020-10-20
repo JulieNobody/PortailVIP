@@ -61,7 +61,7 @@ class InterventionController extends Controller
                 $nomProjet = auth()->user()->param->NomProjet;
 
                 if ($nomProjet != null){
-                    $interventions = $interventions->where('NomProjet','=',auth()->user()->param->NomProjet);
+                    $interventions = $interventions->where('NomProjet','=',$nomProjet);
                 };
 
               } catch (\Exception $e) {
