@@ -28,7 +28,7 @@ Mes interventions
 
 
 
-    <h1>Mes interventions</h1>
+<h1>Mes interventions</h1>
     <div>
 
         <fieldset class="fieldset-liste-inter">
@@ -160,6 +160,7 @@ Mes interventions
                 <div class="cell" data-title="Matériel">
                     <p class="marque">{{$i->Marque}}</p>
                     <p class="typeapp">{{$i->TypeApp}}</p>
+                    <p class="numserie">{{$i->NumSerie}}</p>
                 </div>
                 <div class="cell" data-title="Problème">
 
