@@ -14,49 +14,31 @@ class AdminController extends Controller
 	{
         // ------------- VALEURS PAR DEFAUT -------------
         $defautSocSiteVIP = "Maintronic";
-        $defautCodeUtil = "";
-        $defautNomUtil = "";
-        $defautPassUtil = "Pa$\$w0rd";
-        $defautAdmin = 0;
-        $defautAgContrat = "test";              // non nullable
-        $defautautomenu1 = 1100000000;
+        $defautCodeUtil = null;
+        $defautNomUtil = null;
+        $defautPassUtil = null;
+        $defautAgContrat = null;              // non nullable
+        $defautautomenu1 = null;
         $defautfonction = null;
-        $defautDateModifPass = "";
-        $defautLogoClient = "logo-nasa.jpg";    //FIXME à changer
-        $defautAdMailContact = "test";          // non nullable
-        $defautAdMailExped = "test";            // non nullable
-        $defautAdMailCopie = "test";            // non nullable
-        $defautEnvMailCloture = "test";         // non nullable
-        $defautDateDebEnvMail = "";            //FIXME à repasser en non nullable
-        $defautAuthDemInterv = "N";
-        $defautCodeCliFact = "test";            // non nullable
-        $defautAffListeProjet = "T";         // non nullable
-        $defautDemIntervAffProjet = "test";     // non nullable
-        $defautDemIntervAgMain = "test";        // non nullable
-        $defautDemIntervAgTrf = "test";          // non nullable
-        $defautActivChargeSiteCli = "O";
-        $defautDateDebChargeSite = "";           //FIXME à repasser en non nullable
-        $defautAuthPlanningAssist = "N";
-        $defautAccesDirectPlanningAssist = "N";
-        $defautVuePortailGlobal = "N";
-        $defautExpressCenter = "N";
-        $defautCliDemSGEpson = "N";
-        $defautAffLstClassification = "N";
-        $defautAffDelais = "O";
-        $defautAuthCloture = "N";
-        $defautAuthDepotDocs = "N";
-        $defautAuthVisuAttCmd = "N";
-        $defautAuthSwapNonEligible = "N";
-        $defautAuthTransporteur = "N";
-        $defautAuthAffSousStatut = "N";
-        $defautAgPourEnvoiPieces = "test";          // non nullable
+        $defautDateModifPass = ""; // ------------------------------------- A FAIRE ----------------------------
+        $defautLogoClient = null;
+        $defautAdMailContact = null;          // non nullable
+        $defautAdMailExped = null;            // non nullable
+        $defautAdMailCopie = null;            // non nullable
+        $defautEnvMailCloture = null;         // non nullable
+        $defautDateDebEnvMail = null;
+        $defautCodeCliFact = null;            // non nullable
+        $defautDemIntervAffProjet = null;     // non nullable
+        $defautDemIntervAgMain = null;        // non nullable
+        $defautDemIntervAgTrf = null;          // non nullable
+        $defautDateDebChargeSite = null;
+        $defautAgPourEnvoiPieces = null;          // non nullable
 
         return view('Admin\admin-creation', compact(
             'defautSocSiteVIP',
             'defautCodeUtil',
             'defautNomUtil',
             'defautPassUtil',
-            'defautAdmin',
             'defautAgContrat',
             'defautautomenu1',
             'defautfonction',
@@ -67,27 +49,11 @@ class AdminController extends Controller
             'defautAdMailCopie',
             'defautEnvMailCloture',
             'defautDateDebEnvMail',
-            'defautAuthDemInterv',
             'defautCodeCliFact',
-            'defautAffListeProjet',
             'defautDemIntervAffProjet',
             'defautDemIntervAgMain',
             'defautDemIntervAgTrf',
-            'defautActivChargeSiteCli',
             'defautDateDebChargeSite',
-            'defautAuthPlanningAssist',
-            'defautAccesDirectPlanningAssist',
-            'defautVuePortailGlobal',
-            'defautExpressCenter',
-            'defautCliDemSGEpson',
-            'defautAffLstClassification',
-            'defautAffDelais',
-            'defautAuthCloture',
-            'defautAuthDepotDocs',
-            'defautAuthVisuAttCmd',
-            'defautAuthSwapNonEligible',
-            'defautAuthTransporteur',
-            'defautAuthAffSousStatut',
             'defautAgPourEnvoiPieces'
         ));
     }
@@ -101,12 +67,52 @@ class AdminController extends Controller
         $user->SocSiteVIP = $request->input('SocSiteVIP');
         $user->CodeUtil = $request->input('CodeUtil');
         $user->NomUtil = $request->input('NomUtil');
-        $user->PassUtil = Hash::make($request->input('PassUtil'));
-        $user->Admin = $request->input('Admin');
+        $user->PassUtil_clair = $request->input('PassUtil');             //mot de passe en clair
+        $user->PassUtil = Hash::make($request->input('PassUtil'));       //mot de passe hashé
+
+        $acces = "00000000";
+        if($request->input('voirInter') == "oui")
+        {
+            $acces[0] = 1;
+        }
+        if($request->input('demandeInter') == "oui")
+        {
+            $acces[1] = 1;
+        }
+        if($request->input('piecesDetachees') == "oui")
+        {
+            $acces[2] = 1;
+        }
+        if($request->input('demandeSupport') == "oui")
+        {
+            $acces[3] = 1;
+        }
+        if($request->input('creationActu') == "oui")
+        {
+            $acces[4] = 1;
+        }
+        if($request->input('monCompte') == "oui")
+        {
+            $acces[5] = 1;
+        }
+        if($request->input('voirFactures') == "oui")
+        {
+            $acces[6] = 1;
+        }
+        if($request->input('voirParc') == "oui")
+        {
+            $acces[7] = 1;
+        }
+        if($request->input('AdminMaintronic') == "oui")
+        {
+            $acces[8] = 1;
+        }
+
+        $user->Acces = $acces;
+
         $user->AgContrat = $request->input('AgContrat');
         $user->automenu1 = $request->input('automenu1');
         $user->fonction = $request->input('fonction');
-        $user->DateModifPass = $request->input('DateModifPass');
 
         if($request->hasFile('LogoClient'))
         {
@@ -124,28 +130,110 @@ class AdminController extends Controller
         $user->AdMailCopie = $request->input('AdMailCopie');
         $user->EnvMailCloture = $request->input('EnvMailCloture');
         $user->DateDebEnvMail = $request->input('DateDebEnvMail');
-        $user->AuthDemInterv = $request->input('AuthDemInterv');
         $user->CodeCliFact = $request->input('CodeCliFact');
-        $user->AffListeProjet = $request->input('AffListeProjet');
         $user->DemIntervAffProjet = $request->input('DemIntervAffProjet');
         $user->DemIntervAgMain = $request->input('DemIntervAgMain');
         $user->DemIntervAgTrf = $request->input('DemIntervAgTrf');
-        $user->ActivChargeSiteCli = $request->input('ActivChargeSiteCli');
         $user->DateDebChargeSite = $request->input('DateDebChargeSite');
-        $user->AuthPlanningAssist = $request->input('AuthPlanningAssist');
-        $user->AccesDirectPlanningAssist = $request->input('AccesDirectPlanningAssist');
-        $user->VuePortailGlobal = $request->input('VuePortailGlobal');
-        $user->ExpressCenter = $request->input('ExpressCenter');
-        $user->CliDemSGEpson = $request->input('CliDemSGEpson');
-        $user->AffLstClassification = $request->input('AffLstClassification');
-        $user->AffDelais = $request->input('AffDelais');
-        $user->AuthCloture = $request->input('AuthCloture');
-        $user->AuthDepotDocs = $request->input('AuthDepotDocs');
-        $user->AuthVisuAttCmd = $request->input('AuthVisuAttCmd');
-        $user->AuthSwapNonEligible = $request->input('AuthSwapNonEligible');
-        $user->AuthTransporteur = $request->input('AuthTransporteur');
-        $user->AuthAffSousStatut = $request->input('AuthAffSousStatut');
         $user->AgPourEnvoiPieces = $request->input('AgPourEnvoiPieces');
+
+        if($request->input('AuthDemInterv') == "oui")
+        {
+            $user->AuthDemInterv = "O";
+        }else{
+            $user->AuthDemInterv = "N";
+        }
+        if($request->input('AffListeProjet') == "oui")
+        {
+            $user->AffListeProjet = "O";
+        }else{
+            $user->AffListeProjet = "N";
+        }
+        if($request->input('ActivChargeSiteCli') == "oui")
+        {
+            $user->ActivChargeSiteCli = "O";
+        }else{
+            $user->ActivChargeSiteCli = "N";
+        }
+        if($request->input('AuthPlanningAssist') == "oui")
+        {
+            $user->AuthPlanningAssist = "O";
+        }else{
+            $user->AuthPlanningAssist = "N";
+        }
+        if($request->input('AccesDirectPlanningAssist') == "oui")
+        {
+            $user->AccesDirectPlanningAssist = "O";
+        }else{
+            $user->AccesDirectPlanningAssist = "N";
+        }
+        if($request->input('VuePortailGlobal') == "oui")
+        {
+            $user->VuePortailGlobal = "O";
+        }else{
+            $user->VuePortailGlobal = "N";
+        }
+        if($request->input('ExpressCenter') == "oui")
+        {
+            $user->ExpressCenter = "O";
+        }else{
+            $user->ExpressCenter = "N";
+        }
+        if($request->input('CliDemSGEpson') == "oui")
+        {
+            $user->CliDemSGEpson = "O";
+        }else{
+            $user->CliDemSGEpson = "N";
+        }
+        if($request->input('AffLstClassification') == "oui")
+        {
+            $user->AffLstClassification = "O";
+        }else{
+            $user->AffLstClassification = "N";
+        }
+        if($request->input('AffDelais') == "oui")
+        {
+            $user->AffDelais = "O";
+        }else{
+            $user->AffDelais = "N";
+        }
+        if($request->input('AuthCloture') == "oui")
+        {
+            $user->AuthCloture = "O";
+        }else{
+            $user->AuthCloture = "N";
+        }
+        if($request->input('AuthDepotDocs') == "oui")
+        {
+            $user->AuthDepotDocs = "O";
+        }else{
+            $user->AuthDepotDocs = "N";
+        }
+        if($request->input('AuthVisuAttCmd') == "oui")
+        {
+            $user->AuthVisuAttCmd = "O";
+        }else{
+            $user->AuthVisuAttCmd = "N";
+        }
+        if($request->input('AuthSwapNonEligible') == "oui")
+        {
+            $user->AuthSwapNonEligible = "O";
+        }else{
+            $user->AuthSwapNonEligible = "N";
+        }
+        if($request->input('AuthTransporteur') == "oui")
+        {
+            $user->AuthTransporteur = "O";
+        }else{
+            $user->AuthTransporteur = "N";
+        }
+        if($request->input('AuthAffSousStatut') == "oui")
+        {
+            $user->AuthAffSousStatut = "O";
+        }else{
+            $user->AuthAffSousStatut = "N";
+        }
+
 
         $user->save();
 

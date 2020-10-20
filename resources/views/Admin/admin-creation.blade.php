@@ -19,57 +19,105 @@ Admin - Création utilisateur
     <fieldset>
         <legend>Général</legend>
         <div>
-            {!! Form::label('SocSiteVIP', 'Société : ', ['class' => '#']) !!}
-            {!! Form::text('SocSiteVIP', $defautSocSiteVIP, ['class' => '#']) !!}
+            {!! Form::label('SocSiteVIP', 'Société : ') !!}
+            {!! Form::text('SocSiteVIP', $defautSocSiteVIP) !!}
             {!! $errors->first('SocSiteVIP', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('CodeUtil', 'Code client : ', ['class' => '#']) !!}
-            {!! Form::text('CodeUtil', $defautCodeUtil, ['class' => '#']) !!}
+            {!! Form::label('CodeUtil', 'Code client : ') !!}
+            {!! Form::text('CodeUtil', $defautCodeUtil) !!}
             {!! $errors->first('CodeUtil', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('NomUtil', 'Nom client : ', ['class' => '#']) !!}
-            {!! Form::text('NomUtil', $defautNomUtil, ['class' => '#']) !!}
+            {!! Form::label('NomUtil', 'Nom client : ') !!}
+            {!! Form::text('NomUtil', $defautNomUtil) !!}
             {!! $errors->first('NomUtil', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('PassUtil', 'Mot de passe (en clair) : ', ['class' => '#']) !!}
-            {!! Form::text('PassUtil', $defautPassUtil, ['class' => '#']) !!}
+            {!! Form::label('PassUtil', 'Mot de passe (en clair) : ') !!}
+            {!! Form::text('PassUtil', $defautPassUtil) !!}
             {!! $errors->first('PassUtil', '<small >:message</small>') !!}
         </div>
-        <div>
-            {!! Form::label('Admin', 'Admin (1 pour oui, 0 pour non) : ', ['class' => '#']) !!}
-            {!! Form::text('Admin', $defautAdmin, ['class' => '#']) !!}
-            {!! $errors->first('Admin', '<small >:message</small>') !!}
+
+        <div class="tableau-auth">
+            <div class="wrapper ">
+                <div class="table">
+                    <div class="row header">
+                        <div class="cell" data-title="Acces">Accès</div>
+                        <div class="cell" data-title="oui">OUI</div>
+                        <div class="cell" data-title="non">NON</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('voirInter', 'Voir les interventions : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('voirInter', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('voirInter', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('demandeInter', 'Demander une intervention : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('demandeInter', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('demandeInter', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('piecesDetachees', 'Pièces détachées : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('piecesDetachees', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('piecesDetachees', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('demandeSupport', 'Faire une demande au support : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('demandeSupport', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('demandeSupport', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('creationActu', 'Créer une actualité : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('creationActu', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('creationActu', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('monCompte', 'Voir "Mon Compte" : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('monCompte', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('monCompte', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('voirFactures', 'Voir les factures: ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('voirFactures', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('voirFactures', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('voirParc', 'Voir le parc : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('voirParc', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('voirParc', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AdminMaintronic', 'Admin Maintronic : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AdminMaintronic', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AdminMaintronic', 'non', true) }}</div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </fieldset>
 
     <fieldset>
         <legend>Contrat</legend>
         <div>
-            {!! Form::label('AgContrat', 'Ag Contrat (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('AgContrat', $defautAgContrat, ['class' => '#']) !!}
+            {!! Form::label('AgContrat', 'Ag Contrat* (4 caractère): ') !!}
+            {!! Form::text('AgContrat', $defautAgContrat, ['required' => 'required']) !!}
             {!! $errors->first('AgContrat', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('automenu1', 'Auto menu 1 : ', ['class' => '#']) !!}
-            {!! Form::text('automenu1', $defautautomenu1, ['class' => '#']) !!}
+            {!! Form::label('automenu1', 'Auto menu 1* : ') !!}
+            {!! Form::text('automenu1', $defautautomenu1, ['required' => 'required']) !!}
             {!! $errors->first('automenu1', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('fonction', 'Fonction : ', ['class' => '#']) !!}
-            {!! Form::text('fonction', $defautfonction, ['class' => '#']) !!}
+            {!! Form::label('fonction', 'Fonction : ') !!}
+            {!! Form::text('fonction', $defautfonction) !!}
             {!! $errors->first('fonction', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('DateModifPass', 'DateModifPass : ', ['class' => '#']) !!}
-            {!! Form::text('DateModifPass', $defautDateModifPass, ['class' => '#']) !!}
-            {!! $errors->first('DateModifPass', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('LogoClient', 'LogoClient : ', ['class' => '#']) !!}
-            {!! Form::file('LogoClient', null, ['class' => '#']) !!}
+            {!! Form::label('LogoClient', 'LogoClient : ') !!}
+            {!! Form::file('LogoClient', null) !!}
             {!! $errors->first('LogoClient', '<small >:message</small>') !!}
         </div>
     </fieldset>
@@ -77,23 +125,23 @@ Admin - Création utilisateur
     <fieldset>
         <legend>E-mails</legend>
         <div>
-            {!! Form::label('AdMailContact', 'AdMailContact (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('AdMailContact', $defautAdMailContact, ['class' => '#']) !!}
+            {!! Form::label('AdMailContact', 'AdMailContact* : ') !!}
+            {!! Form::email('AdMailContact', $defautAdMailContact, ['required' => 'required']) !!}
             {!! $errors->first('AdMailContact', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('AdMailExped', 'AdMailExped (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('AdMailExped', $defautAdMailExped, ['class' => '#']) !!}
+            {!! Form::label('AdMailExped', 'AdMailExped* : ') !!}
+            {!! Form::email('AdMailExped', $defautAdMailExped, ['required' => 'required']) !!}
             {!! $errors->first('AdMailExped', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('AdMailCopie', 'AdMailCopie (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('AdMailCopie', $defautAdMailCopie, ['class' => '#']) !!}
+            {!! Form::label('AdMailCopie', 'AdMailCopie* : ') !!}
+            {!! Form::email('AdMailCopie', $defautAdMailCopie, ['required' => 'required']) !!}
             {!! $errors->first('AdMailCopie', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('EnvMailCloture', 'EnvMailCloture (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('EnvMailCloture', $defautEnvMailCloture, ['class' => '#']) !!}
+            {!! Form::label('EnvMailCloture', 'EnvMailCloture* : ') !!}
+            {!! Form::email('EnvMailCloture', $defautEnvMailCloture, ['required' => 'required']) !!}
             {!! $errors->first('EnvMailCloture', '<small >:message</small>') !!}
         </div>
     </fieldset>
@@ -101,121 +149,140 @@ Admin - Création utilisateur
     <fieldset>
         <legend>Détails</legend>
         <div>
-            {!! Form::label('DateDebEnvMail', 'DateDebEnvMail (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('DateDebEnvMail', $defautDateDebEnvMail, ['class' => '#']) !!}
+            {!! Form::label('DateDebEnvMail', 'DateDebEnvMail* : ') !!}
+            {!! Form::date('DateDebEnvMail', $defautDateDebEnvMail, ['required' => 'required']) !!}
             {!! $errors->first('DateDebEnvMail', '<small >:message</small>') !!}
         </div>
+
         <div>
-            {!! Form::label('AuthDemInterv', 'AuthDemInterv : ', ['class' => '#']) !!}
-            {!! Form::text('AuthDemInterv', $defautAuthDemInterv, ['class' => '#']) !!}
-            {!! $errors->first('AuthDemInterv', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('CodeCliFact', 'CodeCliFact (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('CodeCliFact', $defautCodeCliFact, ['class' => '#']) !!}
+            {!! Form::label('CodeCliFact', 'CodeCliFact* : ') !!}
+            {!! Form::text('CodeCliFact', $defautCodeCliFact, ['required' => 'required']) !!}
             {!! $errors->first('CodeCliFact', '<small >:message</small>') !!}
         </div>
+
         <div>
-            {!! Form::label('AffListeProjet', 'AffListeProjet (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('AffListeProjet', $defautAffListeProjet, ['class' => '#']) !!}
-            {!! $errors->first('AffListeProjet', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('DemIntervAffProjet', 'DemIntervAffProjet (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('DemIntervAffProjet', $defautDemIntervAffProjet, ['class' => '#']) !!}
+            {!! Form::label('DemIntervAffProjet', 'DemIntervAffProjet* : ') !!}
+            {!! Form::text('DemIntervAffProjet', $defautDemIntervAffProjet, ['required' => 'required']) !!}
             {!! $errors->first('DemIntervAffProjet', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('DemIntervAgMain', 'DemIntervAgMain (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('DemIntervAgMain', $defautDemIntervAgMain, ['class' => '#']) !!}
+            {!! Form::label('DemIntervAgMain', 'DemIntervAgMain* (4 caractère): ') !!}
+            {!! Form::text('DemIntervAgMain', $defautDemIntervAgMain, ['required' => 'required']) !!}
             {!! $errors->first('DemIntervAgMain', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('DemIntervAgTrf', 'DemIntervAgTrf (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('DemIntervAgTrf', $defautDemIntervAgTrf, ['class' => '#']) !!}
+            {!! Form::label('DemIntervAgTrf', 'DemIntervAgTrf* (4 caractère) : ') !!}
+            {!! Form::text('DemIntervAgTrf', $defautDemIntervAgTrf, ['required' => 'required']) !!}
             {!! $errors->first('DemIntervAgTrf', '<small >:message</small>') !!}
         </div>
+
         <div>
-            {!! Form::label('ActivChargeSiteCli', 'ActivChargeSiteCli : ', ['class' => '#']) !!}
-            {!! Form::text('ActivChargeSiteCli', $defautActivChargeSiteCli, ['class' => '#']) !!}
-            {!! $errors->first('ActivChargeSiteCli', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('DateDebChargeSite', 'DateDebChargeSite (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('DateDebChargeSite', $defautDateDebChargeSite, ['class' => '#']) !!}
+            {!! Form::label('DateDebChargeSite', 'DateDebChargeSite* : ') !!}
+            {!! Form::date('DateDebChargeSite', $defautDateDebChargeSite, ['required' => 'required']) !!}
             {!! $errors->first('DateDebChargeSite', '<small >:message</small>') !!}
         </div>
+
         <div>
-            {!! Form::label('AuthPlanningAssist', 'AuthPlanningAssist : ', ['class' => '#']) !!}
-            {!! Form::text('AuthPlanningAssist', $defautAuthPlanningAssist, ['class' => '#']) !!}
-            {!! $errors->first('AuthPlanningAssist', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AccesDirectPlanningAssist', 'AccesDirectPlanningAssist : ', ['class' => '#']) !!}
-            {!! Form::text('AccesDirectPlanningAssist', $defautAccesDirectPlanningAssist, ['class' => '#']) !!}
-            {!! $errors->first('AccesDirectPlanningAssist', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('VuePortailGlobal', 'VuePortailGlobal : ', ['class' => '#']) !!}
-            {!! Form::text('VuePortailGlobal', $defautVuePortailGlobal, ['class' => '#']) !!}
-            {!! $errors->first('VuePortailGlobal', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('ExpressCenter', 'ExpressCenter : ', ['class' => '#']) !!}
-            {!! Form::text('ExpressCenter', $defautExpressCenter, ['class' => '#']) !!}
-            {!! $errors->first('ExpressCenter', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('CliDemSGEpson', 'CliDemSGEpson : ', ['class' => '#']) !!}
-            {!! Form::text('CliDemSGEpson', $defautCliDemSGEpson, ['class' => '#']) !!}
-            {!! $errors->first('CliDemSGEpson', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AffLstClassification', 'AffLstClassification : ', ['class' => '#']) !!}
-            {!! Form::text('AffLstClassification', $defautAffLstClassification, ['class' => '#']) !!}
-            {!! $errors->first('AffLstClassification', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AffDelais', 'AffDelais : ', ['class' => '#']) !!}
-            {!! Form::text('AffDelais', $defautAffDelais, ['class' => '#']) !!}
-            {!! $errors->first('AffDelais', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AuthCloture', 'AuthCloture : ', ['class' => '#']) !!}
-            {!! Form::text('AuthCloture', $defautAuthCloture, ['class' => '#']) !!}
-            {!! $errors->first('AuthCloture', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AuthDepotDocs', 'AuthDepotDocs : ', ['class' => '#']) !!}
-            {!! Form::text('AuthDepotDocs', $defautAuthDepotDocs, ['class' => '#']) !!}
-            {!! $errors->first('AuthDepotDocs', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AuthVisuAttCmd', 'AuthVisuAttCmd : ', ['class' => '#']) !!}
-            {!! Form::text('AuthVisuAttCmd', $defautAuthVisuAttCmd, ['class' => '#']) !!}
-            {!! $errors->first('AuthVisuAttCmd', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AuthSwapNonEligible', 'AuthSwapNonEligible : ', ['class' => '#']) !!}
-            {!! Form::text('AuthSwapNonEligible', $defautAuthSwapNonEligible, ['class' => '#']) !!}
-            {!! $errors->first('AuthSwapNonEligible', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AuthTransporteur', 'AuthTransporteur : ', ['class' => '#']) !!}
-            {!! Form::text('AuthTransporteur', $defautAuthTransporteur, ['class' => '#']) !!}
-            {!! $errors->first('AuthTransporteur', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AuthAffSousStatut', 'AuthAffSousStatut : ', ['class' => '#']) !!}
-            {!! Form::text('AuthAffSousStatut', $defautAuthAffSousStatut, ['class' => '#']) !!}
-            {!! $errors->first('AuthAffSousStatut', '<small >:message</small>') !!}
-        </div>
-        <div>
-            {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces (non null) : ', ['class' => '#']) !!}
-            {!! Form::text('AgPourEnvoiPieces', $defautAgPourEnvoiPieces, ['class' => '#']) !!}
+            {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces* (4 caractère): ') !!}
+            {!! Form::text('AgPourEnvoiPieces', $defautAgPourEnvoiPieces, ['required' => 'required']) !!}
             {!! $errors->first('AgPourEnvoiPieces', '<small >:message</small>') !!}
         </div>
+
+        <div class="tableau-auth">
+            <div class="wrapper ">
+                <div class="table">
+                    <div class="row header">
+                        <div class="cell" data-title="authorisation">Authorisations</div>
+                        <div class="cell" data-title="oui">OUI</div>
+                        <div class="cell" data-title="non">NON</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthDemInterv', 'AuthDemInterv : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthDemInterv', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthDemInterv', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AffListeProjet', 'AffListeProjet : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AffListeProjet', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AffListeProjet', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('ActivChargeSiteCli', 'ActivChargeSiteCli : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('ActivChargeSiteCli', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('ActivChargeSiteCli', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthPlanningAssist', 'AuthPlanningAssist : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthPlanningAssist', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthPlanningAssist', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AccesDirectPlanningAssist', 'AccesDirectPlanningAssist : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AccesDirectPlanningAssist', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AccesDirectPlanningAssist', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('VuePortailGlobal', 'VuePortailGlobal : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('VuePortailGlobal', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('VuePortailGlobal', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('ExpressCenter', 'ExpressCenter : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('ExpressCenter', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('ExpressCenter', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('CliDemSGEpson', 'CliDemSGEpson : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('CliDemSGEpson', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('CliDemSGEpson', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AffLstClassification', 'AffLstClassification : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AffLstClassification', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AffLstClassification', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AffDelais', 'AffDelais : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AffDelais', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AffDelais', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthCloture', 'AuthCloture : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthCloture', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthCloture', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthDepotDocs', 'AuthDepotDocs : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthDepotDocs', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthDepotDocs', 'non', true) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthVisuAttCmd', 'AuthVisuAttCmd : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthVisuAttCmd', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthVisuAttCmd', 'non', true) }}</div>
+                    </div>
+                   <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthSwapNonEligible', 'AuthSwapNonEligible : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthSwapNonEligible', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthSwapNonEligible', 'non', true) }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthTransporteur', 'AuthTransporteur : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthTransporteur', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthTransporteur', 'non', true) }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="authorisation">{!! Form::label('AuthAffSousStatut', 'AuthAffSousStatut : ') !!}</div>
+                        <div class="cell" data-title="oui">{{ Form::radio('AuthAffSousStatut', 'oui') }}</div>
+                        <div class="cell" data-title="non">{{ Form::radio('AuthAffSousStatut', 'non', true) }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </fieldset>
+    <p class="champ-obligatoire">* : champ obligatoire</p>
 
         {!! Form::submit('Valider') !!}
 

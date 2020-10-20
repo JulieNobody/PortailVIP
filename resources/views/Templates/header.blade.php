@@ -74,7 +74,7 @@
                             <br>
                             <br>
 
-                            @if (Auth::user()->Admin == 1)
+                            @if (auth()->user()->Acces[8] == 1)
                                 <a href="{{route('admin-liste')}}">Admin</a>
                             @endif
 
@@ -88,13 +88,3 @@
             </div>
         </header>
         <hr>
-
-        @if(session()->has('message'))
-            <div class="message-flash">
-                <p>
-                    <span>Info : </span>
-                    <br>
-                    {{ session()->get('message') }}
-                </p>
-            </div>
-        @endif
