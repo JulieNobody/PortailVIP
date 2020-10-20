@@ -24,6 +24,28 @@ Mes interventions
                     );
 
         }
+
+
+        $(document).ready(function(){
+
+            $('#resetFiltres').click(function(){
+
+                $("#valeurDateMin").val("");
+                $("#valeurDateMax").val("");
+
+                $("#en-cours").prop("checked", false);
+                $("#devis").prop("checked", false);
+                $("#termine").prop("checked", false);
+                checkbox();
+
+                $("#valeurRecherche").val("");
+
+
+            });
+
+        });
+
+
     </SCRIPT>
 
 
@@ -33,7 +55,7 @@ Mes interventions
 
         <fieldset class="fieldset-liste-inter">
             <div class="filtresContainer">
-                <form action="{{route('interventionsFiltrees')}}" method="get" class="form-example">
+                <form action="{{route('interventionsFiltrees')}}" method="get" class="form-example" id="formFiltres">
 
                     @csrf
 
@@ -42,11 +64,11 @@ Mes interventions
 
                     <div>
                         <label for="date_debut">Du</label>
-                        <input class="filtre-date-input" type="date" name="date-min" value="{{$dateMin}}">
+                        <input id="valeurDateMin" class="filtre-date-input" type="date" name="date-min" value="{{$dateMin}}">
                     </div>
                     <div>
                         <label for="date_debut">Au</label>
-                        <input class="filtre-date-input" type="date" name="date-max" value="{{$dateMax}}">
+                        <input id="valeurDateMax" class="filtre-date-input" type="date" name="date-max" value="{{$dateMax}}">
                     </div>
 
                 </div>
@@ -74,18 +96,20 @@ Mes interventions
 
                 <!-- ------------ MOT CLE ------------  -->
                 <div class="block-filtre">
-                    <input type="text" placeholder="MOT CLÉ" name="valeurMotCle" value="{{$motcle}}">
+                    <input id="valeurRecherche" type="text" placeholder="MOT CLÉ" name="valeurMotCle" value="{{$motcle}}">
                 </div>
 
                 <!-- ------------ BOUTON ------------  -->
-                <div >
+                <div id="boutonsFiltres" >
                     <button class="boutonFiltre" type="submit">Rechercher</button>
+                    <input class="boutonFiltre" type="button" id="resetFiltres" value="Réinitialiser">
                 </div>
 
             </form>
 
             </div>
         </fieldset>
+
 
     <!--------------------------------------------- Tableau interventions ----------------------------------->
 
