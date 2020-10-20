@@ -68,4 +68,13 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\UserParam','CodeUtil', 'CodeUtil');
     }
 
+    public function userDoc()
+    {
+        return $this->hasMany('App\Models\UserDoc', 'CodeUtil', 'CodeUtil');
+    }
+
+    public function intervention()
+    {
+        return $this->belongsTo('App\Models\Intervention');
+    }
 }

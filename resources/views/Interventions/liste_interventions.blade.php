@@ -50,7 +50,8 @@ Mes interventions
 
 
 
-<h1>Mes interventions</h1>
+<h1>Mes interventions </h1>
+
     <div>
 
         <fieldset class="fieldset-liste-inter">
@@ -186,13 +187,16 @@ Mes interventions
                     <p class="typeapp">{{$i->TypeApp}}</p>
                     <p class="numserie">{{$i->NumSerie}}</p>
                 </div>
-                <div class="cell" data-title="Problème">
+                <div class="cell cellProbleme" data-title="Problème">
 
                     @if($i->Observ == null)
                         <p>- Détail du problème non renseigné -</p>
                     @else
-                    <p class="probleme">{{utf8_encode($i->Observ)}}</p>
-
+                        @if (strlen($i->Observ) > 150)
+                            <p class="probleme" title="{{utf8_encode($i->Observ)}}">{{substr(utf8_encode($i->Observ), 0, 150)."..."}}</p>
+                        @else
+                            <p class="probleme" title="{{utf8_encode($i->Observ)}}">{{substr(utf8_encode($i->Observ), 0, 150)}}</p>
+                        @endif
                     @endif
 
                 </div>
@@ -204,7 +208,29 @@ Mes interventions
                     <p class="ville">{{$i->CPLivCli}} {{$i->VilleLivCli}}</p>
                 </div>
                 <div class="cell" data-title="Documents">
-                    <a href="#">Documents</a>
+                    @if (auth()->user()->Acces[8] == 1)
+                    <a href="{{ asset('documents/BISIGNE.pdf') }}" target="_blank" title="BISIGNE.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    <a href="{{ asset('documents/EXEMPLECLIENT.pdf') }}" target="_blank" title="EXEMPLECLIENT.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    <a href="{{ asset('documents/FEUILLEETAT.pdf') }}" target="_blank" title="FEUILLEETAT.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    <a href="{{ asset('documents/STATUSENGINE.pdf') }}" target="_blank" title="STATUSENGINE.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    <a href="{{ asset('documents/ENQSATISF.pdf') }}" target="_blank" title="ENQSATISF.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    <a href="{{ asset('documents/EXCLUGAR.pdf') }}" target="_blank" title="EXCLUGAR.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    <a href="{{ asset('documents/PVINST.pdf') }}" target="_blank" title="PVINST.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>
+                    @else
+                        @if(count($i->user->userDoc) == 0)
+                            <p>Aucun document disponible</p>
+                        @else
+                        @foreach ($i->user->userDoc as $td)
+                            @if($td->TypeDoc == "BISIGNE" )<a href="{{ asset('documents/BISIGNE.pdf') }}" target="_blank" title="BISIGNE.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                            @if($td->TypeDoc == "EXEMPLECLIENT" )<a href="{{ asset('documents/EXEMPLECLIENT.pdf') }}" target="_blank" title="EXEMPLECLIENT.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                            @if($td->TypeDoc == "FEUILLEETAT" )<a href="{{ asset('documents/FEUILLEETAT.pdf') }}" target="_blank" title="FEUILLEETAT.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                            @if($td->TypeDoc == "STATUSENGINE" )<a href="{{ asset('documents/STATUSENGINE.pdf') }}" target="_blank" title="STATUSENGINE.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                            @if($td->TypeDoc == "ENQSATISF" )<a href="{{ asset('documents/ENQSATISF.pdf') }}" target="_blank" title="ENQSATISF.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                            @if($td->TypeDoc == "EXCLUGAR" )<a href="{{ asset('documents/EXCLUGAR.pdf') }}" target="_blank" title="EXCLUGAR.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                            @if($td->TypeDoc == "PVINST" )<a href="{{ asset('documents/PVINST.pdf') }}" target="_blank" title="PVINST.pdf"><img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}"></a>@endif
+                        @endforeach
+                        @endif
+                    @endif
                 </div>
             </div>
 
