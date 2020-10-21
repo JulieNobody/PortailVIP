@@ -38,8 +38,8 @@ Mon compte
                     <li><strong>Société :</strong> {{$user->SocSiteVIP}}</li>
                     <li><strong>Code client :</strong> {{$user->CodeUtil}}</li>
                     <li><strong>Nom client :</strong> {{$user->NomUtil}}</li>
-                    <li><strong>mot de passe (en crypté) :</strong> {{$user->PassUtil}}</li>
-                    <li><strong>Admin (1 pour oui, 0 pour non) :</strong> {{$user->Admin}}</li>
+                    <li><strong>mot de passe (en clair) :</strong> {{$user->PassUtil_clair}}</li>
+                    <li><strong>Date de la dernière modification du mot de passe :</strong> {{$user->DateModifPass}}</li>
                 </ul>
             </div>
 
@@ -51,11 +51,9 @@ Mon compte
             </div>
             <div class="aCacher">
                 <ul>
-                    <li>Ag Contrat (non null) : {{$user->AgContrat}}</li>
-                    <li>Auto menu 1 : {{$user->automenu1}}</li>
+                    <li>Ag Contrat : {{$user->AgContrat}}</li>
                     <li>Fonction : {{$user->fonction}}</li>
                     <li>DateModifPass : {{$user->DateModifPass}}</li>
-                    <li>Nouveau LogoClient : </li>
                 </ul>
             </div>
 
@@ -68,44 +66,10 @@ Mon compte
             </div>
             <div class="aCacher">
                 <ul>
-                    <li>AdMailContact (non null) : {{$user->AdMailContact}}</li>
-                    <li>AdMailExped (non null) : {{$user->AdMailExped}}</li>
-                    <li>AdMailCopie (non null) : {{$user->AdMailCopie}}</li>
-                    <li>EnvMailCloture (non null) : {{$user->EnvMailCloture}}</li>
-                </ul>
-            </div>
-
-            <div class="detail-titre">
-                <h2>Détails</h2>
-                <div class="flecheContainer">
-                    <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
-                </div>
-            </div>
-            <div class="aCacher">
-                <ul>
-                    <li>DateDebEnvMail (non null) : {{$user->DateDebEnvMail}}</li>
-                    <li>AuthDemInterv : {{$user->AuthDemInterv}}</li>
-                    <li>CodeCliFact (non null) : {{$user->CodeCliFact}}</li>
-                    <li>AffListeProjet (non null) : {{$user->AffListeProjet}}</li>
-                    <li>DemIntervAffProjet (non null) : {{$user->DemIntervAffProjet}}</li>
-                    <li>DemIntervAgMain (non null) : {{$user->DemIntervAgMain}}</li>
-                    <li>DemIntervAgTrf (non null) : {{$user->DemIntervAgTrf}}</li>
-                    <li>ActivChargeSiteCli : {{$user->ActivChargeSiteCli}}</li>
-                    <li>DateDebChargeSite (non null) : {{$user->DateDebChargeSite}}</li>
-                    <li>AuthPlanningAssist : {{$user->AuthPlanningAssist}}</li>
-                    <li>AccesDirectPlanningAssist : {{$user->AccesDirectPlanningAssist}}</li>
-                    <li>VuePortailGlobal : {{$user->VuePortailGlobal}}</li>
-                    <li>ExpressCenter : {{$user->ExpressCenter}}</li>
-                    <li>CliDemSGEpson : {{$user->CliDemSGEpson}}</li>
-                    <li>AffLstClassification : {{$user->AffLstClassification}}</li>
-                    <li>AffDelais : {{$user->AffDelais}}</li>
-                    <li>AuthCloture : {{$user->AuthCloture}}</li>
-                    <li>AuthDepotDocs : {{$user->AuthDepotDocs}}</li>
-                    <li>AuthVisuAttCmd : {{$user->AuthVisuAttCmd}}</li>
-                    <li>AuthSwapNonEligible : {{$user->AuthSwapNonEligible}}</li>
-                    <li>AuthTransporteur : {{$user->AuthTransporteur}}</li>
-                    <li>AuthAffSousStatut : {{$user->AuthAffSousStatut}}</li>
-                    <li>AgPourEnvoiPieces (non null) : {{$user->AgPourEnvoiPieces}}</li>
+                    <li>AdMailContact : {{$user->AdMailContact}}</li>
+                    <li>AdMailExped : {{$user->AdMailExped}}</li>
+                    <li>AdMailCopie : {{$user->AdMailCopie}}</li>
+                    <li>EnvMailCloture : {{$user->EnvMailCloture}}</li>
                 </ul>
             </div>
 

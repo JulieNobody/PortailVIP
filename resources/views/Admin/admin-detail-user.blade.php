@@ -21,6 +21,7 @@ Admin - Détail utilisateur
                 <li><span>Code client :</span> {{$user->CodeUtil}}</li>
                 <li><span>Nom client :</span> {{$user->NomUtil}}</li>
                 <li><span>mot de passe (en clair) :</span> {{$user->PassUtil_clair}}</li>
+                <li><span>Date de la dernière modification du mot de passe :</span> {{$user->DateModifPass}}</li>
             </ul>
 
             <div class="tableau-auth">
@@ -134,7 +135,6 @@ Admin - Détail utilisateur
                 <li><span>Ag Contrat :</span> {{$user->AgContrat}}</li>
                 <li><span>Auto menu 1 :</span> {{$user->automenu1}}</li>
                 <li><span>Fonction :</span> {{$user->fonction}}</li>
-                <li><span>DateModifPass :</span> {{$user->DateModifPass}}</li>
                 <li><span>LogoClient :</span>
 
                     @if ($user->LogoClient != NULL)
