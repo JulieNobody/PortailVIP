@@ -386,6 +386,19 @@ h1 {
     margin-top: 15px;
 }
 
+.admin-crea-form span
+{
+    margin: 5px;
+    color: #254373;
+    font-weight: 400;
+    margin-right: 15px;
+}
+
+#admin-detail-logo
+{
+    width: auto;
+    height: 60px;
+}
 
 /*------------------------------------- DETAIL INTERVENTION -------------------------------------*/
 
