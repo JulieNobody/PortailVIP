@@ -215,6 +215,12 @@ h1 {
 
 
 /* ---------------- BOUTON RECHERCHER ---------------- */
+#boutonsFiltres{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
 .boutonFiltre {
     background-color: #E94539;
     border-radius: 50px;
@@ -228,12 +234,29 @@ h1 {
 
     border: none;
     outline:none;
+
 }
 
 .boutonFiltre:hover{
     cursor: pointer;
 }
 
+#resetFiltres{
+    padding: 8px;
+    text-align: center;
+    width: 120px;
+    color: #254373;
+    font-weight: 500;
+    font-size: 16px;
+    background: none;
+    border: none;
+    outline:none;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+#resetFiltres:hover{
+    cursor: pointer;
+}
 
 /* ---------------- SELECT - NON UTILISE ---------------- */
 /*

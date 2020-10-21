@@ -43,4 +43,8 @@ class Intervention extends Model
             return $this->hasMany('App\Models\LigneDet', 'NumInt', 'NumInt');
         }
 
+        public function user()
+        {
+            return $this->hasOne('App\Models\User','NomUtil', 'NomCmdCli');
+        }
 }

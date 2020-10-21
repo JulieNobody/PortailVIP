@@ -52,7 +52,7 @@ class InterventionController extends Controller
         //Récupération de toutes les interventions concernants l'utilisateur connecté
         $interventions = new Intervention;
 
-        if(auth()->user()->Admin != 1){
+        if(auth()->user()->Acces[8] != 1){
 
             $interventions = $interventions->where('NomCmdCli', '=', $username);
 
@@ -84,6 +84,10 @@ class InterventionController extends Controller
     }
 
 
+
+
+
+
     public function listeInterventionsFiltrees()
 	{
         // LES FILTRES
@@ -105,7 +109,7 @@ class InterventionController extends Controller
         //Récupération de toutes les interventions concernants l'utilisateur connecté
         $interventions = new Intervention;
 
-        if(auth()->user()->Admin != 1){
+        if(auth()->user()->Acces[8] != 1){
             $interventions = $interventions->where('NomCmdCli', '=', $username);
 
 
@@ -114,7 +118,7 @@ class InterventionController extends Controller
                 $nomProjet = auth()->user()->param->NomProjet;
 
                 if ($nomProjet != null){
-                    $interventions = $interventions->where('NomProjet','=',auth()->user()->param->NomProjet);
+                    $interventions = $interventions->where('NomProjet','=',$nomProjet);
                 };
 
               } catch (\Exception $e) {

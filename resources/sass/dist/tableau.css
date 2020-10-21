@@ -127,8 +127,15 @@
 
 }
 
+.cell{
+     max-width: 600px;
+}
 
 
+.icon_tab  {
+    width: 25px;
+    margin: 2px;
+}
 
 .marque {
     margin: 0px;
