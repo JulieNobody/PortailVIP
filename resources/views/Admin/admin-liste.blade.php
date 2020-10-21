@@ -79,7 +79,10 @@ Admin - Liste des utilisateurs
                         {{$u->NomUtil}}
                     </div>
                     <div class="cell" data-title="Admin">
-                        {{$u->Admin}}
+                        @if($u->Acces[8] == '1')
+                            oui
+                        @endif
+
                     </div>
                     <div class="cell" data-title="Détail Utilisateur">
                         <a href="{{route('admin-detail', [$u->id])}}">X</a>

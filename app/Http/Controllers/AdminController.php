@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -70,7 +71,7 @@ class AdminController extends Controller
         $user->PassUtil_clair = $request->input('PassUtil');             //mot de passe en clair
         $user->PassUtil = Hash::make($request->input('PassUtil'));       //mot de passe hashé
 
-        $acces = "00000000";
+        $acces = "000000000";
         if($request->input('voirInter') == "oui")
         {
             $acces[0] = 1;
@@ -258,7 +259,7 @@ class AdminController extends Controller
                 'valeurMotCle' => request('valeurMotCle'),
             ];
 
-            $utilisateurs = $utilisateurs->paginate(8)->appends($mesFiltres);
+            $utilisateurs = $utilisateurs->paginate(15)->appends($mesFiltres);
 
         return view('Admin\admin-liste',  compact('utilisateurs', 'motcle'));
     }
@@ -282,8 +283,59 @@ class AdminController extends Controller
         $user->SocSiteVIP = $request->input('SocSiteVIP');
         $user->CodeUtil = $request->input('CodeUtil');
         $user->NomUtil = $request->input('NomUtil');
+
+        //si le mot de passe saisi est diférent du précédent, on met la date DateModifPass à jour
+        if($user->PassUtil_clair != $request->input('PassUtil'))
+        {
+            $date = Carbon::now();
+            $user->DateModifPass = $date->year."-".$date->month."-".$date->day;
+            //$user->DateModifPass = $request->input('DateDebEnvMail');         //pour test - marche pas
+        }
+
+        //dd($request->input('DateDebEnvMail'));
+
+        $user->PassUtil_clair = $request->input('PassUtil');
         $user->PassUtil = Hash::make($request->input('PassUtil'));
-        $user->Admin = $request->input('Admin');
+
+        $acces = "000000000";
+        if($request->input('voirInter') == "oui")
+        {
+            $acces[0] = 1;
+        }
+        if($request->input('demandeInter') == "oui")
+        {
+            $acces[1] = 1;
+        }
+        if($request->input('piecesDetachees') == "oui")
+        {
+            $acces[2] = 1;
+        }
+        if($request->input('demandeSupport') == "oui")
+        {
+            $acces[3] = 1;
+        }
+        if($request->input('creationActu') == "oui")
+        {
+            $acces[4] = 1;
+        }
+        if($request->input('monCompte') == "oui")
+        {
+            $acces[5] = 1;
+        }
+        if($request->input('voirFactures') == "oui")
+        {
+            $acces[6] = 1;
+        }
+        if($request->input('voirParc') == "oui")
+        {
+            $acces[7] = 1;
+        }
+        if($request->input('AdminMaintronic') == "oui")
+        {
+            $acces[8] = 1;
+        }
+        $user->Acces = $acces;
+
         $user->AgContrat = $request->input('AgContrat');
         $user->automenu1 = $request->input('automenu1');
         $user->fonction = $request->input('fonction');
@@ -306,33 +358,118 @@ class AdminController extends Controller
             $user->LogoClient = $fileName;
         }
 
+
+
+
         $user->AdMailContact = $request->input('AdMailContact');
         $user->AdMailExped = $request->input('AdMailExped');
         $user->AdMailCopie = $request->input('AdMailCopie');
         $user->EnvMailCloture = $request->input('EnvMailCloture');
         $user->DateDebEnvMail = $request->input('DateDebEnvMail');
-        $user->AuthDemInterv = $request->input('AuthDemInterv');
         $user->CodeCliFact = $request->input('CodeCliFact');
-        $user->AffListeProjet = $request->input('AffListeProjet');
         $user->DemIntervAffProjet = $request->input('DemIntervAffProjet');
         $user->DemIntervAgMain = $request->input('DemIntervAgMain');
         $user->DemIntervAgTrf = $request->input('DemIntervAgTrf');
-        $user->ActivChargeSiteCli = $request->input('ActivChargeSiteCli');
         $user->DateDebChargeSite = $request->input('DateDebChargeSite');
-        $user->AuthPlanningAssist = $request->input('AuthPlanningAssist');
-        $user->AccesDirectPlanningAssist = $request->input('AccesDirectPlanningAssist');
-        $user->VuePortailGlobal = $request->input('VuePortailGlobal');
-        $user->ExpressCenter = $request->input('ExpressCenter');
-        $user->CliDemSGEpson = $request->input('CliDemSGEpson');
-        $user->AffLstClassification = $request->input('AffLstClassification');
-        $user->AffDelais = $request->input('AffDelais');
-        $user->AuthCloture = $request->input('AuthCloture');
-        $user->AuthDepotDocs = $request->input('AuthDepotDocs');
-        $user->AuthVisuAttCmd = $request->input('AuthVisuAttCmd');
-        $user->AuthSwapNonEligible = $request->input('AuthSwapNonEligible');
-        $user->AuthTransporteur = $request->input('AuthTransporteur');
-        $user->AuthAffSousStatut = $request->input('AuthAffSousStatut');
         $user->AgPourEnvoiPieces = $request->input('AgPourEnvoiPieces');
+
+        if($request->input('AuthDemInterv') == "oui")
+        {
+            $user->AuthDemInterv = "O";
+        }else{
+            $user->AuthDemInterv = "N";
+        }
+        if($request->input('AffListeProjet') == "oui")
+        {
+            $user->AffListeProjet = "O";
+        }else{
+            $user->AffListeProjet = "N";
+        }
+        if($request->input('ActivChargeSiteCli') == "oui")
+        {
+            $user->ActivChargeSiteCli = "O";
+        }else{
+            $user->ActivChargeSiteCli = "N";
+        }
+        if($request->input('AuthPlanningAssist') == "oui")
+        {
+            $user->AuthPlanningAssist = "O";
+        }else{
+            $user->AuthPlanningAssist = "N";
+        }
+        if($request->input('AccesDirectPlanningAssist') == "oui")
+        {
+            $user->AccesDirectPlanningAssist = "O";
+        }else{
+            $user->AccesDirectPlanningAssist = "N";
+        }
+        if($request->input('VuePortailGlobal') == "oui")
+        {
+            $user->VuePortailGlobal = "O";
+        }else{
+            $user->VuePortailGlobal = "N";
+        }
+        if($request->input('ExpressCenter') == "oui")
+        {
+            $user->ExpressCenter = "O";
+        }else{
+            $user->ExpressCenter = "N";
+        }
+        if($request->input('CliDemSGEpson') == "oui")
+        {
+            $user->CliDemSGEpson = "O";
+        }else{
+            $user->CliDemSGEpson = "N";
+        }
+        if($request->input('AffLstClassification') == "oui")
+        {
+            $user->AffLstClassification = "O";
+        }else{
+            $user->AffLstClassification = "N";
+        }
+        if($request->input('AffDelais') == "oui")
+        {
+            $user->AffDelais = "O";
+        }else{
+            $user->AffDelais = "N";
+        }
+        if($request->input('AuthCloture') == "oui")
+        {
+            $user->AuthCloture = "O";
+        }else{
+            $user->AuthCloture = "N";
+        }
+        if($request->input('AuthDepotDocs') == "oui")
+        {
+            $user->AuthDepotDocs = "O";
+        }else{
+            $user->AuthDepotDocs = "N";
+        }
+        if($request->input('AuthVisuAttCmd') == "oui")
+        {
+            $user->AuthVisuAttCmd = "O";
+        }else{
+            $user->AuthVisuAttCmd = "N";
+        }
+        if($request->input('AuthSwapNonEligible') == "oui")
+        {
+            $user->AuthSwapNonEligible = "O";
+        }else{
+            $user->AuthSwapNonEligible = "N";
+        }
+        if($request->input('AuthTransporteur') == "oui")
+        {
+            $user->AuthTransporteur = "O";
+        }else{
+            $user->AuthTransporteur = "N";
+        }
+        if($request->input('AuthAffSousStatut') == "oui")
+        {
+            $user->AuthAffSousStatut = "O";
+        }else{
+            $user->AuthAffSousStatut = "N";
+        }
+
 
         $user->save();
 
