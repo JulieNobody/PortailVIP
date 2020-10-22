@@ -3,7 +3,7 @@
 namespace App\Gestion;
 
 use App\Models\Intervention;
-use App\Models\InterMotCle;
+use App\Models\MotCle;
 
 class GestionTableMotCle implements GestionTableMotCleInterface
 {
@@ -15,7 +15,7 @@ class GestionTableMotCle implements GestionTableMotCleInterface
 
         foreach ($toutesInterventions as $i)
         {
-            $verifIdExist = InterMotCle::where('id',$i->id)->get();
+            $verifIdExist = MotCle::where('id',$i->id)->get();
             if ($verifIdExist->isEmpty())
             {
                 //construction de la chaine
@@ -28,15 +28,17 @@ class GestionTableMotCle implements GestionTableMotCleInterface
                     $i->VilleLivCli." - ".
                     $i->TypeApp." - ".
                     $i->Marque." - ".
+                    $i->NumSerie." - ".
                     $i->RefDossierCli
                 ;
 
                 //insersion de la chaine
 
-                $interMotCle = new InterMotCle;
-                $interMotCle->id = $i->id;
-                $interMotCle->mot_cle = $chaine;
-                $interMotCle->save();
+                $MotCle = new MotCle;
+                $MotCle->id = $i->id;
+                $MotCle->Type = "INT";
+                $MotCle->mot_cle = $chaine;
+                $MotCle->save();
             }
         }
 

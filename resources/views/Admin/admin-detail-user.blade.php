@@ -9,40 +9,154 @@ Admin - Détail utilisateur
 
 @section('contenu')
 
-    <h1>Détail utilisateur</h1>
+    <h1>Détail utilisateur : {{$user->NomUtil}}</h1>
 
     <div class="admin-crea-form">
 
         <fieldset>
             <legend>Général</legend>
             <ul>
-                <li>ID : {{$user->id}}</li>
-                <li>Société : {{$user->SocSiteVIP}}</li>
-                <li>Code client : {{$user->CodeUtil}}</li>
-                <li>Nom client : {{$user->NomUtil}}</li>
-                <li>mot de passe (en crypté) :{{$user->PassUtil}}</li>
-                <li>Admin (1 pour oui, 0 pour non) : {{$user->Admin}}</li>
+                <li><span>ID :</span> {{$user->id}}</li>
+                <li><span>Société :</span> {{$user->SocSiteVIP}}</li>
+                <li><span>Code client :</span> {{$user->CodeUtil}}</li>
+                <li><span>Nom client :</span> {{$user->NomUtil}}</li>
+                <li><span>mot de passe (en clair) :</span> {{$user->PassUtil_clair}}</li>
+                <li><span>Date de la dernière modification du mot de passe :</span> {{$user->DateModifPass}}</li>
             </ul>
+
+            <div class="tableau-auth">
+                <div class="wrapper ">
+                    <div class="table">
+                        <div class="row header">
+                            <div class="cell" data-title="Acces">Accès</div>
+                            <div class="cell" data-title="oui">OUI</div>
+                            <div class="cell" data-title="non">NON</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Voir les interventions :</span> </div>
+                            @if($user->Acces[0] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Demander une intervention :</span> </div>
+                            @if($user->Acces[1] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Pièces détachées :</span> </div>
+                            @if($user->Acces[2] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Faire une demande au support :</span> </div>
+                            @if($user->Acces[3] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Créer une actualité :</span> </div>
+                            @if($user->Acces[4] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Voir "Mon Compte" :</span> </div>
+                            @if($user->Acces[5] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Voir les factures :</span> </div>
+                            @if($user->Acces[6] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Voir le parc :</span> </div>
+                            @if($user->Acces[7] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation"><span>Admin Maintronic :</span> </div>
+                            @if($user->Acces[8] == 0)
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @else
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset>
             <legend>Contrat</legend>
             <ul>
-                <li>Ag Contrat (non null) : {{$user->AgContrat}}</li>
-                <li>Auto menu 1 : {{$user->automenu1}}</li>
-                <li>Fonction : {{$user->fonction}}</li>
-                <li>DateModifPass : {{$user->DateModifPass}}</li>
-                <li>Nouveau LogoClient : </li>
+                <li><span>Ag Contrat :</span> {{$user->AgContrat}}</li>
+                <li><span>Auto menu 1 :</span> {{$user->automenu1}}</li>
+                <li><span>Fonction :</span> {{$user->fonction}}</li>
+                <li><span>LogoClient :</span>
+
+                    @if ($user->LogoClient != NULL)
+                        <img
+                            id="admin-detail-logo"
+                            src="{{ asset('images/logoClient/'. $user->LogoClient) }}"
+                            alt="logo client"
+                        >
+                    @endif
+
+
+                </li>
             </ul>
         </fieldset>
 
         <fieldset>
             <legend>E-mails</legend>
             <ul>
-                <li>AdMailContact (non null) : {{$user->AdMailContact}}</li>
-                <li>AdMailExped (non null) : {{$user->AdMailExped}}</li>
-                <li>AdMailCopie (non null) : {{$user->AdMailCopie}}</li>
-                <li>EnvMailCloture (non null) : {{$user->EnvMailCloture}}</li>
+                <li><span>AdMailContact :</span> {{$user->AdMailContact}}</li>
+                <li><span>AdMailExped :</span> {{$user->AdMailExped}}</li>
+                <li><span>AdMailCopie :</span> {{$user->AdMailCopie}}</li>
+                <li><span>EnvMailCloture :</span> {{$user->EnvMailCloture}}</li>
             </ul>
         </fieldset>
 
@@ -50,31 +164,189 @@ Admin - Détail utilisateur
             <legend>Détails</legend>
 
             <ul>
-                <li>DateDebEnvMail (non null) : {{$user->DateDebEnvMail}}</li>
-                <li>AuthDemInterv : {{$user->AuthDemInterv}}</li>
-                <li>CodeCliFact (non null) : {{$user->CodeCliFact}}</li>
-                <li>AffListeProjet (non null) : {{$user->AffListeProjet}}</li>
-                <li>DemIntervAffProjet (non null) : {{$user->DemIntervAffProjet}}</li>
-                <li>DemIntervAgMain (non null) : {{$user->DemIntervAgMain}}</li>
-                <li>DemIntervAgTrf (non null) : {{$user->DemIntervAgTrf}}</li>
-                <li>ActivChargeSiteCli : {{$user->ActivChargeSiteCli}}</li>
-                <li>DateDebChargeSite (non null) : {{$user->DateDebChargeSite}}</li>
-                <li>AuthPlanningAssist : {{$user->AuthPlanningAssist}}</li>
-                <li>AccesDirectPlanningAssist : {{$user->AccesDirectPlanningAssist}}</li>
-                <li>VuePortailGlobal : {{$user->VuePortailGlobal}}</li>
-                <li>ExpressCenter : {{$user->ExpressCenter}}</li>
-                <li>CliDemSGEpson : {{$user->CliDemSGEpson}}</li>
-                <li>AffLstClassification : {{$user->AffLstClassification}}</li>
-                <li>AffDelais : {{$user->AffDelais}}</li>
-                <li>AuthCloture : {{$user->AuthCloture}}</li>
-                <li>AuthDepotDocs : {{$user->AuthDepotDocs}}</li>
-                <li>AuthVisuAttCmd : {{$user->AuthVisuAttCmd}}</li>
-                <li>AuthSwapNonEligible : {{$user->AuthSwapNonEligible}}</li>
-                <li>AuthTransporteur : {{$user->AuthTransporteur}}</li>
-                <li>AuthAffSousStatut : {{$user->AuthAffSousStatut}}</li>
-                <li>AgPourEnvoiPieces (non null) : {{$user->AgPourEnvoiPieces}}</li>
+                <li><span>DateDebEnvMail :</span> {{$user->DateDebEnvMail}}</li>
+                <li><span>CodeCliFact :</span> {{$user->CodeCliFact}}</li>
+                <li><span>DemIntervAffProjet :</span> {{$user->DemIntervAffProjet}}</li>
+                <li><span>DemIntervAgMain :</span> {{$user->DemIntervAgMain}}</li>
+                <li><span>DemIntervAgTrf :</span> {{$user->DemIntervAgTrf}}</li>
+                <li><span>DateDebChargeSite :</span> {{$user->DateDebChargeSite}}</li>
+                <li><span>AgPourEnvoiPieces :</span> {{$user->AgPourEnvoiPieces}}</li>
             </ul>
 
+            <div class="tableau-auth">
+                <div class="wrapper ">
+                    <div class="table">
+                        <div class="row header">
+                            <div class="cell" data-title="authorisation">Authorisations</div>
+                            <div class="cell" data-title="oui">OUI</div>
+                            <div class="cell" data-title="non">NON</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthDemInterv : </div>
+                            @if($user->AuthDemInterv == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AffListeProjet : </div>
+                            @if($user->AffListeProjet == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">ActivChargeSiteCli : </div>
+                            @if($user->ActivChargeSiteCli == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthPlanningAssist : </div>
+                            @if($user->AuthPlanningAssist == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AccesDirectPlanningAssist : </div>
+                            @if($user->AccesDirectPlanningAssist == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">VuePortailGlobal : </div>
+                            @if($user->VuePortailGlobal == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">ExpressCenter : </div>
+                            @if($user->ExpressCenter == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">CliDemSGEpson : </div>
+                            @if($user->CliDemSGEpson == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AffLstClassification : </div>
+                            @if($user->AffLstClassification == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AffDelais : </div>
+                            @if($user->AffDelais == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthCloture : </div>
+                            @if($user->AuthCloture == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthDepotDocs : </div>
+                            @if($user->AuthDepotDocs == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthVisuAttCmd : </div>
+                            @if($user->AuthVisuAttCmd == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                       <div class="row">
+                            <div class="cell" data-title="authorisation">AuthSwapNonEligible : </div>
+                            @if($user->AuthSwapNonEligible == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthTransporteur : </div>
+                            @if($user->AuthTransporteur == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">AuthAffSousStatut : </div>
+                            @if($user->AuthAffSousStatut == 'O')
+                                <div class="cell" data-title="oui">X</div>
+                                <div class="cell" data-title="non"></div>
+                            @else
+                                <div class="cell" data-title="oui"></div>
+                                <div class="cell" data-title="non">X</div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
         </fieldset>
 
         <div class="boutonOrange">

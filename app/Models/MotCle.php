@@ -10,10 +10,10 @@ class MotCle extends Model
     use HasFactory;
 
 
-    protected $table = 't_inter_mot_cle';
+    protected $table = 't_mot_cle';
 
     //désactivation des colonnes created_at et updated_at
-    public $timestamp = false;
+    public $timestamps = false;
     protected $primaryKey = 'id';
 
 

@@ -78,7 +78,7 @@ Admin - Création utilisateur
                         <div class="cell" data-title="non">{{ Form::radio('monCompte', 'non', true) }}</div>
                     </div>
                     <div class="row">
-                        <div class="cell" data-title="authorisation">{!! Form::label('voirFactures', 'Voir les factures: ') !!}</div>
+                        <div class="cell" data-title="authorisation">{!! Form::label('voirFactures', 'Voir les factures : ') !!}</div>
                         <div class="cell" data-title="oui">{{ Form::radio('voirFactures', 'oui') }}</div>
                         <div class="cell" data-title="non">{{ Form::radio('voirFactures', 'non', true) }}</div>
                     </div>
@@ -101,7 +101,7 @@ Admin - Création utilisateur
     <fieldset>
         <legend>Contrat</legend>
         <div>
-            {!! Form::label('AgContrat', 'Ag Contrat* (4 caractère): ') !!}
+            {!! Form::label('AgContrat', 'Ag Contrat* (4 caractère) : ') !!}
             {!! Form::text('AgContrat', $defautAgContrat, ['required' => 'required']) !!}
             {!! $errors->first('AgContrat', '<small >:message</small>') !!}
         </div>
@@ -166,7 +166,7 @@ Admin - Création utilisateur
             {!! $errors->first('DemIntervAffProjet', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('DemIntervAgMain', 'DemIntervAgMain* (4 caractère): ') !!}
+            {!! Form::label('DemIntervAgMain', 'DemIntervAgMain* (4 caractère) : ') !!}
             {!! Form::text('DemIntervAgMain', $defautDemIntervAgMain, ['required' => 'required']) !!}
             {!! $errors->first('DemIntervAgMain', '<small >:message</small>') !!}
         </div>
@@ -183,7 +183,7 @@ Admin - Création utilisateur
         </div>
 
         <div>
-            {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces* (4 caractère): ') !!}
+            {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces* (4 caractère) : ') !!}
             {!! Form::text('AgPourEnvoiPieces', $defautAgPourEnvoiPieces, ['required' => 'required']) !!}
             {!! $errors->first('AgPourEnvoiPieces', '<small >:message</small>') !!}
         </div>

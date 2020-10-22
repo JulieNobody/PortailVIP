@@ -9,7 +9,7 @@ Admin - Modification utilisateur
 
 @section('contenu')
 
-    <h1>Modification utilisateur</h1>
+    <h1>Modification utilisateur : {{$user->NomUtil}}</h1>
 
     <div class="admin-crea-form">
 
@@ -24,57 +24,152 @@ Admin - Modification utilisateur
                 {!! $errors->first('id', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('SocSiteVIP', 'Société : ', ['class' => '#']) !!}
-                {!! Form::text('SocSiteVIP', $user->SocSiteVIP, ['class' => '#']) !!}
+                {!! Form::label('SocSiteVIP', 'Société : ') !!}
+                {!! Form::text('SocSiteVIP', $user->SocSiteVIP) !!}
                 {!! $errors->first('SocSiteVIP', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('CodeUtil', 'Code client : ', ['class' => '#']) !!}
-                {!! Form::text('CodeUtil', $user->CodeUtil, ['class' => '#']) !!}
+                {!! Form::label('CodeUtil', 'Code client : ') !!}
+                {!! Form::text('CodeUtil', $user->CodeUtil) !!}
                 {!! $errors->first('CodeUtil', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('NomUtil', 'Nom client : ', ['class' => '#']) !!}
-                {!! Form::text('NomUtil', $user->NomUtil, ['class' => '#']) !!}
+                {!! Form::label('NomUtil', 'Nom client : ') !!}
+                {!! Form::text('NomUtil', $user->NomUtil) !!}
                 {!! $errors->first('NomUtil', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('PassUtil', 'Nouveau mot de passe (en clair) : ', ['class' => '#']) !!}
-                {!! Form::text('PassUtil', null, ['class' => '#']) !!}
+                {!! Form::label('PassUtil', 'Mot de passe (en clair) : ') !!}
+                {!! Form::text('PassUtil', $user->PassUtil_clair) !!}
                 {!! $errors->first('PassUtil', '<small >:message</small>') !!}
             </div>
-            <div>
-                {!! Form::label('Admin', 'Admin (1 pour oui, 0 pour non) : ', ['class' => '#']) !!}
-                {!! Form::text('Admin', $user->Admin, ['class' => '#']) !!}
-                {!! $errors->first('Admin', '<small >:message</small>') !!}
+
+            <div class="tableau-auth">
+                <div class="wrapper ">
+                    <div class="table">
+                        <div class="row header">
+                            <div class="cell" data-title="Acces">Accès</div>
+                            <div class="cell" data-title="oui">OUI</div>
+                            <div class="cell" data-title="non">NON</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('voirInter', 'Voir les interventions : ') !!}</div>
+                            @if($user->Acces[0] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('voirInter', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('voirInter', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('voirInter', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('voirInter', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('demandeInter', 'Demander une intervention : ') !!}</div>
+                            @if($user->Acces[1] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('demandeInter', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('demandeInter', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('demandeInter', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('demandeInter', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('piecesDetachees', 'Pièces détachées : ') !!}</div>
+                            @if($user->Acces[2] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('piecesDetachees', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('piecesDetachees', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('piecesDetachees', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('piecesDetachees', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('demandeSupport', 'Faire une demande au support : ') !!}</div>
+                            @if($user->Acces[3] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('demandeSupport', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('demandeSupport', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('demandeSupport', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('demandeSupport', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('creationActu', 'Créer une actualité : ') !!}</div>
+                            @if($user->Acces[4] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('creationActu', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('creationActu', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('creationActu', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('creationActu', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('monCompte', 'Voir "Mon Compte" : ') !!}</div>
+                            @if($user->Acces[5] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('monCompte', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('monCompte', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('monCompte', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('monCompte', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('voirFactures', 'Voir les factures : ') !!}</div>
+                            @if($user->Acces[6] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('voirFactures', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('voirFactures', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('voirFactures', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('voirFactures', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('voirParc', 'Voir le parc : ') !!}</div>
+                            @if($user->Acces[7] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('voirParc', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('voirParc', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('voirParc', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('voirParc', 'non') }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AdminMaintronic', 'Admin Maintronic : ') !!}</div>
+                            @if($user->Acces[8] == 0)
+                                <div class="cell" data-title="oui">{{ Form::radio('AdminMaintronic', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AdminMaintronic', 'non', true) }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AdminMaintronic', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AdminMaintronic', 'non') }}</div>
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
             </div>
+
         </fieldset>
 
         <fieldset>
             <legend>Contrat</legend>
             <div>
-                {!! Form::label('AgContrat', 'Ag Contrat (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('AgContrat', $user->AgContrat, ['class' => '#']) !!}
+                {!! Form::label('AgContrat', 'Ag Contrat* (4 caractère) : ') !!}
+                {!! Form::text('AgContrat', $user->AgContrat, ['required' => 'required']) !!}
                 {!! $errors->first('AgContrat', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('automenu1', 'Auto menu 1 : ', ['class' => '#']) !!}
-                {!! Form::text('automenu1', $user->automenu1, ['class' => '#']) !!}
+                {!! Form::label('automenu1', 'Auto menu 1* : ') !!}
+                {!! Form::text('automenu1', $user->automenu1, ['required' => 'required']) !!}
                 {!! $errors->first('automenu1', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('fonction', 'Fonction : ', ['class' => '#']) !!}
-                {!! Form::text('fonction', $user->fonction, ['class' => '#']) !!}
+                {!! Form::label('fonction', 'Fonction : ') !!}
+                {!! Form::text('fonction', $user->fonction) !!}
                 {!! $errors->first('fonction', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('DateModifPass', 'DateModifPass : ', ['class' => '#']) !!}
-                {!! Form::text('DateModifPass', $user->DateModifPass, ['class' => '#']) !!}
-                {!! $errors->first('DateModifPass', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('LogoClient', 'Nouveau LogoClient : ', ['class' => '#']) !!}
-                {!! Form::file('LogoClient', null, ['class' => '#']) !!}
+                {!! Form::label('LogoClient', 'LogoClient : ') !!}
+                {!! Form::file('LogoClient', null) !!}
                 {!! $errors->first('LogoClient', '<small >:message</small>') !!}
             </div>
         </fieldset>
@@ -82,23 +177,23 @@ Admin - Modification utilisateur
         <fieldset>
             <legend>E-mails</legend>
             <div>
-                {!! Form::label('AdMailContact', 'AdMailContact (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('AdMailContact', $user->AdMailContact, ['class' => '#']) !!}
+                {!! Form::label('AdMailContact', 'AdMailContact* : ') !!}
+                {!! Form::email('AdMailContact', $user->AdMailContact, ['required' => 'required']) !!}
                 {!! $errors->first('AdMailContact', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('AdMailExped', 'AdMailExped (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('AdMailExped', $user->AdMailExped, ['class' => '#']) !!}
+                {!! Form::label('AdMailExped', 'AdMailExped* : ') !!}
+                {!! Form::email('AdMailExped', $user->AdMailExped, ['required' => 'required']) !!}
                 {!! $errors->first('AdMailExped', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('AdMailCopie', 'AdMailCopie (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('AdMailCopie', $user->AdMailCopie, ['class' => '#']) !!}
+                {!! Form::label('AdMailCopie', 'AdMailCopie* : ') !!}
+                {!! Form::email('AdMailCopie', $user->AdMailCopie, ['required' => 'required']) !!}
                 {!! $errors->first('AdMailCopie', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('EnvMailCloture', 'EnvMailCloture (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('EnvMailCloture', $user->EnvMailCloture, ['class' => '#']) !!}
+                {!! Form::label('EnvMailCloture', 'EnvMailCloture* : ') !!}
+                {!! Form::email('EnvMailCloture', $user->EnvMailCloture, ['required' => 'required']) !!}
                 {!! $errors->first('EnvMailCloture', '<small >:message</small>') !!}
             </div>
         </fieldset>
@@ -106,121 +201,221 @@ Admin - Modification utilisateur
         <fieldset>
             <legend>Détails</legend>
             <div>
-                {!! Form::label('DateDebEnvMail', 'DateDebEnvMail (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('DateDebEnvMail', $user->DateDebEnvMail, ['class' => '#']) !!}
+                {!! Form::label('DateDebEnvMail', 'DateDebEnvMail* : ') !!}
+                {!! Form::date('DateDebEnvMail', $user->DateDebEnvMail, ['required' => 'required']) !!}
                 {!! $errors->first('DateDebEnvMail', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('AuthDemInterv', 'AuthDemInterv : ', ['class' => '#']) !!}
-                {!! Form::text('AuthDemInterv', $user->AuthDemInterv, ['class' => '#']) !!}
-                {!! $errors->first('AuthDemInterv', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('CodeCliFact', 'CodeCliFact (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('CodeCliFact', $user->CodeCliFact, ['class' => '#']) !!}
+                {!! Form::label('CodeCliFact', 'CodeCliFact* : ') !!}
+                {!! Form::text('CodeCliFact', $user->CodeCliFact, ['required' => 'required']) !!}
                 {!! $errors->first('CodeCliFact', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('AffListeProjet', 'AffListeProjet (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('AffListeProjet', $user->AffListeProjet, ['class' => '#']) !!}
-                {!! $errors->first('AffListeProjet', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('DemIntervAffProjet', 'DemIntervAffProjet (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('DemIntervAffProjet', $user->DemIntervAffProjet, ['class' => '#']) !!}
+                {!! Form::label('DemIntervAffProjet', 'DemIntervAffProjet* : ') !!}
+                {!! Form::text('DemIntervAffProjet', $user->DemIntervAffProjet, ['required' => 'required']) !!}
                 {!! $errors->first('DemIntervAffProjet', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('DemIntervAgMain', 'DemIntervAgMain (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('DemIntervAgMain', $user->DemIntervAgMain, ['class' => '#']) !!}
+                {!! Form::label('DemIntervAgMain', 'DemIntervAgMain* (4 caractère) : ') !!}
+                {!! Form::text('DemIntervAgMain', $user->DemIntervAgMain, ['required' => 'required']) !!}
                 {!! $errors->first('DemIntervAgMain', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('DemIntervAgTrf', 'DemIntervAgTrf (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('DemIntervAgTrf', $user->DemIntervAgTrf, ['class' => '#']) !!}
+                {!! Form::label('DemIntervAgTrf', 'DemIntervAgTrf* (4 caractère) : ') !!}
+                {!! Form::text('DemIntervAgTrf', $user->DemIntervAgTrf, ['required' => 'required']) !!}
                 {!! $errors->first('DemIntervAgTrf', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('ActivChargeSiteCli', 'ActivChargeSiteCli : ', ['class' => '#']) !!}
-                {!! Form::text('ActivChargeSiteCli', $user->ActivChargeSiteCli, ['class' => '#']) !!}
-                {!! $errors->first('ActivChargeSiteCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('DateDebChargeSite', 'DateDebChargeSite (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('DateDebChargeSite', $user->DateDebChargeSite, ['class' => '#']) !!}
+                {!! Form::label('DateDebChargeSite', 'DateDebChargeSite* : ') !!}
+                {!! Form::date('DateDebChargeSite', $user->DateDebChargeSite, ['required' => 'required']) !!}
                 {!! $errors->first('DateDebChargeSite', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('AuthPlanningAssist', 'AuthPlanningAssist : ', ['class' => '#']) !!}
-                {!! Form::text('AuthPlanningAssist', $user->AuthPlanningAssist, ['class' => '#']) !!}
-                {!! $errors->first('AuthPlanningAssist', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AccesDirectPlanningAssist', 'AccesDirectPlanningAssist : ', ['class' => '#']) !!}
-                {!! Form::text('AccesDirectPlanningAssist', $user->AccesDirectPlanningAssist, ['class' => '#']) !!}
-                {!! $errors->first('AccesDirectPlanningAssist', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('VuePortailGlobal', 'VuePortailGlobal : ', ['class' => '#']) !!}
-                {!! Form::text('VuePortailGlobal', $user->VuePortailGlobal, ['class' => '#']) !!}
-                {!! $errors->first('VuePortailGlobal', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('ExpressCenter', 'ExpressCenter : ', ['class' => '#']) !!}
-                {!! Form::text('ExpressCenter', $user->ExpressCenter, ['class' => '#']) !!}
-                {!! $errors->first('ExpressCenter', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('CliDemSGEpson', 'CliDemSGEpson : ', ['class' => '#']) !!}
-                {!! Form::text('CliDemSGEpson', $user->CliDemSGEpson, ['class' => '#']) !!}
-                {!! $errors->first('CliDemSGEpson', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AffLstClassification', 'AffLstClassification : ', ['class' => '#']) !!}
-                {!! Form::text('AffLstClassification', $user->AffLstClassification, ['class' => '#']) !!}
-                {!! $errors->first('AffLstClassification', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AffDelais', 'AffDelais : ', ['class' => '#']) !!}
-                {!! Form::text('AffDelais', $user->AffDelais, ['class' => '#']) !!}
-                {!! $errors->first('AffDelais', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AuthCloture', 'AuthCloture : ', ['class' => '#']) !!}
-                {!! Form::text('AuthCloture', $user->AuthCloture, ['class' => '#']) !!}
-                {!! $errors->first('AuthCloture', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AuthDepotDocs', 'AuthDepotDocs : ', ['class' => '#']) !!}
-                {!! Form::text('AuthDepotDocs', $user->AuthDepotDocs, ['class' => '#']) !!}
-                {!! $errors->first('AuthDepotDocs', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AuthVisuAttCmd', 'AuthVisuAttCmd : ', ['class' => '#']) !!}
-                {!! Form::text('AuthVisuAttCmd', $user->AuthVisuAttCmd, ['class' => '#']) !!}
-                {!! $errors->first('AuthVisuAttCmd', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AuthSwapNonEligible', 'AuthSwapNonEligible : ', ['class' => '#']) !!}
-                {!! Form::text('AuthSwapNonEligible', $user->AuthSwapNonEligible, ['class' => '#']) !!}
-                {!! $errors->first('AuthSwapNonEligible', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AuthTransporteur', 'AuthTransporteur : ', ['class' => '#']) !!}
-                {!! Form::text('AuthTransporteur', $user->AuthTransporteur, ['class' => '#']) !!}
-                {!! $errors->first('AuthTransporteur', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AuthAffSousStatut', 'AuthAffSousStatut : ', ['class' => '#']) !!}
-                {!! Form::text('AuthAffSousStatut', $user->AuthAffSousStatut, ['class' => '#']) !!}
-                {!! $errors->first('AuthAffSousStatut', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces (non null) : ', ['class' => '#']) !!}
-                {!! Form::text('AgPourEnvoiPieces', $user->AgPourEnvoiPieces, ['class' => '#']) !!}
+                {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces* (4 caractère : ') !!}
+                {!! Form::text('AgPourEnvoiPieces', $user->AgPourEnvoiPieces, ['required' => 'required']) !!}
                 {!! $errors->first('AgPourEnvoiPieces', '<small >:message</small>') !!}
             </div>
+
+            <div class="tableau-auth">
+                <div class="wrapper ">
+                    <div class="table">
+                        <div class="row header">
+                            <div class="cell" data-title="authorisation">Authorisations</div>
+                            <div class="cell" data-title="oui">OUI</div>
+                            <div class="cell" data-title="non">NON</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthDemInterv', 'AuthDemInterv : ') !!}</div>
+                            @if($user->AuthDemInterv == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthDemInterv', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthDemInterv', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthDemInterv', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthDemInterv', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AffListeProjet', 'AffListeProjet : ') !!}</div>
+                            @if($user->AffListeProjet == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AffListeProjet', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AffListeProjet', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AffListeProjet', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AffListeProjet', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('ActivChargeSiteCli', 'ActivChargeSiteCli : ') !!}</div>
+                            @if($user->ActivChargeSiteCli == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('ActivChargeSiteCli', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('ActivChargeSiteCli', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('ActivChargeSiteCli', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('ActivChargeSiteCli', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthPlanningAssist', 'AuthPlanningAssist : ') !!}</div>
+                            @if($user->AuthPlanningAssist == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthPlanningAssist', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthPlanningAssist', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthPlanningAssist', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthPlanningAssist', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AccesDirectPlanningAssist', 'AccesDirectPlanningAssist : ') !!}</div>
+                            @if($user->AccesDirectPlanningAssist == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AccesDirectPlanningAssist', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AccesDirectPlanningAssist', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AccesDirectPlanningAssist', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AccesDirectPlanningAssist', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('VuePortailGlobal', 'VuePortailGlobal : ') !!}</div>
+                            @if($user->VuePortailGlobal == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('VuePortailGlobal', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('VuePortailGlobal', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('VuePortailGlobal', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('VuePortailGlobal', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('ExpressCenter', 'ExpressCenter : ') !!}</div>
+                            @if($user->ExpressCenter == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('ExpressCenter', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('ExpressCenter', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('ExpressCenter', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('ExpressCenter', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('CliDemSGEpson', 'CliDemSGEpson : ') !!}</div>
+                            @if($user->CliDemSGEpson == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('CliDemSGEpson', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('CliDemSGEpson', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('CliDemSGEpson', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('CliDemSGEpson', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AffLstClassification', 'AffLstClassification : ') !!}</div>
+                            @if($user->AffLstClassification == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AffLstClassification', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AffLstClassification', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AffLstClassification', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AffLstClassification', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AffDelais', 'AffDelais : ') !!}</div>
+                            @if($user->AffDelais == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AffDelais', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AffDelais', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AffDelais', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AffDelais', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthCloture', 'AuthCloture : ') !!}</div>
+                            @if($user->AuthCloture == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthCloture', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthCloture', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthCloture', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthCloture', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthDepotDocs', 'AuthDepotDocs : ') !!}</div>
+                            @if($user->AuthDepotDocs == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthDepotDocs', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthDepotDocs', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthDepotDocs', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthDepotDocs', 'non', true) }}</div>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthVisuAttCmd', 'AuthVisuAttCmd : ') !!}</div>
+                            @if($user->AuthVisuAttCmd == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthVisuAttCmd', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthVisuAttCmd', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthVisuAttCmd', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthVisuAttCmd', 'non', true) }}</div>
+                            @endif
+                        </div>
+                       <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthSwapNonEligible', 'AuthSwapNonEligible : ') !!}</div>
+                            @if($user->AuthSwapNonEligible == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthSwapNonEligible', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthSwapNonEligible', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthSwapNonEligible', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthSwapNonEligible', 'non', true) }}</div>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthTransporteur', 'AuthTransporteur : ') !!}</div>
+                            @if($user->AuthTransporteur == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthTransporteur', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthTransporteur', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthTransporteur', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthTransporteur', 'non', true) }}</div>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="cell" data-title="authorisation">{!! Form::label('AuthAffSousStatut', 'AuthAffSousStatut : ') !!}</div>
+                            @if($user->AuthAffSousStatut == 'O')
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthAffSousStatut', 'oui', true) }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthAffSousStatut', 'non') }}</div>
+                            @else
+                                <div class="cell" data-title="oui">{{ Form::radio('AuthAffSousStatut', 'oui') }}</div>
+                                <div class="cell" data-title="non">{{ Form::radio('AuthAffSousStatut', 'non', true) }}</div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
         </fieldset>
+        <p class="champ-obligatoire">* : champ obligatoire</p>
 
             {!! Form::submit('Valider') !!}
 
