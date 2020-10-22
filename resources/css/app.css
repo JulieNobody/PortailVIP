@@ -257,7 +257,22 @@ h1 {
 #resetFiltres:hover{
     cursor: pointer;
 }
-
+#resetFiltresFactures{
+    padding: 8px;
+    text-align: center;
+    width: 120px;
+    color: #254373;
+    font-weight: 500;
+    font-size: 16px;
+    background: none;
+    border: none;
+    outline:none;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+#resetFiltresFactures:hover{
+    cursor: pointer;
+}
 /* ---------------- SELECT - NON UTILISE ---------------- */
 /*
 #filtresContainer select{
@@ -486,3 +501,13 @@ h1 {
 .aCacher{
     display: none;
 }
+.aCacher .fieldset-liste-inter {
+    margin-top: 10px;
+}
+.aCacher .filtresContainer form{
+align-items: center;
+}
+.aCacher p {
+    margin: 0px;
+}
+

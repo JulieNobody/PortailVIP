@@ -137,18 +137,241 @@ Intervention n°{{$intervention->NumInt}}
                         @else --}}
 
                         {{-- @foreach ($docuements as $d) --}}
+                        @if (auth()->user()->Acces[8] == 1)
 
-                        <div class="row">
-                            <div class="cell" data-title="NomDocument">
-                                <a href="">nom du doc</a>
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/BISIGNE.pdf') }}" target="_blank" title="BISIGNE.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>BISIGNE.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
                             </div>
-                            <div class="cell" data-title="Date">
-                                date du doc
+
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/EXEMPLECLIENT.pdf') }}" target="_blank" title="EXEMPLECLIENT.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>EXEMPLECLIENT.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
                             </div>
-                            <div class="cell" data-title="Heure">
-                                heure du doc
+
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/FEUILLEETAT.pdf') }}" target="_blank" title="FEUILLEETAT.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>FEUILLEETAT.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/STATUSENGINE.pdf') }}" target="_blank" title="STATUSENGINE.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>STATUSENGINE.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/ENQSATISF.pdf') }}" target="_blank" title="ENQSATISF.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>ENQSATISF.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/EXCLUGAR.pdf') }}" target="_blank" title="EXCLUGAR.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>EXCLUGAR.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="cell" data-title="NomDocument">
+                                    <a href="{{ asset('documents/PVINST.pdf') }}" target="_blank" title="PVINST.pdf">
+                                        <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                        <p>PVINST.pdf</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="Date">
+                                    date du doc
+                                </div>
+                                <div class="cell" data-title="Heure">
+                                    heure du doc
+                                </div>
+                            </div>
+
+                        @else
+                            @if(count($intervention->user->userDoc) == 0)
+                                <p>Aucun document disponible</p>
+                            @else
+                            @foreach ($intervention->user->userDoc as $td)
+
+                            @if($td->TypeDoc == "BISIGNE" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/BISIGNE.pdf') }}" target="_blank" title="BISIGNE.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>BISIGNE.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($td->TypeDoc == "EXEMPLECLIENT" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/EXEMPLECLIENT.pdf') }}" target="_blank" title="EXEMPLECLIENT.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>EXEMPLECLIENT.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($td->TypeDoc == "FEUILLEETAT" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/FEUILLEETAT.pdf') }}" target="_blank" title="FEUILLEETAT.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>FEUILLEETAT.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($td->TypeDoc == "STATUSENGINE" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/STATUSENGINE.pdf') }}" target="_blank" title="STATUSENGINE.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>STATUSENGINE.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($td->TypeDoc == "ENQSATISF" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/ENQSATISF.pdf') }}" target="_blank" title="ENQSATISF.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>ENQSATISF.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($td->TypeDoc == "EXCLUGAR" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/EXCLUGAR.pdf') }}" target="_blank" title="EXCLUGAR.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>EXCLUGAR.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($td->TypeDoc == "PVINST" )
+                                <div class="row">
+                                    <div class="cell" data-title="NomDocument">
+                                        <a href="{{ asset('documents/PVINST.pdf') }}" target="_blank" title="PVINST.pdf">
+                                            <img class="icon_tab" src="{{ asset('images/PDF_file_icon.svg') }}">
+                                            <p>PVINST.pdf</p>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Date">
+                                        date du doc
+                                    </div>
+                                    <div class="cell" data-title="Heure">
+                                        heure du doc
+                                    </div>
+                                </div>
+                            @endif
+
+                        @endforeach
+                        @endif
+                    @endif
                         {{-- @endforeach
 
                         @endif --}}
