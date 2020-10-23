@@ -132,7 +132,7 @@ Admin - Création utilisateur
         <div>
             {!! Form::label('AdMailExped', 'AdMailExped* : ') !!}
             {!! Form::email('AdMailExped', $defautAdMailExped, ['required' => 'required']) !!}
-            {!! $errors->first('AdMailExped', '<small >:message</small>'['class' => 'testtest']) !!}
+            {!! $errors->first('AdMailExped', '<small >:message</small>') !!}
         </div>
         <div>
             {!! Form::label('AdMailCopie', 'AdMailCopie* : ') !!}

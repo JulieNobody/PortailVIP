@@ -415,10 +415,13 @@ h1 {
     height: 60px;
 }
 
-.testtest
+
+/*erreurs formulaires*/
+.admin-crea-form small
 {
-    border:2px solid red;
+    color: crimson;
 }
+
 
 /*------------------------------------- DETAIL INTERVENTION -------------------------------------*/
 

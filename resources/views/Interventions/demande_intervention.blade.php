@@ -34,32 +34,29 @@ Demande d'intervention
 
             <div>
                 {!! Form::label('cores_info_nom', 'Corespondant informatique* : ') !!}
-                {!! Form::text('cores_info_nom') !!}
+                {!! Form::text('cores_info_nom', null, ['required' => 'required']) !!}
                 {!! $errors->first('cores_info_nom', '<small >:message</small>') !!}
-            </div>
-            <div>
+
                 {!! Form::label('cores_info_tel', 'Téléphone* : ') !!}
-                {!! Form::text('cores_info_tel') !!}
+                {!! Form::text('cores_info_tel', null, ['required' => 'required']) !!}
                 {!! $errors->first('cores_info_tel', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('cores_info_bis_nom', 'Corespondant informatique bis* : ') !!}
-                {!! Form::text('cores_info_bis_nom') !!}
+                {!! Form::text('cores_info_bis_nom', null, ['required' => 'required']) !!}
                 {!! $errors->first('cores_info_bis_nom', '<small >:message</small>') !!}
-            </div>
-            <div>
+
                 {!! Form::label('cores_info_bis_tel', 'Téléphone* : ') !!}
-                {!! Form::text('cores_info_bis_tel') !!}
+                {!! Form::text('cores_info_bis_tel', null, ['required' => 'required']) !!}
                 {!! $errors->first('cores_info_bis_tel', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('secretariat_nom', 'Secretariat* : ') !!}
-                {!! Form::text('secretariat_nom') !!}
+                {!! Form::text('secretariat_nom', null, ['required' => 'required']) !!}
                 {!! $errors->first('secretariat_nom', '<small >:message</small>') !!}
-            </div>
-            <div>
+
                 {!! Form::label('secretariat_tel', 'Téléphone* : ') !!}
-                {!! Form::text('secretariat_tel') !!}
+                {!! Form::text('secretariat_tel', null, ['required' => 'required']) !!}
                 {!! $errors->first('secretariat_tel', '<small >:message</small>') !!}
             </div>
         </fieldset>
@@ -68,42 +65,42 @@ Demande d'intervention
             <legend>Site</legend>
             <div>
                 {!! Form::label('site_nom', 'Nom* : ') !!}
-                {!! Form::text('site_nom') !!}
+                {!! Form::text('site_nom', null, ['required' => 'required', 'size' => '100']) !!}
                 {!! $errors->first('site_nom', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('site_libelle', 'Libellé* : ') !!}
-                {!! Form::text('site_libelle') !!}
+                {!! Form::text('site_libelle', null, ['required' => 'required', 'size' => '100']) !!}
                 {!! $errors->first('site_libelle', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('site_adresse', 'Adresse* : ') !!}
-                {!! Form::text('site_adresse') !!}
+                {!! Form::text('site_adresse', null, ['required' => 'required', 'size' => '100']) !!}
                 {!! $errors->first('site_adresse', '<small >:message</small>') !!}
             </div>
-            <div>
-                {!! Form::label('site_cp', 'Code postal* : ') !!}
-                {!! Form::text('site_cp') !!}
-                {!! $errors->first('site_cp', '<small >:message</small>') !!}
-            </div>
+
             <div>
                 {!! Form::label('site_ville', 'Ville* : ') !!}
-                {!! Form::text('site_ville') !!}
+                {!! Form::text('site_ville', null, ['required' => 'required']) !!}
                 {!! $errors->first('site_ville', '<small >:message</small>') !!}
+
+                {!! Form::label('site_cp', 'Code postal* : ') !!}
+                {!! Form::text('site_cp', null, ['required' => 'required']) !!}
+                {!! $errors->first('site_cp', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('site_tel', 'telephone* : ') !!}
-                {!! Form::text('site_tel') !!}
+                {!! Form::label('site_tel', 'Telephone* : ') !!}
+                {!! Form::text('site_tel', null, ['required' => 'required']) !!}
                 {!! $errors->first('site_tel', '<small >:message</small>') !!}
-            </div>
-            <div>
+
                 {!! Form::label('site_fax', 'Fax* : ') !!}
-                {!! Form::text('site_fax') !!}
+                {!! Form::text('site_fax', null, ['required' => 'required']) !!}
                 {!! $errors->first('site_fax', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('site_email', 'Email* : ') !!}
-                {!! Form::email('site_email') !!}
+                {!! Form::email('site_email', null, ['required' => 'required']) !!}
                 {!! $errors->first('site_email', '<small >:message</small>') !!}
             </div>
 
@@ -115,41 +112,47 @@ Demande d'intervention
             <legend>Appareil</legend>
             <div>
                 {!! Form::label('app_utilisateur', 'Utilisateur* : ') !!}
-                {!! Form::text('app_utilisateur') !!}
+                {!! Form::text('app_utilisateur', null, ['required' => 'required']) !!}
                 {!! $errors->first('app_utilisateur', '<small >:message</small>') !!}
-            </div>
-            <div>
+
                 {!! Form::label('app_bureau', 'Service, étage, bureau* : ') !!}
-                {!! Form::text('app_bureau') !!}
+                {!! Form::text('app_bureau', null, ['required' => 'required']) !!}
                 {!! $errors->first('app_bureau', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('app_reference_client', 'Reference client* : ') !!}
-                {!! Form::text('app_reference_client') !!}
+                {!! Form::text('app_reference_client', null, ['required' => 'required']) !!}
                 {!! $errors->first('app_reference_client', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('app_marque', 'Marque* : ') !!}
-                {!! Form::text('app_marque') !!}
+                {!! Form::text('app_marque', null, ['required' => 'required']) !!}
                 {!! $errors->first('app_marque', '<small >:message</small>') !!}
-            </div>
-            <div>
+
                 {!! Form::label('app_no_serie', 'Numéro de serie* : ') !!}
-                {!! Form::text('app_no_serie') !!}
+                {!! Form::text('app_no_serie', null, ['required' => 'required']) !!}
                 {!! $errors->first('app_no_serie', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('app_designation', 'Désignation* : ') !!}
-                {!! Form::text('app_designation') !!}
+                {!! Form::text('app_designation', null, ['required' => 'required']) !!}
                 {!! $errors->first('app_designation', '<small >:message</small>') !!}
             </div>
+
             <div>
                 {!! Form::label('probleme', 'Probleme rencontré* : ') !!}
-                {!! Form::textarea('probleme') !!}
+            </div>
+
+            <div>
+                {!! Form::textarea('probleme', null, ['required' => 'required']) !!}
                 {!! $errors->first('probleme', '<small >:message</small>') !!}
             </div>
+
             <div>
                 {!! Form::label('commentaire', 'Commentaire : ') !!}
+            </div>
+
+            <div>
                 {!! Form::textarea('commentaire') !!}
                 {!! $errors->first('commentaire', '<small >:message</small>') !!}
             </div>
