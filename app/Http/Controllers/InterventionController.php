@@ -12,6 +12,8 @@ use App\Models\UserParam;
 use App\Models\User;
 use Exception;
 use PhpParser\Node\Stmt\TryCatch;
+use App\Models\demandeInter;
+use App\Http\Requests\DemandeInterRequest;
 
 class InterventionController extends Controller
 {
@@ -218,344 +220,45 @@ class InterventionController extends Controller
 
         $user = auth()->user();
 
-        /*  Liste des champs pour une Intervention
-        NumInt
-        CodeUtilSuivContrat
-        NumIntTrf
-        TypeInt
-        NomLivCli
-        TypeLivCli
-        AdLivCli
-        CPLivCli
-        VilleLivCli
-        InterlocLivCli
-        TelLivCli
-        FaxLivCli
-        CodeComptaCliLiv
-        NomFactCli
-        AdFactCli
-        CPFactCli
-        VilleFactCli
-        InterlocFactCli
-        TelFactCli
-        FaxFactCli
-        CodeComptaCliFact
-        NomCmdCli
-        CPCmdCli
-        CodeComptaCliCmd
-        DateEnr
-        HeureEnr
-        Observ
-        TitreDetailTech
-        DetailTech
-        TypeApp
-        AppClassification
-        Marque
-        LieuInt
-        NumSerie
-        LivCliFinal
-        DateFinSG
-        RefDossierCli
-        RefDossierConst
-        NumContrat
-        NomProjet
-        CodeMarche
-        CondEnt
-        ModeSortie
-        ModeEntree
-        DateIntPrevu
-        HeureIntPrevu
-        DateAppelClient
-        HeureAppelClient
-        DateExpDevis
-        HeureExpDevis
-        AccordDevis
-        DateAccRef
-        HeureAccRef
-        DatePret
-        HeurePret
-        NumSeriePret
-        TypeAppPret
-        DateRetourPret
-        HeureRetourPret
-        RefusPret
-        NomTech
-        DateDebInterv
-        HeureDebInterv
-        DateFinInterv
-        HeureFinInterv
-        DateSortie
-        HeureSortie
-        DateModif
-        HeureModif
-        NumFacture
-        DateFacture
-        HeureFacture
-        StatutInterv
-        NomStatutInterv
-        SousStatutInterv
-        DateExport
-        HeureExport
-        InfoDelai1
-        InfoDelai2
-        */
-
-
-        $defautNumInt = "";
-        $defautCodeUtilSuivContrat = "";
-        $defautNumIntTrf = "";
-        $defautTypeInt = "";
-        $defautNomLivCli = "";
-        $defautTypeLivCli = "";
-        $defautAdLivCli = "";
-        $defautCPLivCli = "";
-        $defautVilleLivCli = "";
-        $defautInterlocLivCli = "";
-        $defautTelLivCli = "";
-        $defautFaxLivCli = "";
-        $defautCodeComptaCliLiv = "";
-        $defautNomFactCli = "";
-        $defautAdFactCli = "";
-        $defautCPFactCli = "";
-        $defautVilleFactCli = "";
-        $defautInterlocFactCli = "";
-        $defautTelFactCli = "";
-        $defautFaxFactCli = "";
-        $defautCodeComptaCliFact = "";
-        $defautNomCmdCli = "";
-        $defautCPCmdCli = "";
-        $defautCodeComptaCliCmd = "";
-        $defautDateEnr  = "";
-        $defautHeureEnr = "";
-        $defautObserv = "";
-        $defautTitreDetailTech = "";
-        $defautDetailTech = "";
-        $defautTypeApp = "";
-        $defautAppClassification = "";
-        $defautMarque = "";
-        $defautLieuInt = "";
-        $defautNumSerie  = "";
-        $defautLivCliFinal = "";
-        $defautDateFinSG = "";
-        $defautRefDossierCli  = "";
-        $defautRefDossierConst = "";
-        $defautNumContrat = "";
-        $defautNomProjet = "";
-        $defautCodeMarche = "";
-        $defautCondEnt  = "";
-        $defautModeSortie = "";
-        $defautModeEntree = "";
-        $defautDateIntPrevu  = "";
-        $defautHeureIntPrevu  = "";
-        $defautDateAppelClient  = "";
-        $defautHeureAppelClient = "";
-        $defautDateExpDevis = "";
-        $defautHeureExpDevis = "";
-        $defautAccordDevis = "";
-        $defautDateAccRef = "";
-        $defautHeureAccRef = "";
-        $defautDatePret = "";
-        $defautHeurePret = "";
-        $defautNumSeriePret = "";
-        $defautTypeAppPret = "";
-        $defautDateRetourPret = "";
-        $defautHeureRetourPret = "";
-        $defautRefusPret = "";
-        $defautNomTech = "";
-        $defautDateDebInterv = "";
-        $defautHeureDebInterv = "";
-        $defautDateFinInterv  = "";
-        $defautHeureFinInterv = "";
-        $defautDateSortie = "";
-        $defautHeureSortie = "";
-        $defautDateModif = "";
-        $defautHeureModif = "";
-        $defautNumFacture = "";
-        $defautDateFacture = "";
-        $defautHeureFacture = "";
-        $defautStatutInterv  = "";
-        $defautNomStatutInterv = "";
-        $defautSousStatutInterv  = "";
-        $defautDateExport = "";
-        $defautHeureExport = "";
-        $defautInfoDelai1 = "";
-        $defautInfoDelai2 = "";
-
-        return view('Interventions\demande_intervention', compact(
-            'user',
-            'defautNumInt',
-            'defaut$defautCodeUtilSuivContrat',
-            'defautNumIntTrf',
-            'defautTypeInt',
-            'defautNomLivCli',
-            'defautTypeLivCli',
-            'defautAdLivCli',
-            'defautCPLivCli',
-            'defautVilleLivCli',
-            'defautInterlocLivCli',
-            'defautTelLivCli',
-            'defautFaxLivCli',
-            'defautCodeComptaCliLiv',
-            'defautNomFactCli',
-            'defautAdFactCli',
-            'defautCPFactCli',
-            'defautVilleFactCli',
-            'defautInterlocFactCli',
-            'defautTelFactCli',
-            'defautFaxFactCli',
-            'defautCodeComptaCliFact',
-            'defautNomCmdCli',
-            'defautCPCmdCli',
-            'defautCodeComptaCliCmd',
-            'defautDateEnr ',
-            'defautHeureEnr',
-            'defautObserv',
-            'defautTitreDetailTech',
-            'defautDetailTech',
-            'defautTypeApp',
-            'defautAppClassification',
-            'defautMarque',
-            'defautLieuInt',
-            'defautNumSerie ',
-            'defautLivCliFinal',
-            'defautDateFinSG',
-            'defautRefDossierCli ',
-            'defautRefDossierConst',
-            'defautNumContrat',
-            'defautNomProjet',
-            'defautCodeMarche',
-            'defautCondEnt ',
-            'defautModeSortie',
-            'defautModeEntree',
-            'defautDateIntPrevu ',
-            'defautHeureIntPrevu ',
-            'defautDateAppelClient ',
-            'defautHeureAppelClient',
-            'defautDateExpDevis',
-            'defautHeureExpDevis',
-            'defautAccordDevis',
-            'defautDateAccRef',
-            'defautHeureAccRef',
-            'defautDatePret',
-            'defautHeurePret',
-            'defautNumSeriePret',
-            'defautTypeAppPret',
-            'defautDateRetourPret',
-            'defautHeureRetourPret',
-            'defautRefusPret',
-            'defautNomTech',
-            'defautDateDebInterv',
-            'defautHeureDebInterv',
-            'defautDateFinInterv ',
-            'defautHeureFinInterv',
-            'defautDateSortie',
-            'defautHeureSortie',
-            'defautDateModif',
-            'defautHeureModif',
-            'defautNumFacture',
-            'defautDateFacture',
-            'defautHeureFacture',
-            'defautStatutInterv ',
-            'defautNomStatutInterv',
-            'defautSousStatutInterv ',
-            'defautDateExport',
-            'defautHeureExport',
-            'defautInfoDelai1',
-            'defautInfoDelai2',
-        ));
+        return view('Interventions\demande_intervention', compact('user'));
     }
 
-    public function demandeInterventionPost (Request $request)
+    public function demandeInterventionPost (DemandeInterRequest $request)
     {
-
+        $user = auth()->user();
 
         // ------------- CREATION INTERVENTION -------------
-        $intervention = new intervention;
+        $demande_intervention = new demandeInter;
 
-        $intervention->NumInt = $request->input('NumInt');
-        $intervention->CodeUtilSuivContrat = $request->input('CodeUtilSuivContrat');
-        $intervention->NumIntTrf = $request->input('NumIntTrf');
-        $intervention->TypeInt = $request->input('TypeInt');
-        $intervention->NomLivCli = $request->input('NomLivCli');
-        $intervention->TypeLivCli = $request->input('TypeLivCli');
-        $intervention->AdLivCli = $request->input('AdLivCli');
-        $intervention->CPLivCli = $request->input('CPLivCli');
-        $intervention->VilleLivCli = $request->input('VilleLivCli');
-        $intervention->InterlocLivCli = $request->input('InterlocLivCli');
-        $intervention->TelLivCli = $request->input('TelLivCli');
-        $intervention->FaxLivCli = $request->input('FaxLivCli');
-        $intervention->CodeComptaCliLiv = $request->input('CodeComptaCliLiv');
-        $intervention->NomFactCli = $request->input('NomFactCli');
-        $intervention->AdFactCli = $request->input('AdFactCli');
-        $intervention->CPFactCli = $request->input('CPFactCli');
-        $intervention->VilleFactCli = $request->input('VilleFactCli');
-        $intervention->InterlocFactCli = $request->input('InterlocFactCli');
-        $intervention->TelFactCli = $request->input('TelFactCli');
-        $intervention->FaxFactCli = $request->input('FaxFactCli');
-        $intervention->CodeComptaCliFact = $request->input('CodeComptaCliFact');
-        $intervention->NomCmdCli = $request->input('NomCmdCli');
-        $intervention->CPCmdCli = $request->input('CPCmdCli');
-        $intervention->CodeComptaCliCmd = $request->input('CodeComptaCliCmd');
-        $intervention->DateEnr  = $request->input('DateEnr');
-        $intervention->HeureEnr = $request->input('HeureEnr');
-        $intervention->Observ = $request->input('Observ');
-        $intervention->TitreDetailTech = $request->input('TitreDetailTech');
-        $intervention->DetailTech = $request->input('DetailTech');
-        $intervention->TypeApp = $request->input('TypeApp');
-        $intervention->AppClassification = $request->input('AppClassification');
-        $intervention->Marque = $request->input('Marque');
-        $intervention->LieuInt = $request->input('LieuInt');
-        $intervention->NumSerie  = $request->input('NumSerie');
-        $intervention->LivCliFinal = $request->input('LivCliFinal');
-        $intervention->DateFinSG = $request->input('DateFinSG');
-        $intervention->RefDossierCli  = $request->input('RefDossierCli');
-        $intervention->RefDossierConst = $request->input('RefDossierConst');
-        $intervention->NumContrat = $request->input('NumContrat');
-        $intervention->NomProjet = $request->input('NomProjet');
-        $intervention->CodeMarche = $request->input('CodeMarche');
-        $intervention->CondEnt  = $request->input('CondEnt');
-        $intervention->ModeSortie = $request->input('ModeSortie');
-        $intervention->ModeEntree = $request->input('ModeEntree');
-        $intervention->DateIntPrevu  = $request->input('DateIntPrevu');
-        $intervention->HeureIntPrevu  = $request->input('HeureIntPrevu');
-        $intervention->DateAppelClient  = $request->input('DateAppelClient');
-        $intervention->HeureAppelClient = $request->input('HeureAppelClient');
-        $intervention->DateExpDevis = $request->input('DateExpDevis');
-        $intervention->HeureExpDevis = $request->input('HeureExpDevis');
-        $intervention->AccordDevis = $request->input('AccordDevis');
-        $intervention->DateAccRef = $request->input('DateAccRef');
-        $intervention->HeureAccRef = $request->input('HeureAccRef');
-        $intervention->DatePret = $request->input('DatePret');
-        $intervention->HeurePret = $request->input('HeurePret');
-        $intervention->NumSeriePret = $request->input('NumSeriePret');
-        $intervention->TypeAppPret = $request->input('TypeAppPret');
-        $intervention->DateRetourPret = $request->input('DateRetourPret');
-        $intervention->HeureRetourPret = $request->input('HeureRetourPret');
-        $intervention->RefusPret = $request->input('RefusPret');
-        $intervention->NomTech = $request->input('NomTech');
-        $intervention->DateDebInterv = $request->input('DateDebInterv');
-        $intervention->HeureDebInterv = $request->input('HeureDebInterv');
-        $intervention->DateFinInterv  = $request->input('DateFinInterv');
-        $intervention->HeureFinInterv = $request->input('HeureFinInterv');
-        $intervention->DateSortie = $request->input('DateSortie');
-        $intervention->HeureSortie = $request->input('HeureSortie');
-        $intervention->DateModif = $request->input('DateModif');
-        $intervention->HeureModif = $request->input('HeureModif');
-        $intervention->NumFacture = $request->input('NumFacture');
-        $intervention->DateFacture = $request->input('DateFacture');
-        $intervention->HeureFacture = $request->input('HeureFacture');
-        $intervention->StatutInterv  = $request->input('StatutInterv');
-        $intervention->NomStatutInterv = $request->input('NomStatutInterv');
-        $intervention->SousStatutInterv  = $request->input('SousStatutInterv');
-        $intervention->DateExport = $request->input('DateExport');
-        $intervention->HeureExport = $request->input('HeureExport');
-        $intervention->InfoDelai1 = $request->input('InfoDelai1');
-        $intervention->InfoDelai2 = $request->input('InfoDelai2');
+        $demande_intervention->id_demandeur = $user->id;
+        $demande_intervention->site_nom = $request->input('site_nom');
+        $demande_intervention->site_libelle = $request->input('site_libelle');
+        $demande_intervention->site_adresse = $request->input('site_adresse');
+        $demande_intervention->site_cp = $request->input('site_cp');
+        $demande_intervention->site_ville = $request->input('site_ville');
+        $demande_intervention->site_tel = $request->input('site_tel');
+        $demande_intervention->site_fax = $request->input('site_fax');
+        $demande_intervention->site_email = $request->input('site_email');
+        $demande_intervention->cores_info_nom = $request->input('cores_info_nom');
+        $demande_intervention->cores_info_tel = $request->input('cores_info_tel');
+        $demande_intervention->cores_info_bis_nom = $request->input('cores_info_bis_nom');
+        $demande_intervention->cores_info_bis_tel = $request->input('cores_info_bis_tel');
+        $demande_intervention->secretariat_nom = $request->input('secretariat_nom');
+        $demande_intervention->secretariat_tel = $request->input('secretariat_tel');
+        $demande_intervention->app_utilisateur = $request->input('app_utilisateur');
+        $demande_intervention->app_bureau = $request->input('app_bureau');
+        $demande_intervention->app_reference_client = $request->input('app_reference_client');
+        $demande_intervention->app_marque = $request->input('app_marque');
+        $demande_intervention->app_no_serie = $request->input('app_no_serie');
+        $demande_intervention->app_designation = $request->input('app_designation');
+        $demande_intervention->probleme = $request->input('probleme');
+        $demande_intervention->commentaire = $request->input('commentaire');
 
+        //dd($demande_intervention);
 
-        $intervention->save();
+        $demande_intervention->save();
 
-        return view('Admin\admin-validation');
+        return view('pop-up_validation');
     }
 
 }

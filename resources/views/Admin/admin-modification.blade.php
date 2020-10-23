@@ -24,23 +24,23 @@ Admin - Modification utilisateur
                 {!! $errors->first('id', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('SocSiteVIP', 'Société : ') !!}
-                {!! Form::text('SocSiteVIP', $user->SocSiteVIP) !!}
+                {!! Form::label('SocSiteVIP', 'Société* : ') !!}
+                {!! Form::text('SocSiteVIP', $user->SocSiteVIP, ['required' => 'required']) !!}
                 {!! $errors->first('SocSiteVIP', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('CodeUtil', 'Code client : ') !!}
-                {!! Form::text('CodeUtil', $user->CodeUtil) !!}
+                {!! Form::label('CodeUtil', 'Code client* : ') !!}
+                {!! Form::text('CodeUtil', $user->CodeUtil, ['required' => 'required']) !!}
                 {!! $errors->first('CodeUtil', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('NomUtil', 'Nom client : ') !!}
-                {!! Form::text('NomUtil', $user->NomUtil) !!}
+                {!! Form::label('NomUtil', 'Nom client* : ') !!}
+                {!! Form::text('NomUtil', $user->NomUtil, ['required' => 'required']) !!}
                 {!! $errors->first('NomUtil', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('PassUtil', 'Mot de passe (en clair) : ') !!}
-                {!! Form::text('PassUtil', $user->PassUtil_clair) !!}
+                {!! Form::label('PassUtil', 'Mot de passe* (en clair) : ') !!}
+                {!! Form::text('PassUtil', $user->PassUtil_clair, ['required' => 'required']) !!}
                 {!! $errors->first('PassUtil', '<small >:message</small>') !!}
             </div>
 
@@ -235,7 +235,7 @@ Admin - Modification utilisateur
             </div>
 
             <div>
-                {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces* (4 caractère : ') !!}
+                {!! Form::label('AgPourEnvoiPieces', 'AgPourEnvoiPieces* (4 caractère) : ') !!}
                 {!! Form::text('AgPourEnvoiPieces', $user->AgPourEnvoiPieces, ['required' => 'required']) !!}
                 {!! $errors->first('AgPourEnvoiPieces', '<small >:message</small>') !!}
             </div>

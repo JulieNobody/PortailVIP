@@ -400,6 +400,11 @@ h1 {
     height: 60px;
 }
 
+.testtest
+{
+    border:2px solid red;
+}
+
 /*------------------------------------- DETAIL INTERVENTION -------------------------------------*/
 
 #coordonnees_client {

@@ -34,10 +34,10 @@ Route::get('interventions', [InterventionController::class,'listeInterventions']
 Route::get('interventions/filtres', [InterventionController::class,'listeInterventionsFiltrees'])->name('interventionsFiltrees');
 Route::get('detail-intervention/{id}',[InterventionController::class,'detailIntervention'])->name('detailIntervention');
 Route::get('demande-intervention',[InterventionController::class,'demandeInterventionGet'])->name('demandeInterventionGet');
-Route::Post('demande-intervention',[InterventionController::class,'demandeInterventionPost'])->name('demandeInterventionPost');
+Route::post('demande-intervention',[InterventionController::class,'demandeInterventionPost'])->name('demandeInterventionPost');
 
 
-Route::post('admin-creation', [AdminController::class,'creationPost'])->name('admin-creation-post');
+
 
 
 // ---------------------- PIECES DETACHEES ----------------------
@@ -55,6 +55,8 @@ Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte')
 
 
 // ---------------- ADMIN ----------------
+
+
 
 Route::get('admin-liste', [AdminController::class,'liste'])
 ->name('admin-liste')
