@@ -85,10 +85,10 @@ Admin - Liste des utilisateurs
 
                     </div>
                     <div class="cell" data-title="Détail Utilisateur">
-                        <a href="{{route('admin-detail', [$u->id])}}">X</a>
+                        <a href="{{route('admin-detail', [$u->id])}}"><img class="icon_tab" src="{{ asset('images/loupe_icon.png') }}"></a>
                     </div>
                     <div class="cell" data-title="Modifier Utilisateur">
-                        <a href="{{route('admin-modification-get', [$u->id])}}">X</a>
+                        <a href="{{route('admin-modification-get', [$u->id])}}"><img class="icon_tab" src="{{ asset('images/crayon_icon.png') }}"></a>
                     </div>
                 </div>
 

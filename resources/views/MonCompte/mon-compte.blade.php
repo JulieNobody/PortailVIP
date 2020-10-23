@@ -17,7 +17,21 @@ Mon compte
             $(this).find('img').toggleClass("close open");
         });
 
+
+
+        $('#resetFiltresFactures').click(function(){
+            $("#valeurDateMinFactures").val("");
+            $("#valeurDateMaxFactures").val("");
+            $("#valeurRechercheFactures").val("");
+        });
+
+
     });
+
+
+
+
+
 </script>
 
 
@@ -80,6 +94,24 @@ Mon compte
                 </div>
             </div>
             <div class="aCacher">
+                <fieldset class="fieldset-liste-inter">
+                    <div class="filtresContainer">
+                        <form action="" method="get" class="form-example">
+                            @csrf
+                        <!-- ------------ MOT CLE ------------  -->
+                        <div class="block-filtre">
+                            <input id="valeurDateMaxParc" type="text" placeholder="N° de série, marque, type..." name="valeurMotCle" value="">
+                        </div>
+
+                        <!-- ------------ BOUTON ------------  -->
+                        <div >
+                            <button class="boutonFiltre" type="submit">Rechercher</button>
+                        </div>
+
+                    </form>
+
+                    </div>
+                </fieldset>
                 <div class="wrapper">
                     <div class="table">
                         <div class="row header">
@@ -160,6 +192,38 @@ Mon compte
                 </div>
             </div>
             <div class="aCacher">
+                <fieldset class="fieldset-liste-inter">
+                    <div class="filtresContainer">
+                        <form action="" method="get" class="form-example">
+                            @csrf
+                         <!-- ------------ DATES ------------  -->
+                        <div class="block-filtre" id="bloc-dates">
+
+                            <div>
+                                <label for="date_debut">Du</label>
+                                <input id="valeurDateMinFactures" class="filtre-date-input" type="date" name="date-min" value="">
+                            </div>
+                            <div>
+                                <label for="date_debut">Au</label>
+                                <input id="valeurDateMaxFactures" class="filtre-date-input" type="date" name="date-max" value="">
+                            </div>
+
+                        </div>
+                        <!-- ------------ MOT CLE ------------  -->
+                        <div class="block-filtre">
+                            <input id="valeurRechercheFactures" type="text" placeholder="Numéro ou montant" name="valeurMotCle" value="">
+                        </div>
+
+                        <!-- ------------ BOUTON ------------  -->
+                        <div >
+                            <button class="boutonFiltre" type="submit">Rechercher</button>
+                            <input class="boutonFiltre" type="button" id="resetFiltresFactures" value="Réinitialiser">
+                        </div>
+
+                    </form>
+
+                    </div>
+                </fieldset>
                 <div class="wrapper">
                     <div class="table">
                         <div class="row header">

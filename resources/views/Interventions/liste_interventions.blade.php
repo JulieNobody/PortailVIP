@@ -103,7 +103,7 @@ Mes interventions
                 <!-- ------------ BOUTON ------------  -->
                 <div id="boutonsFiltres" >
                     <button class="boutonFiltre" type="submit">Rechercher</button>
-                    <input class="boutonFiltre" type="button" id="resetFiltres" value="Réinitialiser">
+                    <input class="boutonFiltre resetFiltres" type="button" id="resetFiltres" value="Réinitialiser">
                 </div>
 
             </form>
