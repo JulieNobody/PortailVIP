@@ -19,23 +19,23 @@ Admin - Création utilisateur
     <fieldset>
         <legend>Général</legend>
         <div>
-            {!! Form::label('SocSiteVIP', 'Société : ') !!}
-            {!! Form::text('SocSiteVIP', $defautSocSiteVIP) !!}
+            {!! Form::label('SocSiteVIP', 'Société* : ') !!}
+            {!! Form::text('SocSiteVIP', $defautSocSiteVIP, ['required' => 'required']) !!}
             {!! $errors->first('SocSiteVIP', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('CodeUtil', 'Code client : ') !!}
-            {!! Form::text('CodeUtil', $defautCodeUtil) !!}
+            {!! Form::label('CodeUtil', 'Code client* : ') !!}
+            {!! Form::text('CodeUtil', $defautCodeUtil, ['required' => 'required']) !!}
             {!! $errors->first('CodeUtil', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('NomUtil', 'Nom client : ') !!}
-            {!! Form::text('NomUtil', $defautNomUtil) !!}
+            {!! Form::label('NomUtil', 'Nom client* : ') !!}
+            {!! Form::text('NomUtil', $defautNomUtil, ['required' => 'required']) !!}
             {!! $errors->first('NomUtil', '<small >:message</small>') !!}
         </div>
         <div>
-            {!! Form::label('PassUtil', 'Mot de passe (en clair) : ') !!}
-            {!! Form::text('PassUtil', $defautPassUtil) !!}
+            {!! Form::label('PassUtil', 'Mot de passe* (en clair) : ') !!}
+            {!! Form::text('PassUtil', $defautPassUtil, ['required' => 'required']) !!}
             {!! $errors->first('PassUtil', '<small >:message</small>') !!}
         </div>
 

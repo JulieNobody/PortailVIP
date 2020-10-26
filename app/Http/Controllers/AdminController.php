@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use App\Http\Requests\UtilisateurRequest;
+
 
 class AdminController extends Controller
 {
@@ -59,7 +61,7 @@ class AdminController extends Controller
         ));
     }
 
-    public function creationPost(Request $request)
+    public function creationPost(UtilisateurRequest $request)
 	{
         // ------------- CREATION USER -------------
 
@@ -271,7 +273,7 @@ class AdminController extends Controller
         return view('Admin\admin-modification', compact('user'));
     }
 
-    public function modificationPost(Request $request)
+    public function modificationPost(UtilisateurRequest $request)
 	{
         // ------------- CREATION USER -------------
 
@@ -279,7 +281,6 @@ class AdminController extends Controller
         $id = $request->input('id');
 
         $user = user::where('id', '=', $id)->first();
-
         $user->SocSiteVIP = $request->input('SocSiteVIP');
         $user->CodeUtil = $request->input('CodeUtil');
         $user->NomUtil = $request->input('NomUtil');
@@ -287,12 +288,8 @@ class AdminController extends Controller
         //si le mot de passe saisi est diférent du précédent, on met la date DateModifPass à jour
         if($user->PassUtil_clair != $request->input('PassUtil'))
         {
-            $date = Carbon::now();
-            $user->DateModifPass = $date->year."-".$date->month."-".$date->day;
-            //$user->DateModifPass = $request->input('DateDebEnvMail');         //pour test - marche pas
+            $user->DateModifPass = Carbon::now();
         }
-
-        //dd($request->input('DateDebEnvMail'));
 
         $user->PassUtil_clair = $request->input('PassUtil');
         $user->PassUtil = Hash::make($request->input('PassUtil'));
@@ -339,7 +336,6 @@ class AdminController extends Controller
         $user->AgContrat = $request->input('AgContrat');
         $user->automenu1 = $request->input('automenu1');
         $user->fonction = $request->input('fonction');
-        $user->DateModifPass = $request->input('DateModifPass');
 
         // si pas de fichier, on laisse le logo en place
         if($request->hasFile('LogoClient'))
@@ -357,9 +353,6 @@ class AdminController extends Controller
             $file->move('images/logoClient/', $fileName);
             $user->LogoClient = $fileName;
         }
-
-
-
 
         $user->AdMailContact = $request->input('AdMailContact');
         $user->AdMailExped = $request->input('AdMailExped');
@@ -469,7 +462,6 @@ class AdminController extends Controller
         }else{
             $user->AuthAffSousStatut = "N";
         }
-
 
         $user->save();
 

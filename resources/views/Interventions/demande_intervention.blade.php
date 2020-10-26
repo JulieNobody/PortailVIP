@@ -25,88 +25,83 @@ Demande d'intervention
 
     <h1 class="titrePopup">Demande d'intervention</h1>
 
-    <div class="detail">
+    <div class="admin-crea-form">
 
-
-
-        {!! Form::open(['url' => 'demande_intervention','files' => 'true','enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['route' => 'demandeInterventionPost', 'method' => 'post']) !!}
 
         <fieldset>
-            <legend>Client Facturation</legend>
-            <div>
-                {!! Form::label('NomFactCli', 'NomFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('NomFactCli', $defautNomFactCli, ['class' => '#']) !!}
-                {!! $errors->first('NomFactCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('AdFactCli', 'AdFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('AdFactCli', $defautAdFactCli, ['class' => '#']) !!}
-                {!! $errors->first('AdFactCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('CPFactCli', 'CPFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('CPFactCli', $defautCPFactCli, ['class' => '#']) !!}
-                {!! $errors->first('CPFactCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('VilleFactCli', 'VilleFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('VilleFactCli', $defautVilleFactCli, ['class' => '#']) !!}
-                {!! $errors->first('VilleFactCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('InterlocFactCli', 'InterlocFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('InterlocFactCli', $defautInterlocFactCli, ['class' => '#']) !!}
-                {!! $errors->first('InterlocFactCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('TelFactCli', 'TelFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('TelFactCli', $defautTelFactCli, ['class' => '#']) !!}
-                {!! $errors->first('TelFactCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('FaxFactCli', 'FaxFactCli : ', ['class' => '#']) !!}
-                {!! Form::text('FaxFactCli', $defautFaxFactCli, ['class' => '#']) !!}
-                {!! $errors->first('FaxFactCli', '<small >:message</small>') !!}
-            </div>
+            <legend>Demandeur : {{$user->NomUtil}}</legend>
 
+            <div>
+                {!! Form::label('cores_info_nom', 'Corespondant informatique* : ') !!}
+                {!! Form::text('cores_info_nom', null, ['required' => 'required']) !!}
+                {!! $errors->first('cores_info_nom', '<small >:message</small>') !!}
+
+                {!! Form::label('cores_info_tel', 'Téléphone* : ') !!}
+                {!! Form::text('cores_info_tel', null, ['required' => 'required']) !!}
+                {!! $errors->first('cores_info_tel', '<small >:message</small>') !!}
+            </div>
+            <div>
+                {!! Form::label('cores_info_bis_nom', 'Corespondant informatique bis* : ') !!}
+                {!! Form::text('cores_info_bis_nom', null, ['required' => 'required']) !!}
+                {!! $errors->first('cores_info_bis_nom', '<small >:message</small>') !!}
+
+                {!! Form::label('cores_info_bis_tel', 'Téléphone* : ') !!}
+                {!! Form::text('cores_info_bis_tel', null, ['required' => 'required']) !!}
+                {!! $errors->first('cores_info_bis_tel', '<small >:message</small>') !!}
+            </div>
+            <div>
+                {!! Form::label('secretariat_nom', 'Secretariat* : ') !!}
+                {!! Form::text('secretariat_nom', null, ['required' => 'required']) !!}
+                {!! $errors->first('secretariat_nom', '<small >:message</small>') !!}
+
+                {!! Form::label('secretariat_tel', 'Téléphone* : ') !!}
+                {!! Form::text('secretariat_tel', null, ['required' => 'required']) !!}
+                {!! $errors->first('secretariat_tel', '<small >:message</small>') !!}
+            </div>
         </fieldset>
 
         <fieldset>
-            <legend>Client Livraison</legend>
+            <legend>Site</legend>
             <div>
-                {!! Form::label('NomLivCli', 'NomLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('NomLivCli', $defautNomLivCli, ['class' => '#']) !!}
-                {!! $errors->first('NomLivCli', '<small >:message</small>') !!}
+                {!! Form::label('site_nom', 'Nom* : ') !!}
+                {!! Form::text('site_nom', null, ['required' => 'required', 'size' => '100']) !!}
+                {!! $errors->first('site_nom', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('AdLivCli', 'AdLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('AdLivCli', $defautAdLivCli, ['class' => '#']) !!}
-                {!! $errors->first('AdLivCli', '<small >:message</small>') !!}
+                {!! Form::label('site_libelle', 'Libellé* : ') !!}
+                {!! Form::text('site_libelle', null, ['required' => 'required', 'size' => '100']) !!}
+                {!! $errors->first('site_libelle', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('CPLivCli', 'CPLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('CPLivCli', $defautCPLivCli, ['class' => '#']) !!}
-                {!! $errors->first('CPLivCli', '<small >:message</small>') !!}
+                {!! Form::label('site_adresse', 'Adresse* : ') !!}
+                {!! Form::text('site_adresse', null, ['required' => 'required', 'size' => '100']) !!}
+                {!! $errors->first('site_adresse', '<small >:message</small>') !!}
+            </div>
+
+            <div>
+                {!! Form::label('site_ville', 'Ville* : ') !!}
+                {!! Form::text('site_ville', null, ['required' => 'required']) !!}
+                {!! $errors->first('site_ville', '<small >:message</small>') !!}
+
+                {!! Form::label('site_cp', 'Code postal* : ') !!}
+                {!! Form::text('site_cp', null, ['required' => 'required']) !!}
+                {!! $errors->first('site_cp', '<small >:message</small>') !!}
+            </div>
+
+            <div>
+                {!! Form::label('site_tel', 'Telephone* : ') !!}
+                {!! Form::text('site_tel', null, ['required' => 'required']) !!}
+                {!! $errors->first('site_tel', '<small >:message</small>') !!}
+
+                {!! Form::label('site_fax', 'Fax* : ') !!}
+                {!! Form::text('site_fax', null, ['required' => 'required']) !!}
+                {!! $errors->first('site_fax', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('VilleLivCli', 'VilleLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('VilleLivCli', $defautVilleLivCli, ['class' => '#']) !!}
-                {!! $errors->first('VilleLivCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('InterlocLivCli', 'InterlocLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('InterlocLivCli', $defautInterlocLivCli, ['class' => '#']) !!}
-                {!! $errors->first('InterlocLivCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('TelLivCli', 'TelLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('TelLivCli', $defautTelLivCli, ['class' => '#']) !!}
-                {!! $errors->first('TelLivCli', '<small >:message</small>') !!}
-            </div>
-            <div>
-                {!! Form::label('FaxLivCli', 'FaxLivCli : ', ['class' => '#']) !!}
-                {!! Form::text('FaxLivCli', $defautFaxLivCli, ['class' => '#']) !!}
-                {!! $errors->first('FaxLivCli', '<small >:message</small>') !!}
+                {!! Form::label('site_email', 'Email* : ') !!}
+                {!! Form::email('site_email', null, ['required' => 'required']) !!}
+                {!! $errors->first('site_email', '<small >:message</small>') !!}
             </div>
 
 
@@ -114,45 +109,56 @@ Demande d'intervention
         </fieldset>
 
         <fieldset>
-            <legend>Détail demande client</legend>
+            <legend>Appareil</legend>
             <div>
-                {!! Form::label('RefDossierCli', 'RefDossierCli : ', ['class' => '#']) !!}
-                {!! Form::text('RefDossierCli', $defautRefDossierCli, ['class' => '#']) !!}
-                {!! $errors->first('RefDossierCli', '<small >:message</small>') !!}
+                {!! Form::label('app_utilisateur', 'Utilisateur* : ') !!}
+                {!! Form::text('app_utilisateur', null, ['required' => 'required']) !!}
+                {!! $errors->first('app_utilisateur', '<small >:message</small>') !!}
+
+                {!! Form::label('app_bureau', 'Service, étage, bureau* : ') !!}
+                {!! Form::text('app_bureau', null, ['required' => 'required']) !!}
+                {!! $errors->first('app_bureau', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('Marque', 'Marque : ', ['class' => '#']) !!}
-                {!! Form::text('Marque', $defautMarque, ['class' => '#']) !!}
-                {!! $errors->first('Marque', '<small >:message</small>') !!}
+                {!! Form::label('app_reference_client', 'Reference client* : ') !!}
+                {!! Form::text('app_reference_client', null, ['required' => 'required']) !!}
+                {!! $errors->first('app_reference_client', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('TypeApp', 'TypeApp : ', ['class' => '#']) !!}
-                {!! Form::text('TypeApp', $defautTypeApp, ['class' => '#']) !!}
-                {!! $errors->first('TypeApp', '<small >:message</small>') !!}
+                {!! Form::label('app_marque', 'Marque* : ') !!}
+                {!! Form::text('app_marque', null, ['required' => 'required']) !!}
+                {!! $errors->first('app_marque', '<small >:message</small>') !!}
+
+                {!! Form::label('app_no_serie', 'Numéro de serie* : ') !!}
+                {!! Form::text('app_no_serie', null, ['required' => 'required']) !!}
+                {!! $errors->first('app_no_serie', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('NumSerie', 'NumSerie : ', ['class' => '#']) !!}
-                {!! Form::text('NumSerie', $defautNumSerie, ['class' => '#']) !!}
-                {!! $errors->first('NumSerie', '<small >:message</small>') !!}
+                {!! Form::label('app_designation', 'Désignation* : ') !!}
+                {!! Form::text('app_designation', null, ['required' => 'required']) !!}
+                {!! $errors->first('app_designation', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('DateFinSG', 'DateFinSG : ', ['class' => '#']) !!}
-                {!! Form::text('DateFinSG', $defautDateFinSG, ['class' => '#']) !!}
-                {!! $errors->first('DateFinSG', '<small >:message</small>') !!}
+                {!! Form::label('probleme', 'Probleme rencontré* : ') !!}
             </div>
+
             <div>
-                {!! Form::label('DateEnr', 'DateEnr : ', ['class' => '#']) !!}
-                {!! Form::text('DateEnr', $defautDateEnr, ['class' => '#']) !!}
-                {!! $errors->first('DateEnr', '<small >:message</small>') !!}
+                {!! Form::textarea('probleme', null, ['required' => 'required']) !!}
+                {!! $errors->first('probleme', '<small >:message</small>') !!}
             </div>
+
             <div>
-                {!! Form::label('ligneDetail', 'ligneDetail : ', ['class' => '#']) !!}
-                {!! Form::text('ligneDetail', $defautligneDetail, ['class' => '#']) !!}
-                {!! $errors->first('ligneDetail', '<small >:message</small>') !!}
+                {!! Form::label('commentaire', 'Commentaire : ') !!}
+            </div>
+
+            <div>
+                {!! Form::textarea('commentaire') !!}
+                {!! $errors->first('commentaire', '<small >:message</small>') !!}
             </div>
 
         </fieldset>
-
+        <p class="champ-obligatoire">* : champ obligatoire</p>
 
 
             {!! Form::submit('Valider') !!}
