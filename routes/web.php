@@ -30,58 +30,56 @@ Route::get('/', function () {
     return redirect()->route('interventions');
 });
 
-Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
-Route::get('interventions/filtres', [InterventionController::class,'listeInterventionsFiltrees'])->name('interventionsFiltrees');
-Route::get('detail-intervention/{id}',[InterventionController::class,'detailIntervention'])->name('detailIntervention');
-Route::get('demande-intervention',[InterventionController::class,'demandeInterventionGet'])->name('demandeInterventionGet');
-Route::post('demande-intervention',[InterventionController::class,'demandeInterventionPost'])->name('demandeInterventionPost');
+Route::group(['middleware' => 'App\Http\Middleware\AccesListeInter'], function () {
 
+    Route::get('interventions', [InterventionController::class,'listeInterventions'])->name('interventions');
+    Route::get('interventions/filtres', [InterventionController::class,'listeInterventionsFiltrees'])->name('interventionsFiltrees');
+    Route::get('detail-intervention/{id}',[InterventionController::class,'detailIntervention'])->name('detailIntervention');
 
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\AccesDemandeInter'], function () {
+
+    Route::get('demande-intervention',[InterventionController::class,'demandeInterventionGet'])->name('demandeInterventionGet');
+    Route::Post('demande-intervention',[InterventionController::class,'demandeInterventionPost'])->name('demandeInterventionPost');
+
+});
 
 
 // ---------------------- PIECES DETACHEES ----------------------
-Route::get('pieces-detachees', [PiecesDetacheesController::class,'get'])->name('pieces-detachees');
+Route::group(['middleware' => 'App\Http\Middleware\AccesPiecesDetachees'], function () {
+
+    Route::get('pieces-detachees', [PiecesDetacheesController::class,'get'])->name('pieces-detachees');
+
+});
 
 
 
 // ---------------------- SUPPORT ----------------------
-Route::get('support', [SupportController::class,'get'])->name('support')->middleware('auth');
+Route::group(['middleware' => 'App\Http\Middleware\AccesSupport'], function () {
 
+    Route::get('support', [SupportController::class,'get'])->name('support')->middleware('auth');
 
+});
 
 // ---------------------- MON COMPTE ----------------------
-Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte');
+Route::group(['middleware' => 'App\Http\Middleware\AccesCompte'], function () {
 
+    Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte');
+
+});
 
 // ---------------- ADMIN ----------------
+Route::group(['middleware' => 'App\Http\Middleware\AccesAdmin'], function () {
 
+    Route::get('admin-liste', [AdminController::class,'liste'])->name('admin-liste');
+    Route::get('admin-detail/{id}', [AdminController::class,'detailUser'])->name('admin-detail');
+    Route::get('admin-creation', [AdminController::class,'creationGet'])->name('admin-creation-get');
+    Route::post('admin-creation', [AdminController::class,'creationPost'])->name('admin-creation-post');
+    Route::get('admin-modification/{id}', [AdminController::class,'modificationGet'])->name('admin-modification-get');
+    Route::post('admin-modification', [AdminController::class,'modificationPost'])->name('admin-modification-post');
 
-
-Route::get('admin-liste', [AdminController::class,'liste'])
-->name('admin-liste')
-->middleware('App\Http\Middleware\Admin');
-
-Route::get('admin-detail/{id}', [AdminController::class,'detailUser'])
-->name('admin-detail')
-->middleware('App\Http\Middleware\Admin');
-
-Route::get('admin-creation', [AdminController::class,'creationGet'])
-->name('admin-creation-get')
-->middleware('App\Http\Middleware\Admin');
-
-Route::post('admin-creation', [AdminController::class,'creationPost'])
-->name('admin-creation-post')
-->middleware('App\Http\Middleware\Admin');
-
-Route::get('admin-modification/{id}', [AdminController::class,'modificationGet'])
-->name('admin-modification-get')
-->middleware('App\Http\Middleware\Admin')
-;
-Route::post('admin-modification', [AdminController::class,'modificationPost'])
-->name('admin-modification-post')
-->middleware('App\Http\Middleware\Admin');
-
+});
 
 
 });

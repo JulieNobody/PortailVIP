@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
-class Admin
+class AccesDemandeInter
 {
     /**
      * Handle an incoming request.
@@ -13,15 +14,12 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-
-        //user connecté mais pas admin
-        if(auth()->user()->Acces[8] != 1)
+        if(auth()->user()->Acces[1] != 1)
         {
             return redirect('/interventions');
         }
-
         return $next($request);
     }
 }
