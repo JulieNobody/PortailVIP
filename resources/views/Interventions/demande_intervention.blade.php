@@ -29,8 +29,9 @@ Demande d'intervention
 
         {!! Form::open(['route' => 'demandeInterventionPost', 'method' => 'post']) !!}
 
+        {{ csrf_field() }}
         <fieldset>
-            <legend>Demandeur : {{$user->NomUtil}}</legend>
+            <legend>Demandeur : {{auth()->user()->NomUtil}}</legend>
 
             <div>
                 {!! Form::label('cores_info_nom', 'Corespondant informatique* : ') !!}
@@ -66,31 +67,57 @@ Demande d'intervention
 
             <div>
                 {!! Form::label('site_liste', 'Liste des sites : ') !!}
-                {{ Form::select('site_liste', $listeAdresse, ['id' => 'site_liste']) }}
+                {{ Form::select('site_liste', $listeAdresse,$listeAdresse->id = 0, ['id' => 'site_liste']) }}
             </div>
-
-
 
             <script>
                 $(document).ready(function(){
+                    $("#site_liste").on('change', function run() {
 
-                    let test = document.getElementById('test');
-                    test.innerText = "toto2";
+                       //Je récupère l'ID associé à l'adresse du select
+                        var idVille = $("#site_liste").val();
 
-                    let siteListe = document.getElementById('site_liste');
+                            $("#site_nom").val("");
+                            $("#site_adresse").val("");
+                            $("#site_ville").val("");
+                            $("#site_cp").val("");
+                            $("#site_tel").val("");
+                            $("#site_fax").val("");
 
-                    let site_test = document.getElementById('site_test');
+                        $.ajax({
+                            url : "getInterventionSite",
+                            type : 'POST',
+                            dataType   :'json',
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: {
+                                'idVille': idVille
+                                },
 
-                    site_test.innerHTML = "<input type="site_test" name="site_test" id="site_test" value="John" required>";
+                        }).done(function(data, textStatus) {
+
+
+                            $("#site_nom").val(data.inter.NomLivCli);
+                            $("#site_adresse").val(data.inter.AdLivCli);
+                            $("#site_ville").val(data.inter.VilleLivCli);
+                            $("#site_cp").val(data.inter.CPLivCli);
+                            $("#site_tel").val(data.inter.TelLivCli);
+                            $("#site_fax").val(data.inter.FaxLivCli);
+
+                        }).fail(function(textStatus, errorThrown) {
+                            $("#site_nom").empty();
+                            $("#site_adresse").empty();
+                            $("#site_ville").empty();
+                            $("#site_cp").empty();
+                            $("#site_tel").empty();
+                            $("#site_fax").empty();
+                        });
+
+                    })
                 });
             </script>
 
 
-
-            <p id="test">test</p>
-
-
-            <p>Si vous ne trouvez pas votre site dans la liste, saissez les nouvelles données :</p>
+            <p id="sortie_lieu">Si vous ne trouvez pas votre site dans la liste, saissez les nouvelles données :</p>
 
             <div>
                 {!! Form::label('site_nom', 'Nom* : ') !!}
@@ -105,32 +132,32 @@ Demande d'intervention
             </div>
             <div>
                 {!! Form::label('site_adresse', 'Adresse* : ') !!}
-                {!! Form::text('site_adresse', null, ['required' => 'required', 'size' => '100']) !!}
+                {!! Form::text('site_adresse', null, ['required' => 'required', 'size' => '100','id' => 'site_adresse']) !!}
                 {!! $errors->first('site_adresse', '<small >:message</small>') !!}
             </div>
 
             <div>
                 {!! Form::label('site_ville', 'Ville* : ') !!}
-                {!! Form::text('site_ville', null, ['required' => 'required']) !!}
+                {!! Form::text('site_ville', null, ['required' => 'required','id' => 'site_ville']) !!}
                 {!! $errors->first('site_ville', '<small >:message</small>') !!}
 
                 {!! Form::label('site_cp', 'Code postal* : ') !!}
-                {!! Form::text('site_cp', null, ['required' => 'required']) !!}
+                {!! Form::text('site_cp', null, ['required' => 'required','id' => 'site_cp']) !!}
                 {!! $errors->first('site_cp', '<small >:message</small>') !!}
             </div>
 
             <div>
                 {!! Form::label('site_tel', 'Telephone* : ') !!}
-                {!! Form::text('site_tel', null, ['required' => 'required']) !!}
+                {!! Form::text('site_tel', null, ['required' => 'required','id' => 'site_tel']) !!}
                 {!! $errors->first('site_tel', '<small >:message</small>') !!}
 
                 {!! Form::label('site_fax', 'Fax* : ') !!}
-                {!! Form::text('site_fax', null, ['required' => 'required']) !!}
+                {!! Form::text('site_fax', null, ['required' => 'required','id' => 'site_fax']) !!}
                 {!! $errors->first('site_fax', '<small >:message</small>') !!}
             </div>
             <div>
                 {!! Form::label('site_email', 'Email* : ') !!}
-                {!! Form::email('site_email', null, ['required' => 'required']) !!}
+                {!! Form::email('site_email', auth()->user()->AdMailContact, ['required' => 'required']) !!}
                 {!! $errors->first('site_email', '<small >:message</small>') !!}
             </div>
 

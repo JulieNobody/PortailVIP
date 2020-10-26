@@ -215,32 +215,27 @@ class InterventionController extends Controller
         return view('Interventions\detail_intervention', compact('intervention'));
     }
 
+
+
+
     public function demandeInterventionGet ()
     {
 
-        $user = auth()->user();
-
-        $interventions = Intervention::where('NomCmdCli', '=', "CAM 33")->get();
-        //$interventions = Intervention::where('NomCmdCli', '=', $user->NomUtil);
-
-        $listeAdresse = array();
-
-        array_push($listeAdresse, "- Selectionnez un site -");
-
-        foreach ($interventions as $inter)
-        {
-            $site = $inter->AdLivCli ." - ". $inter->CPLivCli ." - ". $inter->VilleLivCli;
-
-            array_push($listeAdresse, $site);
-        }
+        $listeAdresse = Intervention::where('NomCmdCli', '=', auth()->user()->NomUtil)->pluck('NomLivCli','id');
+        $listeAdresse->prepend('Sélectionnez un site', '0');
 
 
-
-
-
-
-        return view('Interventions\demande_intervention', compact('user', 'interventions','listeAdresse'));
+        return view('Interventions\demande_intervention', compact('listeAdresse'));
     }
+
+    public function getInterventionSite(Request $request){
+
+        $id = $request->idVille;
+        $inter = Intervention::where('id', '=', $id)->first();
+
+        return response()->json(array('inter'=>$inter));
+    }
+
 
     public function demandeInterventionPost (DemandeInterRequest $request)
     {

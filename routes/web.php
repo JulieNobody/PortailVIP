@@ -42,7 +42,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccesDemandeInter'], function
 
     Route::get('demande-intervention',[InterventionController::class,'demandeInterventionGet'])->name('demandeInterventionGet');
     Route::Post('demande-intervention',[InterventionController::class,'demandeInterventionPost'])->name('demandeInterventionPost');
-
+    Route::post('getInterventionSite',[InterventionController::class,'getInterventionSite'])->name('getInterventionSite');
 });
 
 
