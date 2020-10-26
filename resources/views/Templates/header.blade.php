@@ -20,28 +20,32 @@
                     </a>
                 @endif
 
-                @if (Request::path() == "pieces-detachees")  <!-- //TODO modifier nom page -->
-                    <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie-curent'>
-                        <br>
-                        <p>Pièces détachées</p>
-                    </a>
-                @else
-                    <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie'>
-                        <br>
-                        <p>Pièces détachées</p>
-                    </a>
+                @if (auth()->user()->Acces[2] == 1)
+                    @if (Request::path() == "pieces-detachees")  <!-- //TODO modifier nom page -->
+                        <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie-curent'>
+                            <br>
+                            <p>Pièces détachées</p>
+                        </a>
+                    @else
+                        <a href="{{route('pieces-detachees')}}" class='nav-lien-caddie'>
+                            <br>
+                            <p>Pièces détachées</p>
+                        </a>
+                    @endif
                 @endif
 
-                @if (Request::path() == "support") <!-- //TODO modifier nom page -->
-                    <a href="{{route('support')}}" class='nav-lien-casque-curent'>
-                        <br>
-                        <p>Support</p>
-                    </a>
-                @else
-                    <a href="{{route('support')}}" class='nav-lien-casque'>
-                        <br>
-                        <p>Support</p>
-                    </a>
+                @if (auth()->user()->Acces[3] == 1)
+                    @if (Request::path() == "support") <!-- //TODO modifier nom page -->
+                        <a href="{{route('support')}}" class='nav-lien-casque-curent'>
+                            <br>
+                            <p>Support</p>
+                        </a>
+                    @else
+                        <a href="{{route('support')}}" class='nav-lien-casque'>
+                            <br>
+                            <p>Support</p>
+                        </a>
+                    @endif
                 @endif
             </nav>
 
@@ -60,8 +64,11 @@
                     <div>
                         <p id="nomClient">{{ Auth::user()->NomUtil }}</p>
                         <p>
-                            <a href="{{route('mon-compte')}}">Mon compte</a>
+                            @if (auth()->user()->Acces[5] == 1)
+                                <a href="{{route('mon-compte')}}">Mon compte</a>
+
                             -
+                            @endif
                             <a
                                 href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
