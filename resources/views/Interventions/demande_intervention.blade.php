@@ -77,12 +77,7 @@ Demande d'intervention
                        //Je récupère l'ID associé à l'adresse du select
                         var idVille = $("#site_liste").val();
 
-                            $("#site_nom").val("");
-                            $("#site_adresse").val("");
-                            $("#site_ville").val("");
-                            $("#site_cp").val("");
-                            $("#site_tel").val("");
-                            $("#site_fax").val("");
+
 
                         $.ajax({
                             url : "getInterventionSite",
@@ -95,6 +90,12 @@ Demande d'intervention
 
                         }).done(function(data, textStatus) {
 
+                            $("#site_nom").val("");
+                            $("#site_adresse").val("");
+                            $("#site_ville").val("");
+                            $("#site_cp").val("");
+                            $("#site_tel").val("");
+                            $("#site_fax").val("");
 
                             $("#site_nom").val(data.inter.NomLivCli);
                             $("#site_adresse").val(data.inter.AdLivCli);
@@ -104,12 +105,12 @@ Demande d'intervention
                             $("#site_fax").val(data.inter.FaxLivCli);
 
                         }).fail(function(textStatus, errorThrown) {
-                            $("#site_nom").empty();
-                            $("#site_adresse").empty();
-                            $("#site_ville").empty();
-                            $("#site_cp").empty();
-                            $("#site_tel").empty();
-                            $("#site_fax").empty();
+                            $("#site_nom").val("");
+                            $("#site_adresse").val("");
+                            $("#site_ville").val("");
+                            $("#site_cp").val("");
+                            $("#site_tel").val("");
+                            $("#site_fax").val("");
                         });
 
                     })

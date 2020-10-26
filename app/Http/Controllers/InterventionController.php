@@ -220,8 +220,23 @@ class InterventionController extends Controller
 
     public function demandeInterventionGet ()
     {
+        if(auth()->user()->Acces[8] == 1){
+            $listeAdresse = Intervention::all()->pluck('NomLivCli','id');
+        }
+        else{
+            $listeAdresse = Intervention::where('NomCmdCli', '=', auth()->user()->NomUtil)->pluck('NomLivCli','id');
+            //Je check si l'utilisateur connecté est associé à un nom de projet défini.
+            try {
+                $nomProjet = auth()->user()->param->NomProjet;
 
-        $listeAdresse = Intervention::where('NomCmdCli', '=', auth()->user()->NomUtil)->pluck('NomLivCli','id');
+                if ($nomProjet != null){
+                    $listeAdresse = Intervention::where('NomProjet','=',$nomProjet)->pluck('NomLivCli','id');
+                };
+
+            } catch (\Exception $e) {
+            }
+        }
+
         $listeAdresse->prepend('Sélectionnez un site', '0');
 
 
