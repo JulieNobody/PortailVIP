@@ -220,7 +220,26 @@ class InterventionController extends Controller
 
         $user = auth()->user();
 
-        return view('Interventions\demande_intervention', compact('user'));
+        $interventions = Intervention::where('NomCmdCli', '=', "CAM 33")->get();
+        //$interventions = Intervention::where('NomCmdCli', '=', $user->NomUtil);
+
+        $listeAdresse = array();
+
+        array_push($listeAdresse, "- Selectionnez un site -");
+
+        foreach ($interventions as $inter)
+        {
+            $site = $inter->AdLivCli ." - ". $inter->CPLivCli ." - ". $inter->VilleLivCli;
+
+            array_push($listeAdresse, $site);
+        }
+
+
+
+
+
+
+        return view('Interventions\demande_intervention', compact('user', 'interventions','listeAdresse'));
     }
 
     public function demandeInterventionPost (DemandeInterRequest $request)

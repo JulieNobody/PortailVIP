@@ -63,11 +63,41 @@ Demande d'intervention
 
         <fieldset>
             <legend>Site</legend>
+
+            <div>
+                {!! Form::label('site_liste', 'Liste des sites : ') !!}
+                {{ Form::select('site_liste', $listeAdresse, ['id' => 'site_liste']) }}
+            </div>
+
+
+
+            <script>
+                $(document).ready(function(){
+
+                    let test = document.getElementById('test');
+                    test.innerText = "toto2";
+
+                    let siteListe = document.getElementById('site_liste');
+
+                    let site_test = document.getElementById('site_test');
+
+                    site_test.innerHTML = "<input type="site_test" name="site_test" id="site_test" value="John" required>";
+                });
+            </script>
+
+
+
+            <p id="test">test</p>
+
+
+            <p>Si vous ne trouvez pas votre site dans la liste, saissez les nouvelles données :</p>
+
             <div>
                 {!! Form::label('site_nom', 'Nom* : ') !!}
-                {!! Form::text('site_nom', null, ['required' => 'required', 'size' => '100']) !!}
+                {!! Form::text('site_nom', null, ['required' => 'required', 'size' => '100','id' => 'site_nom']) !!}
                 {!! $errors->first('site_nom', '<small >:message</small>') !!}
             </div>
+
             <div>
                 {!! Form::label('site_libelle', 'Libellé* : ') !!}
                 {!! Form::text('site_libelle', null, ['required' => 'required', 'size' => '100']) !!}
