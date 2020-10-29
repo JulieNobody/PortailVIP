@@ -14,7 +14,7 @@ class PiecesDetacheesController extends Controller
 
 
 
-        return view('PiecesDetachees\pieces-detachees');
+        return view('PiecesDetachees.pieces-detachees');
     }
 }
 

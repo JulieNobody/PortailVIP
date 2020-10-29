@@ -1,4 +1,4 @@
-@extends('Templates\template-popup')
+@extends('Templates.template-popup')
 
 
 @section('title')

@@ -24,6 +24,6 @@ class SupportController extends Controller
 
 
 
-		return view('Support\support');
+		return view('Support.support');
     }
 }

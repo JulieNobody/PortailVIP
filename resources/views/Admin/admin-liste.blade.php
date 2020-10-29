@@ -1,4 +1,4 @@
-@extends('Templates\template')
+@extends('Templates.template')
 
 
 @section('title')
@@ -79,10 +79,11 @@ Admin - Liste des utilisateurs
                         {{$u->NomUtil}}
                     </div>
                     <div class="cell" data-title="Admin">
-                        @if($u->Acces[8] == '1')
-                            oui
+                        @if ($u->Acces != null)
+                            @if($u->Acces[8] == '1')
+                              oui
+                            @endif
                         @endif
-
                     </div>
                     <div class="cell" data-title="Détail Utilisateur">
                         <a href="{{route('admin-detail', [$u->id])}}"><img class="icon_tab" src="{{ asset('images/loupe_icon.png') }}"></a>

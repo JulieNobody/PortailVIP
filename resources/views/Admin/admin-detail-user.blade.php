@@ -1,4 +1,4 @@
-@extends('Templates\template')
+@extends('Templates.template')
 
 
 @section('title')
@@ -20,7 +20,7 @@ Admin - Détail utilisateur
                 <li><span>Société :</span> {{$user->SocSiteVIP}}</li>
                 <li><span>Code client :</span> {{$user->CodeUtil}}</li>
                 <li><span>Nom client :</span> {{$user->NomUtil}}</li>
-                <li><span>mot de passe (en clair) :</span> {{$user->PassUtil_clair}}</li>
+                <li><span>mot de passe (en clair) :</span> {{$user->PassUtil}}</li>
                 <li><span>Date de la dernière modification du mot de passe :</span> {{$user->DateModifPass}}</li>
             </ul>
 

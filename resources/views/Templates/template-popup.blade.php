@@ -2,12 +2,12 @@
 
 <html>
 
-    @include('Templates\head')
-    @include('Templates\header-popup')
+    @include('Templates.head')
+    @include('Templates.header-popup')
 
     @yield('contenu')
 
-    @include('Templates\footer')
+    @include('Templates.footer')
 
 
 

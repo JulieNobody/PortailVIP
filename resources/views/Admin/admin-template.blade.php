@@ -1,4 +1,4 @@
-@include('Admin\admin-header')
+@include('Admin.admin-header')
 
     @yield('admin-contenu')
 

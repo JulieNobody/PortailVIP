@@ -17,7 +17,7 @@ class MonCompteController extends Controller
         $Parc = $Parc->where('CodeCliFact', '=', auth()->user()->CodeCliFact);
         $Parc = $Parc->paginate(8);
 
-        return view('MonCompte\mon-compte', compact('user','Parc','motcle'));
+        return view('MonCompte.mon-compte', compact('user','Parc','motcle'));
     }
 
     public function listParcFiltres()
@@ -39,7 +39,7 @@ class MonCompteController extends Controller
 
         $Parc = $Parc->paginate(8)->appends($mesFiltres);
 
-        return view('MonCompte\mon-compte', compact('user','Parc','motcle'));
+        return view('MonCompte.mon-compte', compact('user','Parc','motcle'));
     }
 
 }
