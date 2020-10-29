@@ -10,7 +10,7 @@ class UtilisateurController extends Controller
     public function get()
 	{
 
-		return view('PiecesDetachees\pieces-detachees');
+		return view('PiecesDetachees.pieces-detachees');
     }
 
 

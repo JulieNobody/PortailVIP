@@ -1,4 +1,4 @@
-@extends('Templates\template')
+@extends('Templates.template')
 
 
 @section('title')

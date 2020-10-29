@@ -37,7 +37,7 @@ class AdminController extends Controller
         $defautDateDebChargeSite = null;
         $defautAgPourEnvoiPieces = null;          // non nullable
 
-        return view('Admin\admin-creation', compact(
+        return view('Admin.admin-creation', compact(
             'defautSocSiteVIP',
             'defautCodeUtil',
             'defautNomUtil',
@@ -70,8 +70,8 @@ class AdminController extends Controller
         $user->SocSiteVIP = $request->input('SocSiteVIP');
         $user->CodeUtil = $request->input('CodeUtil');
         $user->NomUtil = $request->input('NomUtil');
-        $user->PassUtil_clair = $request->input('PassUtil');             //mot de passe en clair
-        $user->PassUtil = Hash::make($request->input('PassUtil'));       //mot de passe hashé
+        $user->PassUtil = $request->input('PassUtil');             //mot de passe en clair
+        $user->PassUtil_hash = Hash::make($request->input('PassUtil'));       //mot de passe hashé
 
         $acces = "000000000";
         if($request->input('voirInter') == "oui")
@@ -240,7 +240,8 @@ class AdminController extends Controller
 
         $user->save();
 
-        return view('Admin\admin-validation');
+        //return view('Admin\admin-validation');
+        return redirect(route('admin-detail', [$user->id]));
     }
 
     public function liste()
@@ -263,14 +264,30 @@ class AdminController extends Controller
 
             $utilisateurs = $utilisateurs->paginate(15)->appends($mesFiltres);
 
-        return view('Admin\admin-liste',  compact('utilisateurs', 'motcle'));
+            foreach ($utilisateurs as $util)
+                {
+                if ($util->Acces == Null)
+                    {
+                    $util->Acces = "00000000000000000000";
+                    }
+                }
+
+
+        return view('Admin.admin-liste',  compact('utilisateurs', 'motcle'));
     }
 
 
     public function modificationGet($id)
 	{
         $user = user::where('id', '=', $id)->first();
-        return view('Admin\admin-modification', compact('user'));
+
+        if ($user->Acces == Null)
+            {
+            $user->Acces = "00000000000000000000";
+            }
+
+
+        return view('Admin.admin-modification', compact('user'));
     }
 
     public function modificationPost(UtilisateurRequest $request)
@@ -286,13 +303,13 @@ class AdminController extends Controller
         $user->NomUtil = $request->input('NomUtil');
 
         //si le mot de passe saisi est diférent du précédent, on met la date DateModifPass à jour
-        if($user->PassUtil_clair != $request->input('PassUtil'))
+        if($user->PassUtil != $request->input('PassUtil'))
         {
             $user->DateModifPass = Carbon::now();
         }
 
-        $user->PassUtil_clair = $request->input('PassUtil');
-        $user->PassUtil = Hash::make($request->input('PassUtil'));
+        $user->PassUtil = $request->input('PassUtil');
+        $user->PassUtil_hash = Hash::make($request->input('PassUtil'));
 
         $acces = "000000000";
         if($request->input('voirInter') == "oui")
@@ -465,15 +482,21 @@ class AdminController extends Controller
 
         $user->save();
 
-        return view('Admin\admin-validation');
+        //return view('Admin\admin-detail-user');
+        return redirect(route('admin-detail', [$user->id]));
     }
 
 
     public function detailUser($id)
 	{
         $user = user::where('id', '=', $id)->first();
+        if ($user->Acces == Null)
+           {
+           $user->Acces = "00000000000000000000";
+           }
 
-        return view('Admin\admin-detail-user', compact('user'));
+
+        return view('Admin.admin-detail-user', compact('user'));
     }
 
 }

@@ -36,7 +36,7 @@ class UtilisateurRequest extends FormRequest
             'AdMailContact' => 'required|max:150|email',
             'AdMailExped' => 'required|max:150|email',
             'AdMailCopie' => 'required|max:150|email',
-            'EnvMailCloture' => 'required|max:20|email',//
+            'EnvMailCloture' => 'required|max:20',//
             'DateDebEnvMail' => 'required|date',
             'CodeCliFact' => 'required|max:10',
             'DemIntervAffProjet' => 'required|max:30',

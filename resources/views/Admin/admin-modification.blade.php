@@ -1,4 +1,4 @@
-@extends('Templates\template')
+@extends('Templates.template')
 
 
 @section('title')
@@ -40,7 +40,7 @@ Admin - Modification utilisateur
             </div>
             <div>
                 {!! Form::label('PassUtil', 'Mot de passe* (en clair) : ') !!}
-                {!! Form::text('PassUtil', $user->PassUtil_clair, ['required' => 'required']) !!}
+                {!! Form::text('PassUtil', $user->PassUtil, ['required' => 'required']) !!}
                 {!! $errors->first('PassUtil', '<small >:message</small>') !!}
             </div>
 
@@ -193,7 +193,7 @@ Admin - Modification utilisateur
             </div>
             <div>
                 {!! Form::label('EnvMailCloture', 'EnvMailCloture* : ') !!}
-                {!! Form::email('EnvMailCloture', $user->EnvMailCloture, ['required' => 'required']) !!}
+                {!! Form::text('EnvMailCloture', $user->EnvMailCloture, ['required' => 'required']) !!}
                 {!! $errors->first('EnvMailCloture', '<small >:message</small>') !!}
             </div>
         </fieldset>

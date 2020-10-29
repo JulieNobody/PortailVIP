@@ -1,4 +1,4 @@
-@extends('Templates\template')
+@extends('Templates.template')
 
 
 @section('title')
@@ -52,7 +52,7 @@ Mon compte
                     <li><strong>Société :</strong> {{$user->SocSiteVIP}}</li>
                     <li><strong>Code client :</strong> {{$user->CodeUtil}}</li>
                     <li><strong>Nom client :</strong> {{$user->NomUtil}}</li>
-                    <li><strong>mot de passe (en clair) :</strong> {{$user->PassUtil_clair}}</li>
+                    <li><strong>mot de passe (en clair) :</strong> {{$user->PassUtil}}</li>
                     <li><strong>Date de la dernière modification du mot de passe :</strong> {{$user->DateModifPass}}</li>
                 </ul>
             </div>

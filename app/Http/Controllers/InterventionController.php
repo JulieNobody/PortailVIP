@@ -82,7 +82,7 @@ class InterventionController extends Controller
 
         $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15);
 
-		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
+		return view('Interventions.liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
 
 
@@ -187,14 +187,23 @@ class InterventionController extends Controller
 
             /*-------------- LE MOT CLÉ -------------- */
             //Si un mot clé est réclamé
+            //if(request()->has('valeurMotCle') && request('valeurMotCle') != null){
+            //    $interventions = $interventions->whereHas('motCle', function ($query) {
+            //        $query->where('mot_cle', 'like', '%' . request('valeurMotCle') . '%');
+            //    });
+            //    $motcle = request('valeurMotCle');
+            //}
+
+          /*-------------- LE MOT CLÉ -------------- */
+            //Si un mot clé est réclamé
             if(request()->has('valeurMotCle') && request('valeurMotCle') != null){
-                $interventions = $interventions->whereHas('motCle', function ($query) {
-                    $query->where('mot_cle', 'like', '%' . request('valeurMotCle') . '%');
-                });
+                $interventions = $interventions->where('motcleGen', 'like', '%' . request('valeurMotCle') . '%');
                 $motcle = request('valeurMotCle');
             }
 
-        $mesFiltres = [
+
+
+            $mesFiltres = [
             'date-min' => request('date-min'),
             'date-max' => request('date-max'),
             'cb-en-cours' => request('cb-en-cours'),
@@ -205,14 +214,14 @@ class InterventionController extends Controller
 
         $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15)->appends($mesFiltres);
 
-		return view('Interventions\liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
+		return view('Interventions.liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
     }
 
     public function detailIntervention ($id)
     {
         $intervention = Intervention::where('id', '=', $id)->first();
 
-        return view('Interventions\detail_intervention', compact('intervention'));
+        return view('Interventions.detail_intervention', compact('intervention'));
     }
 
 
@@ -240,7 +249,7 @@ class InterventionController extends Controller
         $listeAdresse->prepend('Sélectionnez un site', '0');
 
 
-        return view('Interventions\demande_intervention', compact('listeAdresse'));
+        return view('Interventions.demande_intervention', compact('listeAdresse'));
     }
 
     public function getInterventionSite(Request $request){

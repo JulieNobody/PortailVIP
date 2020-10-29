@@ -13,7 +13,7 @@ class Intervention extends Model
         protected $table = 't_intervention';
 
         //désactivation des colonnes created_at et updated_at
-        public $timestamp = false;
+        public $timestamps = false;
 
          // id autoincremente
     public $incrementing = true;

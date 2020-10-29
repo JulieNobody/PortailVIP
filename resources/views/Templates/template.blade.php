@@ -2,12 +2,12 @@
 
 <html>
 
-    @include('Templates\head')
-    @include('Templates\header')
+    @include('Templates.head')
+    @include('Templates.header')
 
     @yield('contenu')
 
-    @include('Templates\footer')
+    @include('Templates.footer')
 
 
 

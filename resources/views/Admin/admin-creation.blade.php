@@ -1,4 +1,4 @@
-@extends('Templates\template')
+@extends('Templates.template')
 
 
 @section('title')
@@ -141,7 +141,7 @@ Admin - Création utilisateur
         </div>
         <div>
             {!! Form::label('EnvMailCloture', 'EnvMailCloture* : ') !!}
-            {!! Form::email('EnvMailCloture', $defautEnvMailCloture, ['required' => 'required']) !!}
+            {!! Form::text('EnvMailCloture', $defautEnvMailCloture, ['required' => 'required']) !!}
             {!! $errors->first('EnvMailCloture', '<small >:message</small>') !!}
         </div>
     </fieldset>

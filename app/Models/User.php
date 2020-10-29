@@ -19,7 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'CodeUtil',
 
-        'PassUtil',
+        'PassUtil_hash',
     ];
 
     /**
@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'PassUtil',
+        'PassUtil_hash',
         'remember_token',
     ];
 
@@ -58,7 +58,7 @@ class User extends Authenticatable
      */
     public function getAuthPassword()
     {
-        return $this->PassUtil;
+        return $this->PassUtil_hash;
     }
 
 
