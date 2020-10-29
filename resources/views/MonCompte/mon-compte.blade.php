@@ -97,14 +97,14 @@ Mon compte
                 <div class="aCacher">
                     <fieldset class="fieldset-liste-inter">
                         <div class="filtresContainer">
-                            <form action="" method="get" class="form-example">
+                            <form action="{{route('mon-compte-parc-filtres')}}" method="get" class="form-example">
                                 @csrf
-                            <!-- ------------ MOT CLE ------------  -->
+                            <!-------------- MOT CLE -------------->
                             <div class="block-filtre">
-                                <input id="valeurDateMaxParc" type="text" placeholder="N° de série, marque, type..." name="valeurMotCle" value="">
+                            <input id="valeurDateMaxParc" type="text" placeholder="N° de série, marque, type..." name="valeurMotCle" value="{{$motcle}}">
                             </div>
 
-                            <!-- ------------ BOUTON ------------  -->
+                            <!-------------- BOUTON -------------->
                             <div >
                                 <button class="boutonFiltre" type="submit">Rechercher</button>
                             </div>
@@ -120,69 +120,55 @@ Mon compte
                                 <div class="cell" data-title="TypeAppareil">Type appareil</div>
                                 <div class="cell" data-title="Marque">Marque</div>
                                 <div class="cell" data-title="Classification">Classification</div>
+                                <div class="cell" data-title="AdresseName">Libelle</div>
+                                <div class="cell" data-title="PrinterAdress">Adresse</div>
+                                <div class="cell" data-title="PostalCode">Code Postal</div>
+                                <div class="cell" data-title="City">Ville</div>
                                 <div class="cell" data-title="DateDebutContrat">Date début contrat</div>
                                 <div class="cell" data-title="DateFinContrat">Date fin contrat</div>
                                 <div class="cell" data-title="DateFinGarantie">Date fin garantie</div>
                             </div>
 
-                            {{-- @if(count($documents) == 0)
+                            @if(count($Parc) == 0)
                                 </div>
                                     <p class="aucunResultat" >
                                         Aucun document
                                     </p>
-                            @else --}}
 
-                            {{-- @foreach ($docuements as $d) --}}
+                            @else
+
+                            @foreach ($Parc as $p)
 
                             <div class="row">
-                                <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
-                                <div class="cell" data-title="TypeAppareil">Laptop</div>
-                                <div class="cell" data-title="Marque">Lenovo</div>
-                                <div class="cell" data-title="Classification">LN 5008</div>
-                                <div class="cell" data-title="DateDebutContrat">01/09/2018</div>
-                                <div class="cell" data-title="DateFinContrat">01/09/2021</div>
-                                <div class="cell" data-title="DateFinGarantie">01/09/2019</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
-                                <div class="cell" data-title="TypeAppareil">Smartphone</div>
-                                <div class="cell" data-title="Marque">Samsung</div>
-                                <div class="cell" data-title="Classification">S6</div>
-                                <div class="cell" data-title="DateDebutContrat">06/10/2020</div>
-                                <div class="cell" data-title="DateFinContrat">01/09/2021</div>
-                                <div class="cell" data-title="DateFinGarantie">06/10/2022</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
-                                <div class="cell" data-title="TypeAppareil">Laptop</div>
-                                <div class="cell" data-title="Marque">Lenovo</div>
-                                <div class="cell" data-title="Classification">LN 7009</div>
-                                <div class="cell" data-title="DateDebutContrat">12/09/2020</div>
-                                <div class="cell" data-title="DateFinContrat">01/09/2021</div>
-                                <div class="cell" data-title="DateFinGarantie">12/09/2021</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
-                                <div class="cell" data-title="TypeAppareil">Imprimante</div>
-                                <div class="cell" data-title="Marque">Epson</div>
-                                <div class="cell" data-title="Classification">EP 6785</div>
-                                <div class="cell" data-title="DateDebutContrat">30/03/2017</div>
-                                <div class="cell" data-title="DateFinContrat">01/09/2021</div>
-                                <div class="cell" data-title="DateFinGarantie">30/03/2018</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell" data-title="NomProjet"><a href="">PR6789665</a></div>
-                                <div class="cell" data-title="TypeAppareil">Tablette</div>
-                                <div class="cell" data-title="Marque">Mac</div>
-                                <div class="cell" data-title="Classification">I Pad 6</div>
-                                <div class="cell" data-title="DateDebutContrat">15/11/2019</div>
-                                <div class="cell" data-title="DateFinContrat">01/09/2021</div>
-                                <div class="cell" data-title="DateFinGarantie">15/11/2020</div>
-                            </div>
-                            {{-- @endforeach
 
-                            @endif --}}
+                                <div class="cell" data-title="NomProjet">
+                                    <a href="">
+                                        <p>{{$p->CodeCliFact}}</p>
+                                        <p>{{$p->NomProjet}}</p>
+                                    </a>
+                                </div>
+                                <div class="cell" data-title="TypeAppareil">{{$p->Model}}</div>
+                                <div class="cell" data-title="Marque">{{$p->Marque}}</div>
+                                <div class="cell" data-title="Classification">{{$p->Classification}}</div>
+
+                                <div class="cell" data-title="AdresseName">{{$p->AddressName}}</div>
+                                <div class="cell" data-title="PrinterAdress">{{$p->PrinterAdress}}</div>
+                                <div class="cell" data-title="PostalCode">{{$p->PostalCode}}</div>
+                                <div class="cell" data-title="City">{{$p->City}}</div>
+
+                                <div class="cell" data-title="DateDebutContrat">{{$p->DateDebutContrat}}</div>
+                                <div class="cell" data-title="DateFinContrat">{{$p->DateFinContrat}}</div>
+                                <div class="cell" data-title="DateFinGarantie">{{$p->DateFinGarantie}}</div>
+                            </div>
+
+                             @endforeach
                         </div>
+                        @endif
+
+                        @if($Parc)
+                            {{ $Parc->links("pagination::default") }}
+                        @endif
+
                     </div>
                 </div>
             @endif

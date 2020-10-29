@@ -188,12 +188,15 @@ class InterventionController extends Controller
             /*-------------- LE MOT CLÉ -------------- */
             //Si un mot clé est réclamé
             if(request()->has('valeurMotCle') && request('valeurMotCle') != null){
+                //$interventions = $interventions->where('mot_cle', 'like', '%' . request('valeurMotCle') . '%');
                 $interventions = $interventions->whereHas('motCle', function ($query) {
                     $query->where('mot_cle', 'like', '%' . request('valeurMotCle') . '%');
                 });
                 $motcle = request('valeurMotCle');
             }
 
+            //modifier la table mot cle pour faire apparaitre un champ apres mot cle et en mettant le champ nomcliprojet
+            //
         $mesFiltres = [
             'date-min' => request('date-min'),
             'date-max' => request('date-max'),

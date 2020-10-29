@@ -77,4 +77,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Intervention');
     }
+
+    public function userParc()
+        {
+            return $this->hasMany('App\Models\UserParc', 'CodeCliFact', 'CodeCliFact');
+        }
+
 }

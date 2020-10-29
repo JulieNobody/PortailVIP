@@ -65,7 +65,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AccesSupport'], function () {
 // ---------------------- MON COMPTE ----------------------
 Route::group(['middleware' => 'App\Http\Middleware\AccesCompte'], function () {
 
-    Route::get('mon-compte', [MonCompteController::class,'get'])->name('mon-compte');
+    Route::get('mon-compte', [MonCompteController::class,'listParc'])->name('mon-compte');
+    Route::get('mon-compte-parc-filtres', [MonCompteController::class,'listParcFiltres'])->name('mon-compte-parc-filtres');
 
 });
 
