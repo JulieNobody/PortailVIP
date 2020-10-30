@@ -70,13 +70,14 @@ Appareil n°{{$parc->NumSerie}}
                         <li><span>Modèle :</span> {{$parc->Model}}</li>
                         <li><span>Numéro de série :</span> {{$parc->NumSerie}}</li>
                         <li><span>Classification :</span> {{$parc->Classification}}</li>
+                        <li><span>Adresse IP</span> {{$parc->AdresseIP}}</li>
+                        <li><span>Adresse Mac :</span> {{$parc->MacAdress}}</li>
                     </ul>
                 </div>
 
                 <div>
                     <h3>Emplacement</h3>
                     <ul>
-                        <li><span>Adresse IP / Adresse Mac :</span> {{$parc->AdresseIP}} / {{$parc->MacAdress}}</li>
                         <li><span>Service :</span> {{$parc->Department}}</li>
                         <li><span>Lieu :</span> {{$parc->AddressName}}</li>
                         <li><span>Adresse :</span> {{$parc->PrinterAdress}}</li>
