@@ -3,7 +3,7 @@
 namespace App\Gestion;
 
 use App\Models\Intervention;
-use App\Models\MotCle;
+use App\Models\UserParc;
 
 class GestionTableMotCle implements GestionTableMotCleInterface
 {
@@ -43,7 +43,7 @@ class GestionTableMotCle implements GestionTableMotCleInterface
         }
 
         // -------------- Mot clé : parc --------------
-        $parc = Parc::where('motcleGen','=' ,'')->get();
+        $parc = UserParc::where('motcleGen','=' ,'')->get();
         foreach ($parc as $p)
         {
 	    if ($p->motcleGen == null || $p->motcleGen == "")
@@ -51,13 +51,15 @@ class GestionTableMotCle implements GestionTableMotCleInterface
                 //construction de la chaine
                 $chaine = null;
                 $chaine =
-                    $p->xxxxxxxx." - ".
-                    $p->xxxxxxxx." - ".
-                    $p->xxxxxxxx." - ".
-                    $p->xxxxxxxx." - ".
-                    $p->xxxxxxxx." - ".
-                    $p->xxxxxxxx." - ".
-                    $p->xxxxxxxx
+                    $p->Marque." - ".
+                    $p->Model." - ".
+                    $p->NumSerie." - ".
+                    $p->Classification." - ".
+                    $p->AddressName." - ".
+                    $p->PrinterAdress." - ".
+                    $p->PostalCode." - ".
+                    $p->City." - ".
+                    $p->Country
                 ;
                 //insertion de la chaine
                 $p->motcleGen = $chaine;

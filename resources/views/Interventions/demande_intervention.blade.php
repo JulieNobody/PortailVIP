@@ -35,12 +35,12 @@ Demande d'intervention
             <legend>Demandeur : {{auth()->user()->NomUtil}}</legend>
 
             <div>
-                {!! Form::label('CorrespInfo', 'Corespondant informatique : ') !!}
-                {!! Form::text('CorrespInfo') !!}
+                {!! Form::label('CorrespInfo', 'Corespondant informatique* : ') !!}
+                {!! Form::text('CorrespInfo', null, ['required' => 'required']) !!}
                 {!! $errors->first('CorrespInfo', '<small >:message</small>') !!}
 
-                {!! Form::label('TelCorrespInfo', 'Téléphone : ') !!}
-                {!! Form::text('TelCorrespInfo') !!}
+                {!! Form::label('TelCorrespInfo', 'Téléphone* : ') !!}
+                {!! Form::text('TelCorrespInfo', null, ['required' => 'required']) !!}
                 {!! $errors->first('TelCorrespInfo', '<small >:message</small>') !!}
             </div>
             <div>
@@ -153,7 +153,7 @@ Demande d'intervention
             </div>
             <div>
                 {!! Form::label('MailCliDiv', 'Email : ') !!}
-                {!! Form::email('MailCliDiv', auth()->user()->AdMailContact) !!}
+                {!! Form::email('MailCliDiv', auth()->user()->AdMailContact, ['required' => 'required']) !!}
                 {!! $errors->first('MailCliDiv', '<small >:message</small>') !!}
             </div>
 
@@ -164,8 +164,8 @@ Demande d'intervention
         <fieldset>
             <legend>Appareil</legend>
             <div>
-                {!! Form::label('Interlocuteur', 'Utilisateur : ') !!}
-                {!! Form::text('Interlocuteur') !!}
+                {!! Form::label('Interlocuteur', 'Utilisateur* : ') !!}
+                {!! Form::text('Interlocuteur', null, ['required' => 'required']) !!}
                 {!! $errors->first('Interlocuteur', '<small >:message</small>') !!}
 
                 {!! Form::label('Service', 'Service, étage, bureau : ') !!}
@@ -173,8 +173,8 @@ Demande d'intervention
                 {!! $errors->first('Service', '<small >:message</small>') !!}
             </div>
             <div>
-                {!! Form::label('RefCli', 'Reference client* : ') !!}
-                {!! Form::text('RefCli', null, ['required' => 'required']) !!}
+                {!! Form::label('RefCli', 'Reference client : ') !!}
+                {!! Form::text('RefCli') !!}
                 {!! $errors->first('RefCli', '<small >:message</small>') !!}
             </div>
             <div>

@@ -274,13 +274,13 @@ class InterventionController extends Controller
         // ######## données hors formulaire ########
         $demande_intervention->DateSrv = Carbon::now();
         $demande_intervention->HeureSrv = carbon::now();                         //FIXME : mauvaise heure, voir fuseau horaire
-        $demande_intervention->IP = $request->ip();                                // A TESTER EN PROD
+        $demande_intervention->IP = $request->ip();                              // FIXME : A TESTER EN PROD
         $demande_intervention->CodeUtilCliCompte = $user->CodeUtil;
         $demande_intervention->CodeCli = $user->CodeUtil;
         //non traité
         $demande_intervention->libCourt = null;
-        $demande_intervention->DateDebGar = "0000-00-00";
-        $demande_intervention->DateFinGar = "0000-00-00";
+        $demande_intervention->DateDebGar = Carbon::createFromDate('0000', '01', '01', 'Europe/Paris');
+        $demande_intervention->DateFinGar = Carbon::createFromDate('0000', '01', '01', 'Europe/Paris');
         $demande_intervention->DemSwap = null;
         $demande_intervention->Classification = null;
         $demande_intervention->NumInt = 'M0000';
@@ -296,7 +296,6 @@ class InterventionController extends Controller
         $demande_intervention->VilleCliDiv = $request->input('VilleCliDiv');
         $demande_intervention->TelCliDiv = $request->input('TelCliDiv');
         $demande_intervention->FaxCliDiv = $request->input('FaxCliDiv');
-        //changer -> vérif nb caract + numeric
         $demande_intervention->MailCliDiv = $request->input('MailCliDiv');
         $demande_intervention->Interlocuteur = $request->input('Interlocuteur');
         $demande_intervention->CorrespInfo = $request->input('CorrespInfo');
@@ -306,13 +305,26 @@ class InterventionController extends Controller
         $demande_intervention->Secretaire = $request->input('Secretaire');
         $demande_intervention->TelSecretaire = $request->input('TelSecretaire');
         $demande_intervention->Service = $request->input('Service');
-        $demande_intervention->RefCli = $request->input('RefCli');
+
+        if($request->input('RefCli') == null)
+        {
+            $demande_intervention->RefCli = ' ';
+        }else{
+            $demande_intervention->RefCli = $request->input('RefCli');
+        }
+
         $demande_intervention->TypeApp = $request->input('TypeApp');
         $demande_intervention->Marque = $request->input('Marque');
         $demande_intervention->NumSerie = $request->input('NumSerie');
-        $demande_intervention->Observ = $request->input('Observ');
-        $demande_intervention->Comment = $request->input('Observ');
-//if null : ' '
+
+        if($request->input('Observ') == null)
+        {
+            $demande_intervention->Observ = ' ';
+            $demande_intervention->Comment = ' ';
+        }else{
+            $demande_intervention->Observ = $request->input('Observ');
+            $demande_intervention->Comment = $request->input('Observ');
+        }
 
         $demande_intervention->Symptome = $request->input('Symptome');
 
