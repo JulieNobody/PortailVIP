@@ -88,16 +88,16 @@ Mon compte
             </div>
 
             @if (auth()->user()->Acces[7] == 1)
-                <div class="detail-titre">
+                <div class="detail-titre" id="monParc">
                     <h2>Parc</h2>
                     <div class="flecheContainer">
-                        <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
+                    <img  class="{{$cssImgParc}}" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
                     </div>
                 </div>
-                <div class="aCacher">
+            <div class="aCacher" style="{{$cssParc}}">
                     <fieldset class="fieldset-liste-inter">
                         <div class="filtresContainer">
-                            <form action="{{route('mon-compte-parc-filtres')}}" method="get" class="form-example">
+                            <form action="{{route('mon-compte-parc-filtres').'#monParc'}}" method="get" class="form-example">
                                 @csrf
                             <!-------------- MOT CLE -------------->
                             <div class="block-filtre">
@@ -119,7 +119,7 @@ Mon compte
                                 <div class="cell" data-title="NomProjet">Nom projet</div>
                                 <div class="cell" data-title="TypeAppareil">Type appareil</div>
                                 <div class="cell" data-title="Marque">Marque</div>
-                                <div class="cell" data-title="Classification">Classification</div>
+                                <div class="cell" data-title="NumSerie">Numéro de série</div>
                                 <div class="cell" data-title="AdresseName">Libelle</div>
                                 <div class="cell" data-title="PrinterAdress">Adresse</div>
                                 <div class="cell" data-title="PostalCode">Code Postal</div>
@@ -142,14 +142,13 @@ Mon compte
                             <div class="row">
 
                                 <div class="cell" data-title="NomProjet">
-                                    <a href="">
                                         <p>{{$p->CodeCliFact}}</p>
                                         <p>{{$p->NomProjet}}</p>
-                                    </a>
                                 </div>
                                 <div class="cell" data-title="TypeAppareil">{{$p->Model}}</div>
                                 <div class="cell" data-title="Marque">{{$p->Marque}}</div>
-                                <div class="cell" data-title="Classification">{{$p->Classification}}</div>
+                                <div class="cell" data-title="NumSerie">
+                                    <a href="" onclick=PopupCentrer('{{route('detailParc',[$p->id])}}')>{{$p->NumSerie}}</a></div>
 
                                 <div class="cell" data-title="AdresseName">{{$p->AddressName}}</div>
                                 <div class="cell" data-title="PrinterAdress">{{$p->PrinterAdress}}</div>
@@ -165,8 +164,15 @@ Mon compte
                         </div>
                         @endif
 
-                        @if($Parc)
-                            {{ $Parc->links("pagination::default") }}
+                        @if(count($Parc) != 0)
+                            <div id="voirPlusContainer">
+                                <div id="voirPlus" style="{{$voirPlus}}">
+                                    <a href="{{route('mon-compte-parc-filtres').'?page=2#monParc'}}"> - En voir plus - </a>
+                                </div>
+                            </div>
+                            <div style="{{$cssLinks}}">
+                                {{ $Parc->links("pagination::default") }}
+                            </div>
                         @endif
 
                     </div>

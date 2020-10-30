@@ -532,3 +532,18 @@ align-items: center;
     margin: 0px;
 }
 
+#voirPlusContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#voirPlus a{
+text-align: center;
+font-weight: 400;
+font-size: 17px;
+color: #254373;
+
+}
+
