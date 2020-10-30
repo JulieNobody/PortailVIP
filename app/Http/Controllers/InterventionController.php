@@ -268,31 +268,65 @@ class InterventionController extends Controller
         // ------------- CREATION INTERVENTION -------------
         $demande_intervention = new demandeInter;
 
-        $demande_intervention->id_demandeur = $user->id;
-        $demande_intervention->site_nom = $request->input('site_nom');
-        $demande_intervention->site_libelle = $request->input('site_libelle');
-        $demande_intervention->site_adresse = $request->input('site_adresse');
-        $demande_intervention->site_cp = $request->input('site_cp');
-        $demande_intervention->site_ville = $request->input('site_ville');
-        $demande_intervention->site_tel = $request->input('site_tel');
-        $demande_intervention->site_fax = $request->input('site_fax');
-        $demande_intervention->site_email = $request->input('site_email');
-        $demande_intervention->cores_info_nom = $request->input('cores_info_nom');
-        $demande_intervention->cores_info_tel = $request->input('cores_info_tel');
-        $demande_intervention->cores_info_bis_nom = $request->input('cores_info_bis_nom');
-        $demande_intervention->cores_info_bis_tel = $request->input('cores_info_bis_tel');
-        $demande_intervention->secretariat_nom = $request->input('secretariat_nom');
-        $demande_intervention->secretariat_tel = $request->input('secretariat_tel');
-        $demande_intervention->app_utilisateur = $request->input('app_utilisateur');
-        $demande_intervention->app_bureau = $request->input('app_bureau');
-        $demande_intervention->app_reference_client = $request->input('app_reference_client');
-        $demande_intervention->app_marque = $request->input('app_marque');
-        $demande_intervention->app_no_serie = $request->input('app_no_serie');
-        $demande_intervention->app_designation = $request->input('app_designation');
-        $demande_intervention->probleme = $request->input('probleme');
-        $demande_intervention->commentaire = $request->input('commentaire');
+        //parametrage de la façade Carbon en local
+        Carbon::setLocale('fr');
 
-        //dd($demande_intervention);
+        // ######## données hors formulaire ########
+        $demande_intervention->DateSrv = Carbon::now();
+        $demande_intervention->HeureSrv = carbon::now();                         //FIXME : mauvaise heure, voir fuseau horaire
+        $demande_intervention->IP = $request->ip();                              // FIXME : A TESTER EN PROD
+        $demande_intervention->CodeUtilCliCompte = $user->CodeUtil;
+        $demande_intervention->CodeCli = $user->CodeUtil;
+        //non traité
+        $demande_intervention->libCourt = null;
+        $demande_intervention->DateDebGar = Carbon::createFromDate('0000', '01', '01', 'Europe/Paris');
+        $demande_intervention->DateFinGar = Carbon::createFromDate('0000', '01', '01', 'Europe/Paris');
+        $demande_intervention->DemSwap = null;
+        $demande_intervention->Classification = null;
+        $demande_intervention->NumInt = 'M0000';
+        $demande_intervention->ArtCode = null;
+        $demande_intervention->CodeDefaut = null;
+        $demande_intervention->CodeDelai = null;
+        $demande_intervention->InterlocConcerne = null;
+
+        // ######## donnée via formulaire ########
+        $demande_intervention->RaisonSocialeCliDiv = $request->input('RaisonSocialeCliDiv');
+        $demande_intervention->AdCliDiv = $request->input('AdCliDiv');
+        $demande_intervention->CPCliDiv = $request->input('CPCliDiv');
+        $demande_intervention->VilleCliDiv = $request->input('VilleCliDiv');
+        $demande_intervention->TelCliDiv = $request->input('TelCliDiv');
+        $demande_intervention->FaxCliDiv = $request->input('FaxCliDiv');
+        $demande_intervention->MailCliDiv = $request->input('MailCliDiv');
+        $demande_intervention->Interlocuteur = $request->input('Interlocuteur');
+        $demande_intervention->CorrespInfo = $request->input('CorrespInfo');
+        $demande_intervention->TelCorrespInfo = $request->input('TelCorrespInfo');
+        $demande_intervention->CorrespInfoBis = $request->input('CorrespInfoBis');
+        $demande_intervention->TelCorrespInfoBis = $request->input('TelCorrespInfoBis');
+        $demande_intervention->Secretaire = $request->input('Secretaire');
+        $demande_intervention->TelSecretaire = $request->input('TelSecretaire');
+        $demande_intervention->Service = $request->input('Service');
+
+        if($request->input('RefCli') == null)
+        {
+            $demande_intervention->RefCli = ' ';
+        }else{
+            $demande_intervention->RefCli = $request->input('RefCli');
+        }
+
+        $demande_intervention->TypeApp = $request->input('TypeApp');
+        $demande_intervention->Marque = $request->input('Marque');
+        $demande_intervention->NumSerie = $request->input('NumSerie');
+
+        if($request->input('Observ') == null)
+        {
+            $demande_intervention->Observ = ' ';
+            $demande_intervention->Comment = ' ';
+        }else{
+            $demande_intervention->Observ = $request->input('Observ');
+            $demande_intervention->Comment = $request->input('Observ');
+        }
+
+        $demande_intervention->Symptome = $request->input('Symptome');
 
         $demande_intervention->save();
 

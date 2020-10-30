@@ -10,7 +10,7 @@ class demandeInter extends Model
     use HasFactory;
 
 
-    protected $table = 't_demande_inter';
+    protected $table = 't_deminterv';
 
     //désactivation des colonnes created_at et updated_at
     public $timestamps = false;

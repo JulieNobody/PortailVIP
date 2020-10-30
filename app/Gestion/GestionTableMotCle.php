@@ -3,7 +3,7 @@
 namespace App\Gestion;
 
 use App\Models\Intervention;
-use App\Models\MotCle;
+use App\Models\UserParc;
 
 class GestionTableMotCle implements GestionTableMotCleInterface
 {
@@ -11,15 +11,10 @@ class GestionTableMotCle implements GestionTableMotCleInterface
     public function miseAJourTable()
 	{
 
-        //$toutesInterventions = Intervention::all();
-        $toutesInterventions = Intervention::where('motcleGen','=' ,'')->get();
-
-        //var_dump($toutesInterventions->NumInt);
-
-        foreach ($toutesInterventions as $i)
+        // -------------- Mot clé : intervention --------------
+        $interventions = Intervention::where('motcleGen','=' ,'')->get();
+        foreach ($interventions as $i)
         {
-            //$verifIdExist = MotCle::where('id',$i->id)->get();
-	    //if ($verifIdExist->isEmpty())
 	    if ($i->motcleGen == null || $i->motcleGen == "")
             {
                 //construction de la chaine
@@ -40,24 +35,66 @@ class GestionTableMotCle implements GestionTableMotCleInterface
                     $i->RefDossierConst." - ".
                     $i->NumContrat." - ".
                     $i->CodeMarche
-
                 ;
-
-                //insersion de la chaine
+                //insertion de la chaine
                 $i->motcleGen = $chaine;
-
                 $i->save();
-                //$MotCle = new MotCle;
-                //$MotCle->id = $i->id;
-                //$MotCle->Type = "INT";
-                //$MotCle->mot_cle = $chaine;
-                //$MotCle->save();
-
-                //$i->motCleGen = "O";
-                //$i->save();
-
             }
         }
+
+        // -------------- Mot clé : parc --------------
+        $parc = UserParc::where('motcleGen','=' ,'')->get();
+        foreach ($parc as $p)
+        {
+	    if ($p->motcleGen == null || $p->motcleGen == "")
+            {
+                //construction de la chaine
+                $chaine = null;
+                $chaine =
+                    $p->Marque." - ".
+                    $p->Model." - ".
+                    $p->NumSerie." - ".
+                    $p->Classification." - ".
+                    $p->AddressName." - ".
+                    $p->PrinterAdress." - ".
+                    $p->PostalCode." - ".
+                    $p->City." - ".
+                    $p->Country
+                ;
+                //insertion de la chaine
+                $p->motcleGen = $chaine;
+                $p->save();
+            }
+        }
+
+
+        // -------------- Mot clé : factures --------------
+        /*
+        $factures = Factures::where('motcleGen','=' ,'')->get();
+        foreach ($factures as $f)
+        {
+	    if ($f->motcleGen == null || $f->motcleGen == "")
+            {
+                //construction de la chaine
+                $chaine = null;
+                $chaine =
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx." - ".
+                    $f->xxxxxxxx
+                ;
+                //insertion de la chaine
+                $f->motcleGen = $chaine;
+                $f->save();
+            }
+        }
+        */
+
+
 
     }
 

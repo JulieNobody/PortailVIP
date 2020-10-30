@@ -9,6 +9,8 @@ class UserParc extends Model
 {
     use HasFactory;
 
+    //désactivation des colonnes created_at et updated_at
+    public $timestamps = false;
 
     // nom de la table
     protected $table = 't_parc';
