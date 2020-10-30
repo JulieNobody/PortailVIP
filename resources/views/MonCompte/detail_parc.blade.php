@@ -54,39 +54,37 @@ Appareil n°{{$parc->NumSerie}}
                 </div>
             </div>
 
-            <div class="detail">
+            <div class="detail-titre">
+                <h2>Appareil</h2>
+                <div class="flecheContainer">
+                    <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
+                </div>
+            </div>
 
-                <div class="detail-titre">
-                    <h2>Appareil</h2>
-                    <div class="flecheContainer">
-                        <img  class="close" src="{{ asset('images/fleche_section.png')}}" alt="fleche a cliquer">
-                    </div>
+            <div class="aCacher" id="coordonnees_client" style="display: none">
+
+                <div>
+                    <h3>Caractéristiques</h3>
+                    <ul>
+                        <li><span>Marque :</span> {{$parc->Marque}}</li>
+                        <li><span>Modèle :</span> {{$parc->Model}}</li>
+                        <li><span>Numéro de série :</span> {{$parc->NumSerie}}</li>
+                        <li><span>Classification :</span> {{$parc->Classification}}</li>
+                    </ul>
                 </div>
 
-                <div class="aCacher" id="coordonnees_client" style="display: none">
-
-                    <div>
-                        <h3>Caractéristiques</h3>
-                        <ul>
-                            <li><span>Marque :</span> {{$parc->Marque}}</li>
-                            <li><span>Modèle :</span> {{$parc->Model}}</li>
-                            <li><span>Numéro de série :</span> {{$parc->NumSerie}}</li>
-                            <li><span>Classification :</span> {{$parc->Classification}}</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3>Emplacement</h3>
-                        <ul>
-                            <li><span>Adresse IP / Adresse Mac :</span> {{$parc->AdresseIP}} / {{$parc->MacAdress}}</li>
-                            <li><span>Service :</span> {{$parc->Department}}</li>
-                            <li><span>Lieu :</span> {{$parc->AddressName}}</li>
-                            <li><span>Adresse :</span> {{$parc->PrinterAdress}}</li>
-                            <li><span>Ville :</span> {{$parc->City}} {{$parc->PostalCode}}</li>
-                            <li><span>Pays :</span> {{$parc->Country}}</li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3>Emplacement</h3>
+                    <ul>
+                        <li><span>Adresse IP / Adresse Mac :</span> {{$parc->AdresseIP}} / {{$parc->MacAdress}}</li>
+                        <li><span>Service :</span> {{$parc->Department}}</li>
+                        <li><span>Lieu :</span> {{$parc->AddressName}}</li>
+                        <li><span>Adresse :</span> {{$parc->PrinterAdress}}</li>
+                        <li><span>Ville :</span> {{$parc->City}} {{$parc->PostalCode}}</li>
+                        <li><span>Pays :</span> {{$parc->Country}}</li>
+                    </ul>
                 </div>
+            </div>
 
             <div class="detail-titre">
                 <h2>Utilisateur</h2>
