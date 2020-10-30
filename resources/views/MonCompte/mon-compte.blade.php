@@ -25,6 +25,19 @@ Mon compte
             $("#valeurRechercheFactures").val("");
         });
 
+        function PopupCentrer(page) {
+            let largeur = screen.width*0.6;
+            let hauteur = screen.height*0.7;
+            let top=(screen.height-hauteur)/2;
+            let left=(screen.width-largeur)/2;
+
+            window.open(
+                        page,
+                        "Détail Intervention",
+                        "top="+top+",left="+left+",width="+largeur+",height="+hauteur+",menubar=no,scrollbars=no,statusbar=no"
+                    );
+
+        }
 
     });
 
