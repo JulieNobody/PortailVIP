@@ -126,16 +126,11 @@ Mon compte
                         <div class="table">
                             <div class="row header">
                                 <div class="cell" data-title="NomProjet">Nom projet</div>
-                                <div class="cell" data-title="TypeAppareil">Type appareil</div>
-                                <div class="cell" data-title="Marque">Marque</div>
-                                <div class="cell" data-title="NumSerie">Numéro de série</div>
-                                <div class="cell" data-title="AdresseName">Libelle</div>
-                                <div class="cell" data-title="PrinterAdress">Adresse</div>
-                                <div class="cell" data-title="PostalCode">Code Postal</div>
-                                <div class="cell" data-title="City">Ville</div>
-                                <div class="cell" data-title="DateDebutContrat">Date début contrat</div>
-                                <div class="cell" data-title="DateFinContrat">Date fin contrat</div>
-                                <div class="cell" data-title="DateFinGarantie">Date fin garantie</div>
+                                <div class="cell cellMateriel" data-title="Materiel">Matériel</div>
+                                <div class="cell cellAdresse" data-title="Adresse">Adresse</div>
+                                <div class="cell cellDates" data-title="DateDebutContrat">Date début contrat</div>
+                                <div class="cell cellDates" data-title="DateFinContrat">Date fin contrat</div>
+                                <div class="cell cellDates" data-title="DateFinGarantie">Date fin garantie</div>
                             </div>
 
                             @if(count($Parc) == 0)
@@ -154,16 +149,20 @@ Mon compte
                                         <p>{{$p->CodeCliFact}}</p>
                                         <p>{{$p->NomProjet}}</p>
                                 </div>
-                                <div class="cell" data-title="TypeAppareil">{{$p->Model}}</div>
-                                <div class="cell" data-title="Marque">{{$p->Marque}}</div>
-                                <div class="cell" data-title="NumSerie">
-                                    <a href="" onclick=PopupCentrer('{{route('detailParc',[$p->id])}}')>{{$p->NumSerie}}</a></div>
+                                <div class="cell" data-title="Materiel">
+                                    <a href="" onclick=PopupCentrer('{{route('detailParc',[$p->id])}}')>
+                                        <p> {{$p->Marque}}</p>
+                                        <p> {{$p->Model}}</p>
+                                        <p> {{$p->NumSerie}}</p>
+                                    </a>
+                                </div>
 
-                                <div class="cell" data-title="AdresseName">{{$p->AddressName}}</div>
-                                <div class="cell" data-title="PrinterAdress">{{$p->PrinterAdress}}</div>
-                                <div class="cell" data-title="PostalCode">{{$p->PostalCode}}</div>
-                                <div class="cell" data-title="City">{{$p->City}}</div>
+                                <div class="cell" data-title="Adresse">
+                                    <p> {{$p->AddressName}}</p>
+                                    <p> {{$p->PrinterAdress}}</p>
+                                    <p> {{$p->PostalCode}} {{$p->City}}</p>
 
+                                </div>
                                 <div class="cell" data-title="DateDebutContrat">{{$p->DateDebutContrat}}</div>
                                 <div class="cell" data-title="DateFinContrat">{{$p->DateFinContrat}}</div>
                                 <div class="cell" data-title="DateFinGarantie">{{$p->DateFinGarantie}}</div>

@@ -162,6 +162,17 @@
 }
 
 
+.cellMateriel{
+max-width: 300px;
+}
+
+.cellAdresse{
+max-width: 300px;
+}
+
+.cellDates{
+ max-width: 80px;
+}
 
 
 
