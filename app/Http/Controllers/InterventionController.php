@@ -48,6 +48,7 @@ class InterventionController extends Controller
         //Récupération du nom de l'utilisateur connecté
         $username = auth()->user()->NomUtil;
 
+        $CodeUtil = auth()->user()->CodeUtil;
         /*-------------- DÉBUT DE LA REQUÊTE -------------- */
 
 
@@ -56,19 +57,20 @@ class InterventionController extends Controller
 
         if(auth()->user()->Acces[8] != 1){
 
-            $interventions = $interventions->where('NomCmdCli', '=', $username);
-
-            //Je check si l'utilisateur connecté est associé à un nom de projet défini.
-            try {
-                $nomProjet = auth()->user()->param->NomProjet;
-
-                if ($nomProjet != null){
-                    $interventions = $interventions->where('NomProjet','=',$nomProjet);
-                };
-
-              } catch (\Exception $e) {
-              }
-
+		$reqRech = UserParam::where('CodeUtil','=',$username)->first();
+		if (!empty($reqRech))
+			{
+			$nomProjet = $reqRech->NomProjet;
+			if (($nomProjet != null) || ($nomProjet != ""))
+				{
+				$interventions = $interventions->where('NomProjet','=',$nomProjet);
+				}
+	                else $interventions = $interventions->where('NomCmdCli', '=', $username);
+	                }
+	        else
+		{
+	                $interventions = $interventions->where('NomCmdCli', '=', $username);
+		        }
 
         }
 
@@ -79,7 +81,7 @@ class InterventionController extends Controller
         });
 
         $enCours = 'checked';
-
+	$interventions = $interventions->where('CodeUtilSuivContrat','=',$CodeUtil);
         $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15);
 
 		return view('Interventions.liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
@@ -104,27 +106,29 @@ class InterventionController extends Controller
         $today = Carbon::now();
 
         //Récupération du nom de l'utilisateur connecté
-        $username = auth()->user()->NomUtil;
 
+        $username = auth()->user()->NomUtil;
+        $CodeUtil = auth()->user()->CodeUtil;
         /*-------------- DÉBUT DE LA REQUÊTE -------------- */
 
         //Récupération de toutes les interventions concernants l'utilisateur connecté
         $interventions = new Intervention;
 
         if(auth()->user()->Acces[8] != 1){
-            $interventions = $interventions->where('NomCmdCli', '=', $username);
 
 
-             //Je check si l'utilisateur connecté est associé à un nom de projet défini.
-             try {
-                $nomProjet = auth()->user()->param->NomProjet;
+		$reqRech = UserParam::where('CodeUtil','=',$username)->first();
+		if (!empty($reqRech))
+			{
+			$nomProjet = $reqRech->NomProjet;
+			if (($nomProjet != null) || ($nomProjet != ""))  $interventions = $interventions->where('NomProjet','=',$nomProjet);
+			else $interventions = $interventions->where('NomCmdCli', '=', $username);
+			}
+		else
+			{
+			$interventions = $interventions->where('NomCmdCli', '=', $username);
+		}
 
-                if ($nomProjet != null){
-                    $interventions = $interventions->where('NomProjet','=',$nomProjet);
-                };
-
-              } catch (\Exception $e) {
-              }
 
 
         }
@@ -212,6 +216,7 @@ class InterventionController extends Controller
             'valeurMotCle' => request('valeurMotCle'),
         ];
 
+	$interventions = $interventions->where('CodeUtilSuivContrat','=',$CodeUtil);
         $interventions = $interventions->orderBy('DateEnr', 'DESC')->paginate(15)->appends($mesFiltres);
 
 		return view('Interventions.liste_interventions',  compact('interventions', 'dateMin','dateMax','enCours','enAttente','terminee','motcle','today'));
